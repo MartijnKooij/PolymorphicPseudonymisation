@@ -1,0 +1,161 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="resources\cert.pem" />
+    <None Remove="resources\keys\id-4.pem" />
+    <None Remove="resources\keys\id-5.pem" />
+    <None Remove="resources\keys\invalid_oid.pem" />
+    <None Remove="resources\keys\missing_headers.pem" />
+    <None Remove="resources\keys\pc-4.pem" />
+    <None Remove="resources\keys\pc-5.pem" />
+    <None Remove="resources\keys\pd-4.pem" />
+    <None Remove="resources\keys\pd-5.pem" />
+    <None Remove="resources\keys\unknown_type.pem" />
+    <None Remove="resources\p7\ID-4.p7" />
+    <None Remove="resources\p7\ID-5.p7" />
+    <None Remove="resources\p7\PC-4.p7" />
+    <None Remove="resources\p7\PC-5.p7" />
+    <None Remove="resources\p7\PD-4.p7" />
+    <None Remove="resources\p7\PD-5.p7" />
+    <None Remove="resources\private.p8" />
+    <None Remove="resources\signed\900095222-2-4-I.txt" />
+    <None Remove="resources\signed\900095222-2-4-P.txt" />
+    <None Remove="resources\signed\900095222-2-5-I.txt" />
+    <None Remove="resources\signed\900095222-2-5-P.txt" />
+    <None Remove="resources\signed\950053533-3-4-I.txt" />
+    <None Remove="resources\signed\950053533-3-4-P.txt" />
+    <None Remove="resources\signed\950053533-3-5-I.txt" />
+    <None Remove="resources\signed\950053533-3-5-P.txt" />
+    <None Remove="resources\signed\identity-inside-pseudonym.txt" />
+    <None Remove="resources\signed\invalid-signature-type.txt" />
+    <None Remove="resources\signed\invalid-signature.txt" />
+    <None Remove="resources\signed\pseudonym-inside-identity.txt" />
+    <None Remove="resources\signed\signed-inside-signed.txt" />
+    <None Remove="resources\unsigned\identity.der" />
+    <None Remove="resources\unsigned\points-off-curve.der" />
+    <None Remove="resources\unsigned\pseudonym.der" />
+    <None Remove="resources\unsigned\unknown.der" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="resources\cert.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\id-4.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\id-5.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\invalid_oid.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\missing_headers.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\pc-4.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\pc-5.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\pd-4.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\pd-5.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\keys\unknown_type.pem">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\p7\ID-4.p7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\p7\ID-5.p7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\p7\PC-4.p7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\p7\PC-5.p7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\p7\PD-4.p7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\p7\PD-5.p7">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\private.p8">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\900095222-2-4-I.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\900095222-2-4-P.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\900095222-2-5-I.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\900095222-2-5-P.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\950053533-3-4-I.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\950053533-3-4-P.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\950053533-3-5-I.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\950053533-3-5-P.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\identity-inside-pseudonym.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\invalid-signature-type.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\invalid-signature.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\pseudonym-inside-identity.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\signed\signed-inside-signed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\unsigned\identity.der">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\unsigned\points-off-curve.der">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\unsigned\pseudonym.der">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="resources\unsigned\unknown.der">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.8.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PolymorphicPseudonymisation\PolymorphicPseudonymisation.csproj" />
+  </ItemGroup>
+
+</Project>
