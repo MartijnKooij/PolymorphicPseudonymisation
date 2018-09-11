@@ -24,8 +24,6 @@ namespace PolymorphicPseudonymisation.Entity
                     $"Incorrect decoded identifier, length ({decoded[2]:D}) > {decoded.Length - 3:D}");
             }
 
-            //TODO: Is this the correct conversion from java?
-            //identifier = new String(decoded, 3, decoded[2], StandardCharsets.US_ASCII);
             identifier = Encoding.ASCII.GetString(decoded, 3, decoded[2]);
         }
 
