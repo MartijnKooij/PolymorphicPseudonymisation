@@ -14,8 +14,8 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
         {
             var keys = new KeyUtil();
 
-            var ei = File.ReadAllText("resources\\" + "signed\\950053533-3-4-I.txt", Encoding.UTF8);
-            var ep = File.ReadAllText("resources\\" + "signed\\950053533-3-4-P.txt", Encoding.UTF8);
+            var ei = File.ReadAllText("resources\\" + "signed\\950053533-3-4-I.txt");
+            var ep = File.ReadAllText("resources\\" + "signed\\950053533-3-4-P.txt");
 
             var simBsn = DecryptUtil.GetIdentity(ei, keys.DecryptKey, keys.Verifiers);
             var simPseudo = DecryptUtil.GetPseudonym(ep, keys.PDecryptKey, keys.PClosingKey, keys.PVerifiers);

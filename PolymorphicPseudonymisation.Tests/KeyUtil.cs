@@ -34,9 +34,9 @@ namespace PolymorphicPseudonymisation.Tests
                 verifiers = decryptKey.ToVerifiers(IdentityPoint);
             }*/
 
-            var identityKeyPen = File.ReadAllText("resources\\keys\\id-4.pem", Encoding.ASCII);
+            var identityKeyPem = File.ReadAllText("resources\\keys\\id-4.pem");
             // Convert PEM to IdentityDecryptKey
-            decryptKey = Key.DecryptKey.FromPem<IdentityDecryptKey>(identityKeyPen);
+            decryptKey = Key.DecryptKey.FromPem<IdentityDecryptKey>(identityKeyPem);
             // Derive verifier (for signature verifying) from key
             verifiers = decryptKey.ToVerifiers(IdentityPoint);
 
@@ -53,7 +53,7 @@ namespace PolymorphicPseudonymisation.Tests
                 pVerifiers = pDecryptKey.ToVerifiers(PseudonymPoint);
             }*/
 
-            var pseudoKeyPem = File.ReadAllText("resources\\keys\\pd-4.pem", Encoding.ASCII);
+            var pseudoKeyPem = File.ReadAllText("resources\\keys\\pd-4.pem");
             // Convert PEM to IdentityDecryptKey
             pDecryptKey = Key.DecryptKey.FromPem<PseudonymDecryptKey>(pseudoKeyPem);
             // Derive verifier (for signature verifying) from key
@@ -65,7 +65,7 @@ namespace PolymorphicPseudonymisation.Tests
                 // Convert PEM to IdentityDecryptKey
                 pClosingKey = Key.DecryptKey.FromPem<PseudonymClosingKey>(pseudoClosingKeyPem);
             }*/
-            var pseudoClosingKeyPem = File.ReadAllText("resources\\keys\\pc-4.pem", Encoding.ASCII);
+            var pseudoClosingKeyPem = File.ReadAllText("resources\\keys\\pc-4.pem");
 
             // Convert PEM to IdentityDecryptKey
             pClosingKey = Key.DecryptKey.FromPem<PseudonymClosingKey>(pseudoClosingKeyPem);
