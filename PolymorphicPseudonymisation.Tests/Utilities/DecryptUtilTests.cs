@@ -14,8 +14,8 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
             var keys = new KeyUtil();
 
             //simuleer een EncryptedID (ei) en EncryptedPseudonym (ep)
-            var ei = File.ReadAllText("resources\\" + "signed\\900095222-2-4-I.txt");
-            var ep = File.ReadAllText("resources\\" + "signed\\900095222-2-4-P.txt");
+            var ei = File.ReadAllText("resources\\" + "signed\\950053533-3-4-I.txt");
+            var ep = File.ReadAllText("resources\\" + "signed\\950053533-3-4-P.txt");
 
             //Pre-load complete, Decrypt de ei en ep
             var simBsn = DecryptUtil.GetIdentity(ei, keys.DecryptKey, keys.Verifiers);

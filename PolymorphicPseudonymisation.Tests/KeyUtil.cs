@@ -1,9 +1,7 @@
 using System.IO;
-using System.Security.Cryptography;
-using Org.BouncyCastle.Asn1;
+using System.Text;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Security;
-using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Tests
@@ -27,33 +25,50 @@ namespace PolymorphicPseudonymisation.Tests
         private void GetIdentityKeys()
         {
             // Convert P7 key to PEM
-            using (Stream file = new FileStream("resources\\" + "p7\\ID-4.p7", FileMode.Open, FileAccess.Read))
+            /*using (Stream file = new FileStream("resources\\" + "p7\\ID-4.p7", FileMode.Open, FileAccess.Read))
             {
                 var identityKeyPem = Cms.Read(PrivateKey, file);
                 // Convert PEM to IdentityDecryptKey
                 decryptKey = Key.DecryptKey.FromPem<IdentityDecryptKey>(identityKeyPem);
                 // Derive verifier (for signature verifying) from key
                 verifiers = decryptKey.ToVerifiers(IdentityPoint);
-            }
+            }*/
+
+            var identityKeyPen = File.ReadAllText("resources\\keys\\id-4.pem", Encoding.ASCII);
+            // Convert PEM to IdentityDecryptKey
+            decryptKey = Key.DecryptKey.FromPem<IdentityDecryptKey>(identityKeyPen);
+            // Derive verifier (for signature verifying) from key
+            verifiers = decryptKey.ToVerifiers(IdentityPoint);
+
         }
 
         private void GetPseudoKeys()
         {
-            using (Stream file = new FileStream("resources\\" + "p7\\PD-4.p7", FileMode.Open, FileAccess.Read))
+            /*using (Stream file = new FileStream("resources\\" + "p7\\PD-4.p7", FileMode.Open, FileAccess.Read))
             {
                 var pseudoKeyPem = Cms.Read(PrivateKey, file);
                 // Convert PEM to IdentityDecryptKey
                 pDecryptKey = Key.DecryptKey.FromPem<PseudonymDecryptKey>(pseudoKeyPem);
                 // Derive verifier (for signature verifying) from key
                 pVerifiers = pDecryptKey.ToVerifiers(PseudonymPoint);
-            }
+            }*/
 
-            using (Stream file = new FileStream("resources\\" + "p7\\PC-4.p7", FileMode.Open, FileAccess.Read))
+            var pseudoKeyPem = File.ReadAllText("resources\\keys\\pd-4.pem", Encoding.ASCII);
+            // Convert PEM to IdentityDecryptKey
+            pDecryptKey = Key.DecryptKey.FromPem<PseudonymDecryptKey>(pseudoKeyPem);
+            // Derive verifier (for signature verifying) from key
+            pVerifiers = pDecryptKey.ToVerifiers(PseudonymPoint);
+
+            /*using (Stream file = new FileStream("resources\\" + "p7\\PC-4.p7", FileMode.Open, FileAccess.Read))
             {
                 var pseudoClosingKeyPem = Cms.Read(PrivateKey, file);
                 // Convert PEM to IdentityDecryptKey
                 pClosingKey = Key.DecryptKey.FromPem<PseudonymClosingKey>(pseudoClosingKeyPem);
-            }
+            }*/
+            var pseudoClosingKeyPem = File.ReadAllText("resources\\keys\\pc-4.pem", Encoding.ASCII);
+
+            // Convert PEM to IdentityDecryptKey
+            pClosingKey = Key.DecryptKey.FromPem<PseudonymClosingKey>(pseudoClosingKeyPem);
         }
 
         private static AsymmetricKeyParameter PrivateKey

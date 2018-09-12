@@ -4,11 +4,11 @@ namespace PolymorphicPseudonymisation.Parser
 {
     public class Asn1Parser
     {
-        private readonly Asn1InputStream parser;
+        private readonly Asn1StreamParser parser;
 
         public Asn1Parser(byte[] encoded)
         {
-            parser = new Asn1InputStream(encoded);
+            parser = new Asn1StreamParser(encoded);
         }
 
         public virtual T ReadObject<T>() where T : IAsn1Convertible

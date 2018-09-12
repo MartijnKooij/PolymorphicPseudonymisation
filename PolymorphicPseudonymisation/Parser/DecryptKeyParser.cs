@@ -85,7 +85,7 @@ namespace PolymorphicPseudonymisation.Parser
                 }
             }
 
-            if (!mandatory.Any())
+            if (mandatory.Any())
             {
                 throw new ParsingException($"Missing headers: {mandatory}");
             }
