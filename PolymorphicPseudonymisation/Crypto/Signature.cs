@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities;
+using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
@@ -15,7 +16,7 @@ namespace PolymorphicPseudonymisation.Crypto
             this.s = s;
         }
 
-        public virtual void Verify(ECPoint publicKey, ECPoint g, byte[] message)
+        public virtual void Verify(ECPoint publicKey, ECPoint g, sbyte[] message)
         {
             if (r.BitCount > 320 || r.CompareTo(BigInteger.Zero) <= 0 || s.CompareTo(BrainpoolP320R1.Q) >= 0)
             {
@@ -29,12 +30,14 @@ namespace PolymorphicPseudonymisation.Crypto
             }
 
             var md = Sha384.Instance;
-            md.ComputeHash(message);
-            md.ComputeHash(q.AffineXCoord.GetEncoded());
-            
+            var block1 = message.ToUnSigned();
+            var block2 = q.AffineXCoord.GetEncoded();
+            md.TransformBlock(block1, 0, block1.Length, block1, 0);
+            md.TransformFinalBlock(block2, 0, block2.Length);
+           
             // Use only 320 MSB
-            var hash = Arrays.CopyOfRange(md.Hash, 0, 40);
-            var v = new BigInteger(1, hash);
+            var hash = Arrays.CopyOfRange(md.Hash, 0, 40).ToSigned();
+            var v = new BigInteger(1, hash.ToUnSigned());
             if (!r.Equals(v))
             {
                 throw new CryptoException("Invalid signature");

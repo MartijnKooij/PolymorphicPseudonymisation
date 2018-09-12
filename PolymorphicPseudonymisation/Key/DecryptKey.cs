@@ -1,6 +1,6 @@
-﻿using Org.BouncyCastle.Math;
+﻿using System;
+using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
-using Org.BouncyCastle.Utilities.Encoders;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Parser;
 
@@ -66,7 +66,7 @@ namespace PolymorphicPseudonymisation.Key
         /// </summary>
         public virtual EncryptedVerifier GetVerifier(string verificationPoint)
         {
-            var point = BrainpoolP320R1.Curve.DecodePoint(Base64.Decode(verificationPoint));
+            var point = BrainpoolP320R1.Curve.DecodePoint(Convert.FromBase64String(verificationPoint));
             return new EncryptedVerifier(publicKey, point);
         }
     }

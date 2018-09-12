@@ -5,41 +5,44 @@ namespace PolymorphicPseudonymisation.Crypto
 {
     public static class Oaep
     {
-        private static readonly byte[] Lhash = Sha384.Instance.Hash;
+        //private static readonly byte[] Lhash = Sha384.Instance.Hash;
+        private static byte[] Lhash;
 
-        public static byte[] Decode(byte[] message, int pos, int length, int hlen)
+        public static byte[] Decode(byte[] message, int pos, int length, int hashLength)
         {
             if (length > 48)
             {
                 throw new CryptoException($"Length of message is too big ({length:D} > 48)");
             }
-            if (hlen > 48)
+            if (hashLength > 48)
             {
-                throw new CryptoException($"Hash length is too big ({hlen:D} > 48)");
+                throw new CryptoException($"Hash length is too big ({hashLength:D} > 48)");
             }
-            if (length <= 2 * hlen)
+            if (length <= 2 * hashLength)
             {
-                throw new CryptoException($"Message is too short ({length:D} <= 2 * {hlen:D})");
+                throw new CryptoException($"Message is too short ({length:D} <= 2 * {hashLength:D})");
             }
 
-            var seed = Mgf1(message, pos + hlen, length - hlen);
-            Xor(message, pos, seed, hlen);
+            var seed = Mgf1(message, pos + hashLength, length - hashLength);
+            Xor(message, pos, seed, hashLength);
 
-            var db = Mgf1(seed, 0, hlen);
-            Xor(message, pos + hlen, db, length - hlen);
+            var db = Mgf1(seed, 0, hashLength);
+            Xor(message, pos + hashLength, db, length - hashLength);
 
-            Verify(db, hlen);
+            Lhash = Mgf1(seed, 0, hashLength);
+            Verify(db, hashLength);
 
-            return Arrays.CopyOfRange(db, hlen + 1, length - hlen);
+            return Arrays.CopyOfRange(db, hashLength + 1, length - hashLength);
         }
 
-        private static void Verify(IReadOnlyList<byte> db, int hlen)
+        private static void Verify(IReadOnlyList<byte> db, int hashLength)
         {
-            if (db[hlen] != 1)
+            if (db[hashLength] != 1)
             {
-                throw new CryptoException("OAEP decode error, db[hlen] != 1");
+                throw new CryptoException("OAEP decode error, db[hashLength] != 1");
             }
-            for (var i = 0; i < hlen; i++)
+
+            for (var i = 0; i < hashLength; i++)
             {
                 if (Lhash[i] != db[i])
                 {
@@ -65,8 +68,9 @@ namespace PolymorphicPseudonymisation.Crypto
         private static byte[] Mgf1(byte[] input, int offset, int count)
         {
             var md = Sha384.Instance;
-            md.ComputeHash(input, offset, count);
-            md.ComputeHash(new byte[] {0, 0, 0, 0});
+
+            md.TransformBlock(input, offset, count, input, offset);
+            md.TransformFinalBlock(new byte[] { 0, 0, 0, 0 }, 0, 4);
 
             return md.Hash;
         }

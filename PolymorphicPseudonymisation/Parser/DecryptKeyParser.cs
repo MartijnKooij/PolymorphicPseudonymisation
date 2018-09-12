@@ -7,6 +7,7 @@ using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities.IO.Pem;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -39,7 +40,7 @@ namespace PolymorphicPseudonymisation.Parser
 
                 var headers = pem.Headers.OfType<PemHeader>().ToList();
                 DecodeHeaders(headers);
-                DecodeContent(pem.Content);
+                DecodeContent(pem.Content.ToSigned());
             }
             catch (IOException e)
             {
@@ -91,7 +92,7 @@ namespace PolymorphicPseudonymisation.Parser
             }
         }
 
-        private void DecodeContent(byte[] encoded)
+        private void DecodeContent(sbyte[] encoded)
         {
             var parser = new Asn1Parser(encoded);
 

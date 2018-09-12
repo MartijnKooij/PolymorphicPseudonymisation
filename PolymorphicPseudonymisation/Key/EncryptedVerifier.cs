@@ -19,7 +19,7 @@ namespace PolymorphicPseudonymisation.Key
             this.verificationPoint = verificationPoint;
         }
 
-        public virtual void Verify(byte[] payload, Signature signature)
+        public virtual void Verify(sbyte[] payload, Signature signature)
         {
             signature.Verify(publicKey, verificationPoint, payload);
         }

@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PolymorphicPseudonymisation.Utilities;
 
@@ -13,11 +14,9 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
         {
             var keys = new KeyUtil();
 
-            //simuleer een EncryptedID (ei) en EncryptedPseudonym (ep)
-            var ei = File.ReadAllText("resources\\" + "signed\\950053533-3-4-I.txt");
-            var ep = File.ReadAllText("resources\\" + "signed\\950053533-3-4-P.txt");
+            var ei = File.ReadAllText("resources\\" + "signed\\950053533-3-4-I.txt", Encoding.UTF8);
+            var ep = File.ReadAllText("resources\\" + "signed\\950053533-3-4-P.txt", Encoding.UTF8);
 
-            //Pre-load complete, Decrypt de ei en ep
             var simBsn = DecryptUtil.GetIdentity(ei, keys.DecryptKey, keys.Verifiers);
             var simPseudo = DecryptUtil.GetPseudonym(ep, keys.PDecryptKey, keys.PClosingKey, keys.PVerifiers);
 
