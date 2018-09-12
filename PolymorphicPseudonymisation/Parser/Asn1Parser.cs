@@ -1,5 +1,4 @@
 ﻿using Org.BouncyCastle.Asn1;
-using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -7,9 +6,9 @@ namespace PolymorphicPseudonymisation.Parser
     {
         private readonly Asn1StreamParser parser;
 
-        public Asn1Parser(sbyte[] encoded)
+        public Asn1Parser(byte[] encoded)
         {
-            parser = new Asn1StreamParser(encoded.ToUnSigned());
+            parser = new Asn1StreamParser(encoded);
         }
 
         public virtual T ReadObject<T>() where T : IAsn1Convertible

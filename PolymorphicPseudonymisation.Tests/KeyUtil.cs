@@ -1,5 +1,4 @@
 using System.IO;
-using System.Text;
 using Org.BouncyCastle.Crypto;
 using Org.BouncyCastle.Security;
 using PolymorphicPseudonymisation.Key;

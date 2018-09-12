@@ -1,7 +1,6 @@
 ﻿using System;
 using PolymorphicPseudonymisation.Key;
 using PolymorphicPseudonymisation.Parser;
-using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Entity
 {
@@ -9,7 +8,7 @@ namespace PolymorphicPseudonymisation.Entity
     {
         public static EncryptedEntity FromBase64(string base64, EncryptedVerifiers verifiers)
         {
-            sbyte[] encoded = Convert.FromBase64String(base64).ToSigned();
+            byte[] encoded = Convert.FromBase64String(base64);
             var parser = new EncryptedEntityParser(encoded);
             parser.Decode(verifiers);
             switch (parser.BsnkType.ObjectIdentifier)

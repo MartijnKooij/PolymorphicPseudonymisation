@@ -4,7 +4,6 @@ using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Key;
-using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -23,7 +22,7 @@ namespace PolymorphicPseudonymisation.Parser
         public char Type { get; set; }
         public ECPoint[] Points { get; set; }
 
-        public EncryptedEntityParser(sbyte[] encoded)
+        public EncryptedEntityParser(byte[] encoded)
         {
             parser = new Asn1Parser(encoded);
         }
@@ -71,8 +70,7 @@ namespace PolymorphicPseudonymisation.Parser
         {
             try
             {
-                //final byte[] payload = parser.readObject(DERSequenceParser.class).getLoadedObject().getEncoded();
-                var payload = parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded().ToSigned();
+                var payload = parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded();
                 var payloadParser = new Asn1Parser(payload);
                 payloadParser.ReadObject<DerSequenceParser>();
 

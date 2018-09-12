@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using Org.BouncyCastle.Utilities;
-using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
     public static class Oaep
     {
-        private static readonly sbyte[] Lhash = Sha384.EmptySha384Signed;
+        private static readonly byte[] Lhash = Sha384.EmptySha384;
 
-        public static sbyte[] Decode(sbyte[] message, int pos, int length, int hashLength)
+        public static byte[] Decode(byte[] message, int pos, int length, int hashLength)
         {
             if (length > 48)
             {
@@ -31,10 +30,10 @@ namespace PolymorphicPseudonymisation.Crypto
 
             Verify(db, hashLength);
 
-            return Arrays.CopyOfRange(db.ToUnSigned(), hashLength + 1, length - hashLength).ToSigned();
+            return Arrays.CopyOfRange(db, hashLength + 1, length - hashLength);
         }
 
-        private static void Verify(IReadOnlyList<sbyte> db, int hashLength)
+        private static void Verify(IReadOnlyList<byte> db, int hashLength)
         {
             if (db[hashLength] != 1)
             {
@@ -53,7 +52,7 @@ namespace PolymorphicPseudonymisation.Crypto
         /// <summary>
         /// b = a XOR b
         /// </summary>
-        private static void Xor(IReadOnlyList<sbyte> src, int srcPos, IList<sbyte> dest, int length)
+        private static void Xor(IReadOnlyList<byte> src, int srcPos, IList<byte> dest, int length)
         {
             for (var i = 0; i < length; i++)
             {
@@ -64,15 +63,14 @@ namespace PolymorphicPseudonymisation.Crypto
         /// <summary>
         /// Single block MGF1 with SHA-384 of input from pos to pos+length-1
         /// </summary>
-        private static sbyte[] Mgf1(sbyte[] input, int offset, int count)
+        private static byte[] Mgf1(byte[] input, int offset, int count)
         {
             var md = Sha384.Instance;
 
-            var unsignedInput = input.ToUnSigned();
-            md.TransformBlock(unsignedInput, offset, count, unsignedInput, offset);
+            md.TransformBlock(input, offset, count, input, offset);
             md.TransformFinalBlock(new byte[] { 0, 0, 0, 0 }, 0, 4);
 
-            return md.Hash.ToSigned();
+            return md.Hash;
         }
     }
 }
