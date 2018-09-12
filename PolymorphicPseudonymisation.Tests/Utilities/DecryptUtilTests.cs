@@ -11,9 +11,10 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
         [TestMethod]
         public void GetIdentity()
         {
-            var encryptedIdentity = File.ReadAllText("resources\\" + "signed\\950053533-3-4-I.txt");
+            var encryptedIdentity = File.ReadAllText("resources\\signed\\950053533-3-4-I.txt");
 
             var identityKeyPem = File.ReadAllText("resources\\keys\\id-4.pem");
+
             var identityDecryptKey = KeyUtilities.GetIdentityDecryptKey(identityKeyPem);
             var encryptedVerifiers = KeyUtilities.GetIdentityVerifiers(identityDecryptKey);
 
@@ -25,7 +26,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
         [TestMethod]
         public void GetPseudonym()
         {
-            var encryptedPseudonym = File.ReadAllText("resources\\" + "signed\\950053533-3-4-P.txt");
+            var encryptedPseudonym = File.ReadAllText("resources\\signed\\950053533-3-4-P.txt");
             var pseudoKeyPem = File.ReadAllText("resources\\keys\\pd-4.pem");
             var pseudoClosingKeyPem = File.ReadAllText("resources\\keys\\pc-4.pem");
 

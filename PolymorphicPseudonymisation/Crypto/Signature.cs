@@ -15,7 +15,7 @@ namespace PolymorphicPseudonymisation.Crypto
             this.s = s;
         }
 
-        public virtual void Verify(ECPoint publicKey, ECPoint g, byte[] message)
+        public void Verify(ECPoint publicKey, ECPoint g, byte[] message)
         {
             if (r.BitCount > 320 || r.CompareTo(BigInteger.Zero) <= 0 || s.CompareTo(BrainpoolP320R1.Q) >= 0)
             {

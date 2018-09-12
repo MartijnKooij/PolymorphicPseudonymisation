@@ -6,24 +6,6 @@ namespace PolymorphicPseudonymisation.Entity
 {
     public abstract class EncryptedEntity : Identifiable
     {
-        public static EncryptedEntity FromBase64(string base64, EncryptedVerifiers verifiers)
-        {
-            byte[] encoded = Convert.FromBase64String(base64);
-            var parser = new EncryptedEntityParser(encoded);
-            parser.Decode(verifiers);
-            switch (parser.BsnkType.ObjectIdentifier)
-            {
-                case BsnkType.EncryptedIdentityName:
-                case BsnkType.SignedEncryptedIdentityName:
-                    return new EncryptedIdentity(parser);
-                case BsnkType.EncryptedPseudonymName:
-                case BsnkType.SignedEncryptedPseudonymName:
-                    return new EncryptedPseudonym(parser);
-                default:
-                    throw new PolymorphicPseudonymisationException($"Unexpected type {parser.BsnkType}");
-            }
-        }
-
         public static T FromBase64<T>(string base64, EncryptedVerifiers verifiers) where T : EncryptedEntity
         {
             var key = FromBase64(base64, verifiers);
@@ -54,5 +36,23 @@ namespace PolymorphicPseudonymisation.Entity
         public override string Recipient { get; }
 
         public override int RecipientKeySetVersion { get; }
+
+        private static EncryptedEntity FromBase64(string base64, EncryptedVerifiers verifiers)
+        {
+            byte[] encoded = Convert.FromBase64String(base64);
+            var parser = new EncryptedEntityParser(encoded);
+            parser.Decode(verifiers);
+            switch (parser.BsnkType.ObjectIdentifier)
+            {
+                case BsnkType.EncryptedIdentityName:
+                case BsnkType.SignedEncryptedIdentityName:
+                    return new EncryptedIdentity(parser);
+                case BsnkType.EncryptedPseudonymName:
+                case BsnkType.SignedEncryptedPseudonymName:
+                    return new EncryptedPseudonym(parser);
+                default:
+                    throw new PolymorphicPseudonymisationException($"Unexpected type {parser.BsnkType}");
+            }
+        }
     }
 }

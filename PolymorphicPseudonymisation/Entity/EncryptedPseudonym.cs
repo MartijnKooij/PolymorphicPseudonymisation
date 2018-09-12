@@ -11,11 +11,9 @@ namespace PolymorphicPseudonymisation.Entity
         internal EncryptedPseudonym(EncryptedEntityParser parser) : base(parser)
         {
             points = parser.Points;
-            Diversifier = parser.Diversifier;
-            Type = parser.Type;
         }
 
-        public virtual Pseudonym Decrypt(PseudonymDecryptKey decryptKey, PseudonymClosingKey closingKey)
+        public Pseudonym Decrypt(PseudonymDecryptKey decryptKey, PseudonymClosingKey closingKey)
         {
             Check(decryptKey, true);
             Check(closingKey, false);
@@ -25,9 +23,5 @@ namespace PolymorphicPseudonymisation.Entity
 
             return new Pseudonym(closingKey.RecipientKeySetVersion, point);
         }
-
-        public virtual string Diversifier { get; }
-
-        public virtual char Type { get; }
     }
 }

@@ -13,7 +13,7 @@ namespace PolymorphicPseudonymisation.Entity
             points = parser.Points;
         }
 
-        public virtual Identity Decrypt(IdentityDecryptKey decryptKey)
+        public Identity Decrypt(IdentityDecryptKey decryptKey)
         {
             Check(decryptKey, true);
             ECPoint point = points[1].Subtract(points[0].Multiply(decryptKey.PrivateKey)).Normalize();
