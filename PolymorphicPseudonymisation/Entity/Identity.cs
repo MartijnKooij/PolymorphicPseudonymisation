@@ -2,6 +2,7 @@
 using System.Text;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Entity
 {
@@ -12,9 +13,9 @@ namespace PolymorphicPseudonymisation.Entity
 
         internal Identity(ECPoint point)
         {
-            var encoded = point.AffineXCoord.GetEncoded();
+            var encoded = point.AffineXCoord.GetEncoded().ToSigned();
             var offset = GetZeroOffset(encoded);
-            byte[] decoded = Oaep.Decode(encoded, offset, encoded.Length - offset, 10);
+            sbyte[] decoded = Oaep.Decode(encoded, offset, encoded.Length - offset, 10);
 
             Version = decoded[0];
             type = (char)decoded[1];
@@ -24,7 +25,8 @@ namespace PolymorphicPseudonymisation.Entity
                     $"Incorrect decoded identifier, length ({decoded[2]:D}) > {decoded.Length - 3:D}");
             }
 
-            identifier = Encoding.ASCII.GetString(decoded, 3, decoded[2]);
+            var unsignedDecoded = decoded.ToUnSigned();
+            identifier = Encoding.ASCII.GetString(unsignedDecoded, 3, unsignedDecoded[2]);
         }
 
         public override string Standard => type == 'B' ? identifier : type + identifier;
@@ -35,7 +37,7 @@ namespace PolymorphicPseudonymisation.Entity
 
         public virtual string Identifier => identifier;
 
-        private static int GetZeroOffset(IReadOnlyList<byte> encoded)
+        private static int GetZeroOffset(IReadOnlyList<sbyte> encoded)
         {
             for (var i = 0; i < encoded.Count; i++)
             {
