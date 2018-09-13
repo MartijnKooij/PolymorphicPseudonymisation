@@ -41,8 +41,6 @@ namespace PolymorphicPseudonymisation.Parser
         public virtual BsnkType CheckHeader()
         {
             ReadObject<DerSequenceParser>();
-            //TODO: Asn1ObjectIdentifier is not in the bouncy castle library for C#?
-            //final String oid = readObject(ASN1ObjectIdentifier.class).getId();
             var oid = ReadObject<DerObjectIdentifier>().Id;
             try
             {

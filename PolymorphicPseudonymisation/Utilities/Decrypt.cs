@@ -3,7 +3,7 @@ using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Utilities
 {
-    public class DecryptUtil
+    public static class Decrypt
     {
         public static string GetIdentity(string ei, IdentityDecryptKey decryptKey, EncryptedVerifiers verifiers)
         {

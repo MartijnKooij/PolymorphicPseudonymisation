@@ -20,36 +20,5 @@ namespace PolymorphicPseudonymisation.Utilities
 
             return hexBuffer.ToString();
         }
-
-        public static sbyte[] Decode(string s)
-        {
-            var len = s.Length;
-            var r = new sbyte[len / 2];
-            for (var i = 0; i < r.Length; i++)
-            {
-                int digit1 = s[i * 2], digit2 = s[i * 2 + 1];
-                if (digit1 >= '0' && digit1 <= '9')
-                {
-                    digit1 -= '0';
-                }
-                else if (digit1 >= 'A' && digit1 <= 'F')
-                {
-                    digit1 -= 'A' - 10;
-                }
-
-                if (digit2 >= '0' && digit2 <= '9')
-                {
-                    digit2 -= '0';
-                }
-                else if (digit2 >= 'A' && digit2 <= 'F')
-                {
-                    digit2 -= 'A' - 10;
-                }
-
-                r[i] = (sbyte) ((digit1 << 4) + digit2);
-            }
-
-            return r;
-        }
     }
 }
