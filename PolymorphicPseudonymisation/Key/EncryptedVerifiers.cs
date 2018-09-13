@@ -11,8 +11,8 @@
             PseudonymVerifier = pseudonymVerifier;
         }
 
-        public virtual EncryptedVerifier IdentityVerifier { get; }
+        public EncryptedVerifier IdentityVerifier { get; }
 
-        public virtual EncryptedVerifier PseudonymVerifier { get; }
+        public EncryptedVerifier PseudonymVerifier { get; }
     }
 }

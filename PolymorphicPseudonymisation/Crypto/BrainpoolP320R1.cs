@@ -8,7 +8,7 @@ namespace PolymorphicPseudonymisation.Crypto
     /// <summary>
     /// BrainpoolP320r1 conform RFC 5639
     /// </summary>
-    public class BrainpoolP320R1
+    public static class BrainpoolP320R1
     {
         public static readonly DerObjectIdentifier ObjectIdentifier = TeleTrusTObjectIdentifiers.BrainpoolP320R1;
 

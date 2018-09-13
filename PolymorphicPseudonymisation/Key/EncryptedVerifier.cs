@@ -18,12 +18,12 @@ namespace PolymorphicPseudonymisation.Key
             this.verificationPoint = verificationPoint;
         }
 
-        public virtual void Verify(byte[] payload, Signature signature)
+        public void Verify(byte[] payload, Signature signature)
         {
             signature.Verify(publicKey, verificationPoint, payload);
         }
 
-        public sealed override bool Equals(object obj)
+        public override bool Equals(object obj)
         {
             if (obj == null)
             {
@@ -45,7 +45,7 @@ namespace PolymorphicPseudonymisation.Key
                    verificationPoint.Equals(encryptedVerifier.verificationPoint);
         }
 
-        public sealed override int GetHashCode()
+        public override int GetHashCode()
         {
             return ComputeHashFrom(publicKey, verificationPoint);
         }

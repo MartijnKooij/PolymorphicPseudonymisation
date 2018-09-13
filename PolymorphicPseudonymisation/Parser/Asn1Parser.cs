@@ -11,13 +11,13 @@ namespace PolymorphicPseudonymisation.Parser
             parser = new Asn1StreamParser(encoded);
         }
 
-        public virtual T ReadObject<T>() where T : IAsn1Convertible
+        public T ReadObject<T>() where T : IAsn1Convertible
         {
             var obj = ReadObject();
             return CheckObject<T>(obj);
         }
 
-        public virtual IAsn1Convertible ReadObject()
+        public IAsn1Convertible ReadObject()
         {
             return parser.ReadObject();
         }
@@ -38,7 +38,7 @@ namespace PolymorphicPseudonymisation.Parser
             return (T) obj;
         }
 
-        public virtual BsnkType CheckHeader()
+        public BsnkType CheckHeader()
         {
             ReadObject<DerSequenceParser>();
             var oid = ReadObject<DerObjectIdentifier>().Id;

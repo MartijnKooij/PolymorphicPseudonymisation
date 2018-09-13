@@ -15,19 +15,16 @@ namespace PolymorphicPseudonymisation.Parser
         public BsnkType BsnkType { get; private set; }
         public int SchemeVersion { get; private set; }
         public int SchemeKeyVersion { get; private set; }
-        public string Creator { get; private set; }
         public string Recipient { get; private set; }
         public int RecipientKeySetVersion { get; private set; }
-        public string Diversifier { get; set; }
-        public char Type { get; set; }
-        public ECPoint[] Points { get; set; }
+        public ECPoint[] Points { get; private set; }
 
         public EncryptedEntityParser(byte[] encoded)
         {
             parser = new Asn1Parser(encoded);
         }
 
-        public virtual void Decode(EncryptedVerifiers verifiers)
+        public void Decode(EncryptedVerifiers verifiers)
         {
             try
             {
@@ -111,7 +108,7 @@ namespace PolymorphicPseudonymisation.Parser
         {
             SchemeVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
             SchemeKeyVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
-            Creator = payloadParser.ReadObject<DerIA5String>().GetString();
+            payloadParser.ReadObject<DerIA5String>(); //Creator, not used
             Recipient = payloadParser.ReadObject<DerIA5String>().GetString();
             RecipientKeySetVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
 
@@ -120,16 +117,12 @@ namespace PolymorphicPseudonymisation.Parser
                 var obj = payloadParser.ReadObject();
                 if (obj is DerIA5String derIa5String)
                 {
-                    Diversifier = derIa5String.GetString();
-                    //TODO: Is this the correct conversion from java?
-                    //type = (char) payloadParser.readObject(ASN1Integer.class).getValue().byteValue();
-                    Type = (char) payloadParser.ReadObject<DerInteger>().Value.SignValue;
+                    derIa5String.GetString();
+                    payloadParser.ReadObject<DerInteger>(); //Type, not used
                 }
                 else
                 {
-                    //TODO: Is this the correct conversion from java?
-                    //type = (char) Asn1Parser.checkObject(obj, ASN1Integer.class).getValue().byteValue();
-                    Type = (char) Asn1Parser.CheckObject<DerInteger>(obj).Value.SignValue;
+                    Asn1Parser.CheckObject<DerInteger>(obj); //Type, not used
                 }
             }
 

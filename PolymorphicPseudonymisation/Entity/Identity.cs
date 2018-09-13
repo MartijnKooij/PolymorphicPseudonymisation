@@ -14,9 +14,8 @@ namespace PolymorphicPseudonymisation.Entity
         {
             var encoded = point.AffineXCoord.GetEncoded();
             var offset = GetZeroOffset(encoded);
-            byte[] decoded = Oaep.Decode(encoded, offset, encoded.Length - offset, 10);
+            var decoded = Oaep.Decode(encoded, offset, encoded.Length - offset, 10);
 
-            Version = decoded[0];
             type = (char)decoded[1];
             if (decoded[2] > decoded.Length - 3)
             {
@@ -28,12 +27,6 @@ namespace PolymorphicPseudonymisation.Entity
         }
 
         public override string Standard => type == 'B' ? identifier : type + identifier;
-
-        public virtual int Version { get; }
-
-        public virtual char Type => type;
-
-        public virtual string Identifier => identifier;
 
         private static int GetZeroOffset(IReadOnlyList<byte> encoded)
         {
