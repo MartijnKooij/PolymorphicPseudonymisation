@@ -4,7 +4,7 @@ using System.Text;
 using Org.BouncyCastle.Cms;
 using Org.BouncyCastle.Security;
 
-namespace PolymorphicPseudonymisation.Utilities
+namespace PolymorphicPseudonymisation.Crypto
 {
     public static class Cms
     {
@@ -19,9 +19,6 @@ namespace PolymorphicPseudonymisation.Utilities
             var recipients = parser.GetRecipientInfos().GetRecipients().OfType<RecipientInformation>();
             var recipientInformation = recipients.First();
             var keyInfo = (KeyTransRecipientInformation)recipientInformation;
-
-            //TODO: Not sure what this did in Java?
-            //final byte[] message = keyInfo.getContent(new JceKeyTransEnvelopedRecipient(key).setProvider("BC"));
             var message = keyInfo.GetContent(privateKey);
 
             return Encoding.ASCII.GetString(message);
