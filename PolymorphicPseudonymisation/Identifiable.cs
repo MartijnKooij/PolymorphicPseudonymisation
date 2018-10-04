@@ -1,8 +1,10 @@
-﻿namespace PolymorphicPseudonymisation
+﻿using PolymorphicPseudonymisation.Exceptions;
+
+namespace PolymorphicPseudonymisation
 {
     public abstract class Identifiable
     {
-        public int RecipientKeySetVersion { get; set; }
+        public int RecipientKeySetVersion { get; protected set; }
 
         protected void Check(Identifiable other, bool includeKeySetVersion)
         {

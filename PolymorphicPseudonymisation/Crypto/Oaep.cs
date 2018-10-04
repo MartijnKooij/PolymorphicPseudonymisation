@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Org.BouncyCastle.Utilities;
+using PolymorphicPseudonymisation.Exceptions;
 
 namespace PolymorphicPseudonymisation.Crypto
 {

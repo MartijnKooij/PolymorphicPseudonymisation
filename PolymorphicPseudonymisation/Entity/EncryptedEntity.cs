@@ -1,4 +1,5 @@
 ﻿using System;
+using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 using PolymorphicPseudonymisation.Parser;
 

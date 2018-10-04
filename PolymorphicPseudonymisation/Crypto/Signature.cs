@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities;
+using PolymorphicPseudonymisation.Exceptions;
 
 namespace PolymorphicPseudonymisation.Crypto
 {

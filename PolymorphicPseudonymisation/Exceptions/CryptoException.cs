@@ -1,4 +1,4 @@
-﻿namespace PolymorphicPseudonymisation.Crypto
+﻿namespace PolymorphicPseudonymisation.Exceptions
 {
     public class CryptoException : PolymorphicPseudonymisationException
     {

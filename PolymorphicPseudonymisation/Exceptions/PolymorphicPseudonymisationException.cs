@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PolymorphicPseudonymisation
+namespace PolymorphicPseudonymisation.Exceptions
 {
     public class PolymorphicPseudonymisationException : Exception
     {

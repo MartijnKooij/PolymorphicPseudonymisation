@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PolymorphicPseudonymisation.Parser
+namespace PolymorphicPseudonymisation.Exceptions
 {
     public class ParsingException : PolymorphicPseudonymisationException
     {

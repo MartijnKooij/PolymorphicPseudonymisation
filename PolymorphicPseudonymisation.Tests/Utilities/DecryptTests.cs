@@ -1,8 +1,7 @@
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PolymorphicPseudonymisation.Crypto;
-using PolymorphicPseudonymisation.Parser;
-using PolymorphicPseudonymisation.Utilities;
+using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Service;
 
 namespace PolymorphicPseudonymisation.Tests.Utilities
 {
@@ -10,6 +9,8 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
     [DeploymentItem("resources", "resources")]
     public class DecryptTests
     {
+        private readonly IDecryptService decryptService = new DecryptService();
+
         [TestMethod]
         public void GetIdentity_Succeeds()
         {
@@ -20,7 +21,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
             var identityDecryptKey = KeyUtilities.GetIdentityDecryptKey(identityKeyPem);
             var encryptedVerifiers = KeyUtilities.GetIdentityVerifiers(identityDecryptKey);
 
-            var actualBsn = Decrypt.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
+            var actualBsn = decryptService.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
 
             Assert.AreEqual("950053533", actualBsn);
         }
@@ -37,7 +38,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
             try
             {
-                Decrypt.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
+                decryptService.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
                 Assert.Fail("Expected parsing exception.");
             }
             catch (ParsingException e)
@@ -58,7 +59,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
             try
             {
-                Decrypt.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
+                decryptService.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
                 Assert.Fail("Expected crypto exception.");
             }
             catch (CryptoException e)
@@ -79,7 +80,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
             try
             {
-                Decrypt.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
+                decryptService.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
                 Assert.Fail("Expected parsing exception.");
             }
             catch (ParsingException e)
@@ -100,7 +101,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
             try
             {
-                Decrypt.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
+                decryptService.GetIdentity(encryptedIdentity, identityDecryptKey, encryptedVerifiers);
                 Assert.Fail("Expected parsing exception.");
             }
             catch (ParsingException e)
@@ -120,7 +121,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
             var pseudonymDecryptKey = KeyUtilities.GetPseudonymDecryptKey(pseudoKeyPem);
             var pseudonymVerifiers = KeyUtilities.GetPseudonymVerifiers(pseudonymDecryptKey);
 
-            var actualPseudonym = Decrypt.GetPseudonym(encryptedPseudonym, pseudonymDecryptKey, pseudonymClosingKey, pseudonymVerifiers);
+            var actualPseudonym = decryptService.GetPseudonym(encryptedPseudonym, pseudonymDecryptKey, pseudonymClosingKey, pseudonymVerifiers);
 
             Assert.AreEqual("0000004404CAC3926533F301A13500D2379D383AD8717D1585F4174473AC0A715FE4786BC0A41B1D872BABBBB8C917945E5006FBDF61BFFAEC478979C72163FAF56A645496C3038C6A1F13E0B623384DD031B16F30", actualPseudonym);
         }
@@ -138,7 +139,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
             try
             {
-                Decrypt.GetPseudonym(encryptedPseudonym, pseudonymDecryptKey, pseudonymClosingKey, pseudonymVerifiers);
+                decryptService.GetPseudonym(encryptedPseudonym, pseudonymDecryptKey, pseudonymClosingKey, pseudonymVerifiers);
                 Assert.Fail("Expected parsing exception.");
             }
             catch (ParsingException e)

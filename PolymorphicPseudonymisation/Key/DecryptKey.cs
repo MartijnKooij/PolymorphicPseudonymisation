@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Parser;
 
 namespace PolymorphicPseudonymisation.Key

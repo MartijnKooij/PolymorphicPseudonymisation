@@ -3,6 +3,7 @@ using System.IO;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Parser

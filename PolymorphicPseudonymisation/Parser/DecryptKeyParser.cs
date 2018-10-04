@@ -7,6 +7,7 @@ using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities.IO.Pem;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Exceptions;
 
 namespace PolymorphicPseudonymisation.Parser
 {
