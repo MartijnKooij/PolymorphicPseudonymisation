@@ -1,25 +1,31 @@
-﻿using PolymorphicPseudonymisation.Entity;
-using PolymorphicPseudonymisation.Key;
+﻿using Microsoft.Extensions.Options;
+using PolymorphicPseudonymisation.Entity;
 
 namespace PolymorphicPseudonymisation.Service
 {
     public class DecryptService : IDecryptService
     {
-        /// <inheritdoc />
-        public string GetIdentity(string encryptedIdentity, IdentityDecryptKey decryptKey, EncryptedVerifiers verifiers)
+        private readonly DecryptOptions options;
+
+        public DecryptService(IOptions<DecryptOptions> options)
         {
-            var entity = EncryptedEntity.FromBase64<EncryptedIdentity>(encryptedIdentity, verifiers);
-            var identity = entity.Decrypt(decryptKey);
+            this.options = options.Value;
+        }
+
+        /// <inheritdoc />
+        public string GetIdentity(string encryptedIdentity)
+        {
+            var entity = EncryptedEntity.FromBase64<EncryptedIdentity>(encryptedIdentity, options.GetIdentityVerifiers());
+            var identity = entity.Decrypt(options.GetIdentityDecryptKey());
 
             return identity.ToString();
         }
 
         /// <inheritdoc />
-        public string GetPseudonym(string encryptedPseudonym, PseudonymDecryptKey decryptKey, PseudonymClosingKey closingKey,
-            EncryptedVerifiers verifiers)
+        public string GetPseudonym(string encryptedPseudonym)
         {
-            var entity = EncryptedEntity.FromBase64<EncryptedPseudonym>(encryptedPseudonym, verifiers);
-            var pseudonym = entity.Decrypt(decryptKey, closingKey);
+            var entity = EncryptedEntity.FromBase64<EncryptedPseudonym>(encryptedPseudonym, options.GetPseudonymVerifiers());
+            var pseudonym = entity.Decrypt(options.GetPseudonymDecryptKey(), options.GetPseudonymClosingKey());
 
             return pseudonym.ToString();
         }
