@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Service;
 
-namespace PolymorphicPseudonymisation.Tests.Services
+namespace PolymorphicPseudonymisation.Tests.Service
 {
     [TestClass]
     [DeploymentItem("resources", "resources")]
