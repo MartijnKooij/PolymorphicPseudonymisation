@@ -11,4 +11,16 @@ variables:
 
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
+  displayName: 'dotnet build' 
+- script: dotnet test --configuration $(buildConfiguration)
+  displayName: 'dotnet test'
+- script: dotnet publish --configuration $(buildConfiguration) --output $(build.artifactstagingdirectory)'
+  zipAfterPublish: true
+  displayName: 'dotnet publish'
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact'
+  inputs:
+    PathtoPublish: '$(build.artifactstagingdirectory)'
+
+
+
