@@ -24,7 +24,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
-    PathtoPublish: '$(build.sourcesdirectory)\PolymorphicPseudonymisation\bin\$(BuildPlatform)\$(BuildConfiguration)\'
+    PathtoPublish: '$(build.sourcesdirectory)/PolymorphicPseudonymisation/bin/$(BuildPlatform)/$(BuildConfiguration)/'
 
 
 
