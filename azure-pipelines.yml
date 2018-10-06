@@ -28,10 +28,9 @@ steps:
     zipAfterPublish: True
   displayName: 'dotnet publish'
 - task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact'
+  displayName: 'publish artifacts'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
-  displayName: 'publish artifacts'
 
 
 
