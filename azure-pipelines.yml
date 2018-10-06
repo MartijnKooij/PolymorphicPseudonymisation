@@ -21,6 +21,10 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
   displayName: 'publish test results'
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: PolymorphicPseudonymisation.Tests/coverage.cobertura.xml
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
