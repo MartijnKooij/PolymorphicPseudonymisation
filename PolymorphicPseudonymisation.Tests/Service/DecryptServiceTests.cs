@@ -18,10 +18,10 @@ namespace PolymorphicPseudonymisation.Tests.Service
             IServiceCollection services = new ServiceCollection();
             services.AddDecryptService(options =>
                 {
-                    options.IdentityPem = File.ReadAllText("resources\\keys\\id-4.pem");
+                    options.IdentityPem = File.ReadAllText("resources/keys/id-4.pem");
                     options.IdentityPoint = "AmUppru04ghsI/FvbvV59eoX3lCUWlMAZKu1pPdlvixch5avV+aFwQg=";
-                    options.PseudoKeyPem = File.ReadAllText("resources\\keys\\pd-4.pem");
-                    options.PseudoClosingKeyPem = File.ReadAllText("resources\\keys\\pc-4.pem");
+                    options.PseudoKeyPem = File.ReadAllText("resources/keys/pd-4.pem");
+                    options.PseudoClosingKeyPem = File.ReadAllText("resources/keys/pc-4.pem");
                     options.PseudonymPoint = "A9GtKDUn++nl2NWtN4F/2id1gmBhxn4I6Qr9BfeMN+fjNuXGvE79qHc=";
                 }
             );
@@ -33,7 +33,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetIdentity_Succeeds()
         {
-            var encryptedIdentity = File.ReadAllText("resources\\signed\\950053533-3-4-I.txt");
+            var encryptedIdentity = File.ReadAllText("resources/signed/950053533-3-4-I.txt");
 
             var actualBsn = decryptService.GetIdentity(encryptedIdentity);
 
@@ -43,7 +43,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetIdentity_Fails_Pseudonym_In_Identity()
         {
-            var encryptedIdentity = File.ReadAllText("resources\\signed\\pseudonym-inside-identity.txt");
+            var encryptedIdentity = File.ReadAllText("resources/signed/pseudonym-inside-identity.txt");
 
             try
             {
@@ -59,7 +59,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetIdentity_Fails_Invalid_Signature()
         {
-            var encryptedIdentity = File.ReadAllText("resources\\signed\\invalid-signature.txt");
+            var encryptedIdentity = File.ReadAllText("resources/signed/invalid-signature.txt");
 
             try
             {
@@ -75,7 +75,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetIdentity_Fails_Invalid_Signature_Type()
         {
-            var encryptedIdentity = File.ReadAllText("resources\\signed\\invalid-signature-type.txt");
+            var encryptedIdentity = File.ReadAllText("resources/signed/invalid-signature-type.txt");
 
             try
             {
@@ -92,7 +92,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetIdentity_Fails_Signed_Inside_Signed()
         {
-            var encryptedIdentity = File.ReadAllText("resources\\signed\\signed-inside-signed.txt");
+            var encryptedIdentity = File.ReadAllText("resources/signed/signed-inside-signed.txt");
 
             try
             {
@@ -108,7 +108,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetPseudonym_Succeeds()
         {
-            var encryptedPseudonym = File.ReadAllText("resources\\signed\\950053533-3-4-P.txt");
+            var encryptedPseudonym = File.ReadAllText("resources/signed/950053533-3-4-P.txt");
 
             var actualPseudonym = decryptService.GetPseudonym(encryptedPseudonym);
 
@@ -120,7 +120,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
         [TestMethod]
         public void GetPseudonym_Fails_Identity_In_Pseudonym()
         {
-            var encryptedPseudonym = File.ReadAllText("resources\\signed\\identity-inside-pseudonym.txt");
+            var encryptedPseudonym = File.ReadAllText("resources/signed/identity-inside-pseudonym.txt");
 
             try
             {
