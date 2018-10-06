@@ -12,7 +12,7 @@ variables:
 steps:
 - script: dotnet restore
   displayName: 'dotnet restore' 
-- script: dotnet build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+- script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build' 
 - script: dotnet test PolymorphicPseudonymisation.Tests/PolymorphicPseudonymisation.Tests.csproj --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
   displayName: 'dotnet test'
@@ -24,7 +24,13 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'cobertura'
-    summaryFileLocation: PolymorphicPseudonymisation.Tests/coverage.cobertura.xml
+    summaryFileLocation: **/coverage.cobertura.xml
+- task: CopyFiles@2
+  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(build.sourcesdirectory)/PolymorphicPseudonymisation/bin/$(BuildConfiguration)/netstandard2.0/'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
