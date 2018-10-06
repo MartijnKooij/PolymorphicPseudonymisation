@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PolymorphicPseudonymisation
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{1F8BE54B-C980-4095-8ECF-07C24D6B9DBF}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
+		LICENSE.MD = LICENSE.MD
 		README.md = README.md
 	EndProjectSection
 EndProject
