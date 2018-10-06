@@ -15,7 +15,7 @@ steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build' 
 - script: dotnet test PolymorphicPseudonymisation.Tests/PolymorphicPseudonymisation.Tests.csproj --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
-    displayName: 'dotnet test'
+  displayName: 'dotnet test'
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
