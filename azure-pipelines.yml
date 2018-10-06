@@ -3,6 +3,8 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
+name: $(Build.DefinitionName)-1.0.0.$(rev:.r)
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
