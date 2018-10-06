@@ -21,16 +21,10 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
   displayName: 'publish test results'
-- task: DotNetCoreCLI@2
-  inputs:
-    command: publish
-    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
-    zipAfterPublish: True
-  displayName: 'dotnet publish'
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    PathtoPublish: '$(build.sourcesdirectory)\PolymorphicPseudonymisation\bin\$(BuildPlatform)\$(BuildConfiguration)\'
 
 
 

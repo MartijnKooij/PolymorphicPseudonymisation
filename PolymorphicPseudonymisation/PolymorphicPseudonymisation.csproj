@@ -2,6 +2,17 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Martijn Kooij</Authors>
+    <Product>Polymorphic Pseudonymisation</Product>
+    <Company>Martijn Kooij Software</Company>
+    <Description>Polymorphic Pseudonymisation is an encryption technology developed by Eric Verheul to ensure the privacy and security of users in an authentication system. This technology has been incorporated in the Dutch "EID" system. Polymorphic Pseudonymisation is based on the El-Ghamal encryption system and split proof evidence.</Description>
+    <PackageProjectUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</RepositoryUrl>
+    <RepositoryType>GitHub</RepositoryType>
+    <PackageTags>pp polymorphic pseudonymisation polymorfische pseudonimisatie ppdecrypt</PackageTags>
+    <Copyright>2018 Martijn Kooij</Copyright>
+    <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
