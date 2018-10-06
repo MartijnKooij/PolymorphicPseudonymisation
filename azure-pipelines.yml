@@ -24,7 +24,7 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'cobertura'
-    summaryFileLocation: **/coverage.cobertura.xml
+    summaryFileLocation: '**/coverage.cobertura.xml'
 - task: CopyFiles@2
   displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
   inputs:
