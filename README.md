@@ -1,13 +1,29 @@
+﻿​
+![Build status](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_apis/build/status/9)
+
 ## Polymorphic Pseudonymisation in C#
 .Net Standard C# implementation of Polymorphic Pseudonymisation Decryption
 
+# Table of Contents
+1. [About the project](#about-the-project)
+2. [Installation](#installation)
+   1. [Step 1: Installing the project](#step-1-installing-the-project)
+   2. [Step 2: Converting to PEM](#step-2-converting-to-pem)
+      1. [Commands to convert the p7 and p8 files to PEM](#commands-to-convert-the-p7-and-p8-files-to-pem)
+   3. [Step 3: Registering the service](#step-3-registering-the-service)
+3. [Usage](#usage)
+4. [Contribute](#contribute)
+5. [License](#license)
+
+
 ## About the project
 
-This is a C# port of the work done by Bram van Pelt who developed the Java implementation of this decryption algoritm. You can find the original Java project by Bram in [PPDecryption](https://github.com/BramvanPelt/PPDecryption/)
+This is a C# port of the work done by [Bram van Pelt](https://www.linkedin.com/in/bram-van-pelt) who developed the Java implementation of this decryption algorithm. You can find the original Java project by Bram in [PPDecryption](https://github.com/BramvanPelt/PPDecryption/)
 
 Polymorphic pseudonymisation is an encryption technology developed by [Eric Verheul](http://www.cs.ru.nl/E.Verheul/) to ensure the privacy and security of users in an authentication system. This technology has been incorporated in the Dutch "EID" system. Polymorphic pseudonymisation is based on the El-Ghamal encryption system and split proof evidence.
 
 For more information on the El-Ghamal crypto system: http://caislab.kaist.ac.kr/lecture/2010/spring/cs548/basic/B02.pdf
+
 For more information on Polymorphic pseudonymisation: http://www.cs.ru.nl/E.Verheul/papers/PP2/PEKScheme.pdf
 
 ## Installation
@@ -17,7 +33,7 @@ For more information on Polymorphic pseudonymisation: http://www.cs.ru.nl/E.Verh
 For now you need to either clone the repository and reference the project or build it locally and reference the output dll. I am working on a NuGet package for this
 
 #### Step 2: Converting to PEM
-From the BSNk registar you will receive 3 sets of p7 and p8 files. 1 set for decrypting the identity, and 2 sets for decrypting the pseudonym.
+From the BSNk registrar you will receive 3 sets of p7 and p8 files. 1 set for decrypting the identity, and 2 sets for decrypting the pseudonym.
 
 Since the actual decrypting of the data is done using PEM we need to convert these files to PEM using openssl. For Windows users an easy and relatively safe place to get openssl from is from the Git for Windows client located in: c:\Program Files\Git\usr\bin\ (if you have installed it)
 
@@ -32,7 +48,7 @@ You will also receive an IdentityPoint and PseudonymPoint which you also need to
 
 #### Step 3: Registering the service
 
-To use this library in your appilcation you can register the service with it's decryption options in your application startup's ConfigureServices method.
+To use this library in your application you can register the service with it's decryption options in your application startup's ConfigureServices method.
 
 ```csharp
 services.AddDecryptService(options =>
@@ -56,11 +72,7 @@ var decryptedPseudonym = decryptService.GetPseudonym(encryptedPseudonym);
 
 ```
 
-## Build info
-
-![Build status](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_apis/build/status/9)
-
-## CONTRIBUTE
+## Contribute
 
 You can contribute to this project by forking the repository and make your contribution to the fork.
 After that you can open a pull request to initiate a discussion around the contribution.
