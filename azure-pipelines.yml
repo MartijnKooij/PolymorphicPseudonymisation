@@ -12,7 +12,7 @@ variables:
 steps:
 - script: dotnet restore
   displayName: 'dotnet restore' 
-- script: dotnet build --configuration $(buildConfiguration)
+- script: dotnet build --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
   displayName: 'dotnet build' 
 - script: dotnet test PolymorphicPseudonymisation.Tests/PolymorphicPseudonymisation.Tests.csproj --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
   displayName: 'dotnet test'
@@ -24,7 +24,7 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:
-    PathtoPublish: '$(build.sourcesdirectory)/PolymorphicPseudonymisation/bin/$(BuildPlatform)/$(BuildConfiguration)/'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
 
 
 
