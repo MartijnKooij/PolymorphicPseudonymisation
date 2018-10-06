@@ -1,8 +1,10 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using Microsoft.Extensions.Options;
 using PolymorphicPseudonymisation.Entity;
 
 [assembly: InternalsVisibleTo("PolymorphicPseudonymisation.Tests")]
+[assembly: AssemblyInformationalVersion("1.0.0-beta")]
 namespace PolymorphicPseudonymisation.Service
 {
     public class DecryptService : IDecryptService

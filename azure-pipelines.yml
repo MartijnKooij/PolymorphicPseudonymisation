@@ -25,12 +25,7 @@ steps:
   inputs:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '**/coverage.cobertura.xml'
-- task: CopyFiles@2
-  displayName: 'Copy Files to: $(build.artifactstagingdirectory)'
-  inputs:
-    SourceFolder: '$(build.sourcesdirectory)/PolymorphicPseudonymisation/bin/$(BuildConfiguration)/netstandard2.0/'
-    TargetFolder: '$(build.artifactstagingdirectory)'
-
+- script: dotnet pack --output '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'
   inputs:

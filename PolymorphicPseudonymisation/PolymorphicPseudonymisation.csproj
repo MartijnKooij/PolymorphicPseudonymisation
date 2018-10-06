@@ -13,6 +13,7 @@
     <Copyright>2018 Martijn Kooij</Copyright>
     <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE</PackageLicenseUrl>
     <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
