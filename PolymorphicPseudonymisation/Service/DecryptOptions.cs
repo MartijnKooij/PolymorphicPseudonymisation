@@ -1,5 +1,4 @@
-﻿using System;
-using PolymorphicPseudonymisation.Exceptions;
+﻿using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Service
@@ -9,27 +8,27 @@ namespace PolymorphicPseudonymisation.Service
         /// <summary>
         /// Identity verification point
         /// </summary>
-        public string IdentityPoint { get; set; }
+        public string IdentityPoint { private get; set; }
 
         /// <summary>
         /// Pseudonym verification point
         /// </summary>
-        public string PseudonymPoint { get; set; }
+        public string PseudonymPoint { private get; set; }
 
         /// <summary>
         /// PEM EC PRIVATE KEY for the identity
         /// </summary>
-        public string IdentityPem { get; set; }
+        public string IdentityPem { private get; set; }
 
         /// <summary>
         /// PEM EC PRIVATE KEY for the pseudonym
         /// </summary>
-        public string PseudoKeyPem { get; set; }
+        public string PseudoKeyPem { private get; set; }
 
         /// <summary>
         /// PEM EC PRIVATE KEY for the pseudonym's closing key
         /// </summary>
-        public string PseudoClosingKeyPem { get; set; }
+        public string PseudoClosingKeyPem { private get; set; }
 
         internal void Validate()
         {
