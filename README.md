@@ -1,5 +1,5 @@
 ﻿​
-![Build status](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_apis/build/status/9)
+[![Build Status](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_apis/build/status/PolymorphicPseudonymisation)](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_build/latest?definitionId=9)
 
 ## Polymorphic Pseudonymisation in C#
 .Net Standard C# implementation of Polymorphic Pseudonymisation Decryption
