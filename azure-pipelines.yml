@@ -14,8 +14,8 @@ steps:
   displayName: 'dotnet restore' 
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build' 
-- script: dotnet test --configuration $(buildConfiguration) --logger trx --collect "Code coverage"
-  displayName: 'dotnet test'
+- script: dotnet test PolymorphicPseudonymisation.Tests/PolymorphicPseudonymisation.Tests.csproj --logger trx /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura
+    displayName: 'dotnet test'
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest

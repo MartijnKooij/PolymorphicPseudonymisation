@@ -1,0 +1,2408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<coverage line-rate="0,797" branch-rate="0,669" version="1.9" timestamp="1538828169" lines-covered="505" lines-valid="634" branches-covered="103" branches-valid="154">
+  <sources>
+    <source>C:\Develop\git\PolymorphicPseudonymisation\PolymorphicPseudonymisation\</source>
+  </sources>
+  <packages>
+    <package name="PolymorphicPseudonymisation" line-rate="0,797" branch-rate="0,669" complexity="0">
+      <classes>
+        <class name="PolymorphicPseudonymisation.BsnkType" filename="BsnkType.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="ToBsnk" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="38" hits="14" branch="False" />
+                <line number="39" hits="48" branch="False" />
+                <line number="40" hits="14" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="32" hits="4" branch="False" />
+                <line number="33" hits="4" branch="False" />
+                <line number="34" hits="4" branch="False" />
+                <line number="35" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+                <line number="15" hits="1" branch="False" />
+                <line number="16" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="38" hits="14" branch="False" />
+            <line number="39" hits="48" branch="False" />
+            <line number="40" hits="14" branch="False" />
+            <line number="32" hits="4" branch="False" />
+            <line number="33" hits="4" branch="False" />
+            <line number="34" hits="4" branch="False" />
+            <line number="35" hits="4" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+            <line number="15" hits="1" branch="False" />
+            <line number="16" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.BsnkType/&lt;get_Values&gt;d__9" filename="BsnkType.cs" line-rate="0,833" branch-rate="0" complexity="0">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0,833" branch-rate="0">
+              <lines>
+                <line number="21" hits="14" branch="False" />
+                <line number="22" hits="14" branch="False" />
+                <line number="23" hits="10" branch="False" />
+                <line number="24" hits="8" branch="False" />
+                <line number="25" hits="2" branch="False" />
+                <line number="26" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="21" hits="14" branch="False" />
+            <line number="22" hits="14" branch="False" />
+            <line number="23" hits="10" branch="False" />
+            <line number="24" hits="8" branch="False" />
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Identifiable" filename="Identifiable.cs" line-rate="0,565" branch-rate="0,6" complexity="0">
+          <methods>
+            <method name="get_RecipientKeySetVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="17" branch="False" />
+              </lines>
+            </method>
+            <method name="Check" signature="(PolymorphicPseudonymisation.Identifiable,System.Boolean)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="10" hits="3" branch="False" />
+                <line number="11" hits="3" branch="False" />
+                <line number="12" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="Check" signature="(PolymorphicPseudonymisation.Identifiable,PolymorphicPseudonymisation.Identifiable,System.Boolean)" line-rate="0,375" branch-rate="0,6">
+              <lines>
+                <line number="15" hits="3" branch="False" />
+                <line number="16" hits="3" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="20" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="17" hits="0" branch="False" />
+                <line number="18" hits="0" branch="False" />
+                <line number="21" hits="3" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="80" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+                <line number="24" hits="0" branch="False" />
+                <line number="27" hits="3" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="143" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="28" hits="0" branch="False" />
+                <line number="29" hits="0" branch="False" />
+                <line number="32" hits="3" branch="True" condition-coverage="75% (3/4)">
+                  <conditions>
+                    <condition number="206" type="jump" coverage="100%" />
+                    <condition number="230" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="33" hits="0" branch="False" />
+                <line number="34" hits="0" branch="False" />
+                <line number="35" hits="0" branch="False" />
+                <line number="37" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="get_SchemeVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="39" hits="18" branch="False" />
+              </lines>
+            </method>
+            <method name="get_SchemeKeyVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="40" hits="18" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Recipient" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="41" hits="18" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="17" branch="False" />
+            <line number="10" hits="3" branch="False" />
+            <line number="11" hits="3" branch="False" />
+            <line number="12" hits="3" branch="False" />
+            <line number="15" hits="3" branch="False" />
+            <line number="16" hits="3" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="20" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="17" hits="0" branch="False" />
+            <line number="18" hits="0" branch="False" />
+            <line number="21" hits="3" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="80" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+            <line number="24" hits="0" branch="False" />
+            <line number="27" hits="3" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="143" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="28" hits="0" branch="False" />
+            <line number="29" hits="0" branch="False" />
+            <line number="32" hits="3" branch="True" condition-coverage="75% (3/4)">
+              <conditions>
+                <condition number="206" type="jump" coverage="100%" />
+                <condition number="230" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="33" hits="0" branch="False" />
+            <line number="34" hits="0" branch="False" />
+            <line number="35" hits="0" branch="False" />
+            <line number="37" hits="3" branch="False" />
+            <line number="39" hits="18" branch="False" />
+            <line number="40" hits="18" branch="False" />
+            <line number="41" hits="18" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Utilities.Base16Util" filename="Utilities\Base16.cs" line-rate="1" branch-rate="1" complexity="0">
+          <methods>
+            <method name="Encode" signature="(System.Byte[])" line-rate="1" branch-rate="1">
+              <lines>
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="165" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="85" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="14" hits="81" branch="False" />
+                <line number="15" hits="486" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="74" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="16" hits="162" branch="False" />
+                <line number="17" hits="162" branch="False" />
+                <line number="18" hits="162" branch="False" />
+                <line number="19" hits="81" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="1" branch="False" />
+                <line number="8" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="165" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="85" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="14" hits="81" branch="False" />
+            <line number="15" hits="486" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="74" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="16" hits="162" branch="False" />
+            <line number="17" hits="162" branch="False" />
+            <line number="18" hits="162" branch="False" />
+            <line number="19" hits="81" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="7" hits="1" branch="False" />
+            <line number="8" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Service.DecryptOptions" filename="Service\DecryptOptions.cs" line-rate="1" branch-rate="1" complexity="0">
+          <methods>
+            <method name="get_IdentityPoint" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="11" hits="32" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PseudonymPoint" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="16" hits="28" branch="False" />
+              </lines>
+            </method>
+            <method name="get_IdentityPem" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="21" hits="31" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PseudoKeyPem" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="26" hits="27" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PseudoClosingKeyPem" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="31" hits="24" branch="False" />
+              </lines>
+            </method>
+            <method name="Validate" signature="()" line-rate="1" branch-rate="1">
+              <lines>
+                <line number="34" hits="13" branch="False" />
+                <line number="35" hits="13" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="14" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="36" hits="1" branch="False" />
+                <line number="37" hits="1" branch="False" />
+                <line number="39" hits="12" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="41" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="40" hits="1" branch="False" />
+                <line number="41" hits="1" branch="False" />
+                <line number="44" hits="11" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="68" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="45" hits="1" branch="False" />
+                <line number="46" hits="1" branch="False" />
+                <line number="48" hits="10" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="95" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="49" hits="1" branch="False" />
+                <line number="50" hits="1" branch="False" />
+                <line number="52" hits="9" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="124" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="53" hits="1" branch="False" />
+                <line number="54" hits="1" branch="False" />
+                <line number="56" hits="8" branch="False" />
+              </lines>
+            </method>
+            <method name="GetIdentityVerifiers" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="59" hits="5" branch="False" />
+                <line number="60" hits="5" branch="False" />
+                <line number="62" hits="5" branch="False" />
+                <line number="63" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name="GetPseudonymVerifiers" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="66" hits="2" branch="False" />
+                <line number="67" hits="2" branch="False" />
+                <line number="69" hits="2" branch="False" />
+                <line number="70" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="GetIdentityDecryptKey" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="73" hits="6" branch="False" />
+                <line number="74" hits="6" branch="False" />
+                <line number="75" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="GetPseudonymDecryptKey" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="78" hits="3" branch="False" />
+                <line number="79" hits="3" branch="False" />
+                <line number="80" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="GetPseudonymClosingKey" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="83" hits="1" branch="False" />
+                <line number="84" hits="1" branch="False" />
+                <line number="85" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="32" branch="False" />
+            <line number="16" hits="28" branch="False" />
+            <line number="21" hits="31" branch="False" />
+            <line number="26" hits="27" branch="False" />
+            <line number="31" hits="24" branch="False" />
+            <line number="34" hits="13" branch="False" />
+            <line number="35" hits="13" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="14" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="36" hits="1" branch="False" />
+            <line number="37" hits="1" branch="False" />
+            <line number="39" hits="12" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="41" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="40" hits="1" branch="False" />
+            <line number="41" hits="1" branch="False" />
+            <line number="44" hits="11" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="68" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="45" hits="1" branch="False" />
+            <line number="46" hits="1" branch="False" />
+            <line number="48" hits="10" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="95" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="49" hits="1" branch="False" />
+            <line number="50" hits="1" branch="False" />
+            <line number="52" hits="9" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="124" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="53" hits="1" branch="False" />
+            <line number="54" hits="1" branch="False" />
+            <line number="56" hits="8" branch="False" />
+            <line number="59" hits="5" branch="False" />
+            <line number="60" hits="5" branch="False" />
+            <line number="62" hits="5" branch="False" />
+            <line number="63" hits="5" branch="False" />
+            <line number="66" hits="2" branch="False" />
+            <line number="67" hits="2" branch="False" />
+            <line number="69" hits="2" branch="False" />
+            <line number="70" hits="2" branch="False" />
+            <line number="73" hits="6" branch="False" />
+            <line number="74" hits="6" branch="False" />
+            <line number="75" hits="6" branch="False" />
+            <line number="78" hits="3" branch="False" />
+            <line number="79" hits="3" branch="False" />
+            <line number="80" hits="3" branch="False" />
+            <line number="83" hits="1" branch="False" />
+            <line number="84" hits="1" branch="False" />
+            <line number="85" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Service.DecryptService" filename="Service\DecryptService.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="GetIdentity" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="19" hits="5" branch="False" />
+                <line number="20" hits="5" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="23" hits="1" branch="False" />
+                <line number="24" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="GetPseudonym" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="28" hits="2" branch="False" />
+                <line number="29" hits="2" branch="False" />
+                <line number="30" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="33" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Microsoft.Extensions.Options.IOptions`1&lt;PolymorphicPseudonymisation.Service.DecryptOptions&gt;)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="12" hits="7" branch="False" />
+                <line number="13" hits="7" branch="False" />
+                <line number="14" hits="7" branch="False" />
+                <line number="15" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="5" branch="False" />
+            <line number="20" hits="5" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="23" hits="1" branch="False" />
+            <line number="24" hits="1" branch="False" />
+            <line number="28" hits="2" branch="False" />
+            <line number="29" hits="2" branch="False" />
+            <line number="30" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="33" hits="1" branch="False" />
+            <line number="12" hits="7" branch="False" />
+            <line number="13" hits="7" branch="False" />
+            <line number="14" hits="7" branch="False" />
+            <line number="15" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Service.ServiceCollectionExtensions" filename="Service\ServiceCollectionExtensions.cs" line-rate="0,636" branch-rate="0,667" complexity="0">
+          <methods>
+            <method name="AddDecryptService" signature="(Microsoft.Extensions.DependencyInjection.IServiceCollection,System.Action`1&lt;PolymorphicPseudonymisation.Service.DecryptOptions&gt;)" line-rate="0,636" branch-rate="0,667">
+              <lines>
+                <line number="18" hits="7" branch="False" />
+                <line number="19" hits="7" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="7" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="20" hits="0" branch="False" />
+                <line number="21" hits="0" branch="False" />
+                <line number="24" hits="7" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="27" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="25" hits="0" branch="False" />
+                <line number="26" hits="0" branch="False" />
+                <line number="29" hits="7" branch="False" />
+                <line number="30" hits="28" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="56" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="31" hits="7" branch="False" />
+                <line number="32" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="18" hits="7" branch="False" />
+            <line number="19" hits="7" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="7" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="20" hits="0" branch="False" />
+            <line number="21" hits="0" branch="False" />
+            <line number="24" hits="7" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="27" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="25" hits="0" branch="False" />
+            <line number="26" hits="0" branch="False" />
+            <line number="29" hits="7" branch="False" />
+            <line number="30" hits="28" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="56" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="31" hits="7" branch="False" />
+            <line number="32" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Parser.Asn1Parser" filename="Parser\Asn1Parser.cs" line-rate="0,733" branch-rate="0,5" complexity="0">
+          <methods>
+            <method name="ReadObject" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="16" hits="154" branch="False" />
+                <line number="17" hits="154" branch="False" />
+                <line number="18" hits="154" branch="False" />
+                <line number="19" hits="154" branch="False" />
+              </lines>
+            </method>
+            <method name="ReadObject" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="22" hits="165" branch="False" />
+                <line number="23" hits="165" branch="False" />
+                <line number="24" hits="165" branch="False" />
+              </lines>
+            </method>
+            <method name="CheckObject" signature="(Org.BouncyCastle.Asn1.IAsn1Convertible)" line-rate="0,5" branch-rate="0,5">
+              <lines>
+                <line number="27" hits="164" branch="False" />
+                <line number="28" hits="164" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="7" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="29" hits="0" branch="False" />
+                <line number="30" hits="0" branch="False" />
+                <line number="33" hits="164" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="79" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="34" hits="0" branch="False" />
+                <line number="35" hits="0" branch="False" />
+                <line number="36" hits="0" branch="False" />
+                <line number="39" hits="164" branch="False" />
+                <line number="40" hits="164" branch="False" />
+              </lines>
+            </method>
+            <method name="CheckHeader" signature="()" line-rate="0,667" branch-rate="0">
+              <lines>
+                <line number="43" hits="14" branch="False" />
+                <line number="44" hits="14" branch="False" />
+                <line number="45" hits="14" branch="False" />
+                <line number="47" hits="14" branch="False" />
+                <line number="48" hits="14" branch="False" />
+                <line number="50" hits="0" branch="False" />
+                <line number="51" hits="0" branch="False" />
+                <line number="52" hits="0" branch="False" />
+                <line number="54" hits="14" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Byte[])" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="10" hits="24" branch="False" />
+                <line number="11" hits="24" branch="False" />
+                <line number="12" hits="24" branch="False" />
+                <line number="13" hits="24" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="154" branch="False" />
+            <line number="17" hits="154" branch="False" />
+            <line number="18" hits="154" branch="False" />
+            <line number="19" hits="154" branch="False" />
+            <line number="22" hits="165" branch="False" />
+            <line number="23" hits="165" branch="False" />
+            <line number="24" hits="165" branch="False" />
+            <line number="27" hits="164" branch="False" />
+            <line number="28" hits="164" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="7" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="29" hits="0" branch="False" />
+            <line number="30" hits="0" branch="False" />
+            <line number="33" hits="164" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="79" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="34" hits="0" branch="False" />
+            <line number="35" hits="0" branch="False" />
+            <line number="36" hits="0" branch="False" />
+            <line number="39" hits="164" branch="False" />
+            <line number="40" hits="164" branch="False" />
+            <line number="43" hits="14" branch="False" />
+            <line number="44" hits="14" branch="False" />
+            <line number="45" hits="14" branch="False" />
+            <line number="47" hits="14" branch="False" />
+            <line number="48" hits="14" branch="False" />
+            <line number="50" hits="0" branch="False" />
+            <line number="51" hits="0" branch="False" />
+            <line number="52" hits="0" branch="False" />
+            <line number="54" hits="14" branch="False" />
+            <line number="10" hits="24" branch="False" />
+            <line number="11" hits="24" branch="False" />
+            <line number="12" hits="24" branch="False" />
+            <line number="13" hits="24" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Parser.DecryptKeyParser" filename="Parser\DecryptKeyParser.cs" line-rate="0,798" branch-rate="0,769" complexity="0">
+          <methods>
+            <method name="Decode" signature="()" line-rate="0,667" branch-rate="0,5">
+              <lines>
+                <line number="31" hits="10" branch="False" />
+                <line number="33" hits="10" branch="False" />
+                <line number="34" hits="10" branch="False" />
+                <line number="35" hits="10" branch="False" />
+                <line number="36" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="47" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="37" hits="0" branch="False" />
+                <line number="38" hits="0" branch="False" />
+                <line number="41" hits="10" branch="False" />
+                <line number="42" hits="10" branch="False" />
+                <line number="43" hits="10" branch="False" />
+                <line number="44" hits="10" branch="False" />
+                <line number="45" hits="0" branch="False" />
+                <line number="46" hits="0" branch="False" />
+                <line number="47" hits="0" branch="False" />
+                <line number="49" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="DecodeHeaders" signature="(System.Collections.Generic.List`1&lt;Org.BouncyCastle.Utilities.IO.Pem.PemHeader&gt;)" line-rate="0,933" branch-rate="0,929">
+              <lines>
+                <line number="52" hits="10" branch="False" />
+                <line number="53" hits="10" branch="False" />
+                <line number="54" hits="10" branch="False" />
+                <line number="55" hits="10" branch="False" />
+                <line number="56" hits="10" branch="False" />
+                <line number="57" hits="10" branch="False" />
+                <line number="58" hits="10" branch="False" />
+                <line number="59" hits="10" branch="False" />
+                <line number="60" hits="10" branch="False" />
+                <line number="63" hits="130" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="268" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="64" hits="50" branch="False" />
+                <line number="65" hits="50" branch="False" />
+                <line number="66" hits="50" branch="False" />
+                <line number="68" hits="50" branch="False" />
+                <line number="69" hits="50" branch="True" condition-coverage="100% (10/10)">
+                  <conditions>
+                    <condition number="127" type="jump" coverage="100%" />
+                    <condition number="141" type="jump" coverage="100%" />
+                    <condition number="155" type="jump" coverage="100%" />
+                    <condition number="169" type="jump" coverage="100%" />
+                    <condition number="183" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="72" hits="10" branch="False" />
+                <line number="73" hits="10" branch="False" />
+                <line number="75" hits="10" branch="False" />
+                <line number="76" hits="10" branch="False" />
+                <line number="78" hits="10" branch="False" />
+                <line number="79" hits="10" branch="False" />
+                <line number="81" hits="10" branch="False" />
+                <line number="82" hits="10" branch="False" />
+                <line number="84" hits="10" branch="False" />
+                <line number="85" hits="10" branch="False" />
+                <line number="87" hits="50" branch="False" />
+                <line number="89" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="300" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="90" hits="0" branch="False" />
+                <line number="91" hits="0" branch="False" />
+                <line number="93" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="DecodeContent" signature="(System.Byte[])" line-rate="0,7" branch-rate="0,625">
+              <lines>
+                <line number="96" hits="10" branch="False" />
+                <line number="97" hits="10" branch="False" />
+                <line number="99" hits="10" branch="False" />
+                <line number="100" hits="10" branch="False" />
+                <line number="101" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="43" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="102" hits="0" branch="False" />
+                <line number="103" hits="0" branch="False" />
+                <line number="106" hits="10" branch="False" />
+                <line number="107" hits="10" branch="False" />
+                <line number="109" hits="10" branch="False" />
+                <line number="110" hits="10" branch="False" />
+                <line number="111" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="135" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="112" hits="0" branch="False" />
+                <line number="113" hits="0" branch="False" />
+                <line number="116" hits="10" branch="False" />
+                <line number="117" hits="10" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="177" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="118" hits="1" branch="False" />
+                <line number="119" hits="1" branch="False" />
+                <line number="122" hits="9" branch="False" />
+                <line number="124" hits="9" branch="False" />
+                <line number="125" hits="9" branch="False" />
+                <line number="126" hits="9" branch="False" />
+                <line number="127" hits="0" branch="False" />
+                <line number="128" hits="0" branch="False" />
+                <line number="129" hits="0" branch="False" />
+                <line number="132" hits="9" branch="False" />
+                <line number="133" hits="9" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="301" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="134" hits="0" branch="False" />
+                <line number="135" hits="0" branch="False" />
+                <line number="137" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="ParseVersion" signature="(System.String,System.String)" line-rate="0,583" branch-rate="0,5">
+              <lines>
+                <line number="140" hits="30" branch="False" />
+                <line number="143" hits="30" branch="False" />
+                <line number="144" hits="30" branch="False" />
+                <line number="145" hits="30" branch="False" />
+                <line number="146" hits="0" branch="False" />
+                <line number="147" hits="0" branch="False" />
+                <line number="148" hits="0" branch="False" />
+                <line number="151" hits="30" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="73" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="152" hits="0" branch="False" />
+                <line number="153" hits="0" branch="False" />
+                <line number="156" hits="30" branch="False" />
+                <line number="157" hits="30" branch="False" />
+              </lines>
+            </method>
+            <method name="ParseType" signature="(System.String)" line-rate="0,571" branch-rate="0">
+              <lines>
+                <line number="160" hits="10" branch="False" />
+                <line number="162" hits="10" branch="False" />
+                <line number="163" hits="10" branch="False" />
+                <line number="165" hits="0" branch="False" />
+                <line number="166" hits="0" branch="False" />
+                <line number="167" hits="0" branch="False" />
+                <line number="169" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetSchemeVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="172" hits="10" branch="False" />
+                <line number="173" hits="10" branch="False" />
+                <line number="174" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetSchemeKeyVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="177" hits="10" branch="False" />
+                <line number="178" hits="10" branch="False" />
+                <line number="179" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetDecryptKeyType" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="182" hits="10" branch="False" />
+                <line number="183" hits="10" branch="False" />
+                <line number="184" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetRecipient" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="187" hits="10" branch="False" />
+                <line number="188" hits="10" branch="False" />
+                <line number="189" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetRecipientKeySetVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="192" hits="10" branch="False" />
+                <line number="193" hits="10" branch="False" />
+                <line number="194" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetPrivateKey" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="197" hits="10" branch="False" />
+                <line number="198" hits="10" branch="False" />
+                <line number="199" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetPublicKey" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="202" hits="10" branch="False" />
+                <line number="203" hits="10" branch="False" />
+                <line number="204" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="25" hits="10" branch="False" />
+                <line number="26" hits="10" branch="False" />
+                <line number="27" hits="10" branch="False" />
+                <line number="28" hits="10" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="31" hits="10" branch="False" />
+            <line number="33" hits="10" branch="False" />
+            <line number="34" hits="10" branch="False" />
+            <line number="35" hits="10" branch="False" />
+            <line number="36" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="47" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="37" hits="0" branch="False" />
+            <line number="38" hits="0" branch="False" />
+            <line number="41" hits="10" branch="False" />
+            <line number="42" hits="10" branch="False" />
+            <line number="43" hits="10" branch="False" />
+            <line number="44" hits="10" branch="False" />
+            <line number="45" hits="0" branch="False" />
+            <line number="46" hits="0" branch="False" />
+            <line number="47" hits="0" branch="False" />
+            <line number="49" hits="10" branch="False" />
+            <line number="52" hits="10" branch="False" />
+            <line number="53" hits="10" branch="False" />
+            <line number="54" hits="10" branch="False" />
+            <line number="55" hits="10" branch="False" />
+            <line number="56" hits="10" branch="False" />
+            <line number="57" hits="10" branch="False" />
+            <line number="58" hits="10" branch="False" />
+            <line number="59" hits="10" branch="False" />
+            <line number="60" hits="10" branch="False" />
+            <line number="63" hits="130" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="268" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="64" hits="50" branch="False" />
+            <line number="65" hits="50" branch="False" />
+            <line number="66" hits="50" branch="False" />
+            <line number="68" hits="50" branch="False" />
+            <line number="69" hits="50" branch="True" condition-coverage="100% (10/10)">
+              <conditions>
+                <condition number="127" type="jump" coverage="100%" />
+                <condition number="141" type="jump" coverage="100%" />
+                <condition number="155" type="jump" coverage="100%" />
+                <condition number="169" type="jump" coverage="100%" />
+                <condition number="183" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="72" hits="10" branch="False" />
+            <line number="73" hits="10" branch="False" />
+            <line number="75" hits="10" branch="False" />
+            <line number="76" hits="10" branch="False" />
+            <line number="78" hits="10" branch="False" />
+            <line number="79" hits="10" branch="False" />
+            <line number="81" hits="10" branch="False" />
+            <line number="82" hits="10" branch="False" />
+            <line number="84" hits="10" branch="False" />
+            <line number="85" hits="10" branch="False" />
+            <line number="87" hits="50" branch="False" />
+            <line number="89" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="300" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="90" hits="0" branch="False" />
+            <line number="91" hits="0" branch="False" />
+            <line number="93" hits="10" branch="False" />
+            <line number="96" hits="10" branch="False" />
+            <line number="97" hits="10" branch="False" />
+            <line number="99" hits="10" branch="False" />
+            <line number="100" hits="10" branch="False" />
+            <line number="101" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="43" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="102" hits="0" branch="False" />
+            <line number="103" hits="0" branch="False" />
+            <line number="106" hits="10" branch="False" />
+            <line number="107" hits="10" branch="False" />
+            <line number="109" hits="10" branch="False" />
+            <line number="110" hits="10" branch="False" />
+            <line number="111" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="135" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="112" hits="0" branch="False" />
+            <line number="113" hits="0" branch="False" />
+            <line number="116" hits="10" branch="False" />
+            <line number="117" hits="10" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="177" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="118" hits="1" branch="False" />
+            <line number="119" hits="1" branch="False" />
+            <line number="122" hits="9" branch="False" />
+            <line number="124" hits="9" branch="False" />
+            <line number="125" hits="9" branch="False" />
+            <line number="126" hits="9" branch="False" />
+            <line number="127" hits="0" branch="False" />
+            <line number="128" hits="0" branch="False" />
+            <line number="129" hits="0" branch="False" />
+            <line number="132" hits="9" branch="False" />
+            <line number="133" hits="9" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="301" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="134" hits="0" branch="False" />
+            <line number="135" hits="0" branch="False" />
+            <line number="137" hits="10" branch="False" />
+            <line number="140" hits="30" branch="False" />
+            <line number="143" hits="30" branch="False" />
+            <line number="144" hits="30" branch="False" />
+            <line number="145" hits="30" branch="False" />
+            <line number="146" hits="0" branch="False" />
+            <line number="147" hits="0" branch="False" />
+            <line number="148" hits="0" branch="False" />
+            <line number="151" hits="30" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="73" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="152" hits="0" branch="False" />
+            <line number="153" hits="0" branch="False" />
+            <line number="156" hits="30" branch="False" />
+            <line number="157" hits="30" branch="False" />
+            <line number="160" hits="10" branch="False" />
+            <line number="162" hits="10" branch="False" />
+            <line number="163" hits="10" branch="False" />
+            <line number="165" hits="0" branch="False" />
+            <line number="166" hits="0" branch="False" />
+            <line number="167" hits="0" branch="False" />
+            <line number="169" hits="10" branch="False" />
+            <line number="172" hits="10" branch="False" />
+            <line number="173" hits="10" branch="False" />
+            <line number="174" hits="10" branch="False" />
+            <line number="177" hits="10" branch="False" />
+            <line number="178" hits="10" branch="False" />
+            <line number="179" hits="10" branch="False" />
+            <line number="182" hits="10" branch="False" />
+            <line number="183" hits="10" branch="False" />
+            <line number="184" hits="10" branch="False" />
+            <line number="187" hits="10" branch="False" />
+            <line number="188" hits="10" branch="False" />
+            <line number="189" hits="10" branch="False" />
+            <line number="192" hits="10" branch="False" />
+            <line number="193" hits="10" branch="False" />
+            <line number="194" hits="10" branch="False" />
+            <line number="197" hits="10" branch="False" />
+            <line number="198" hits="10" branch="False" />
+            <line number="199" hits="10" branch="False" />
+            <line number="202" hits="10" branch="False" />
+            <line number="203" hits="10" branch="False" />
+            <line number="204" hits="10" branch="False" />
+            <line number="25" hits="10" branch="False" />
+            <line number="26" hits="10" branch="False" />
+            <line number="27" hits="10" branch="False" />
+            <line number="28" hits="10" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Parser.DecryptKeyType" filename="Parser\DecryptKeyType.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="ToType" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="34" hits="10" branch="False" />
+                <line number="35" hits="25" branch="False" />
+                <line number="36" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="28" hits="3" branch="False" />
+                <line number="29" hits="3" branch="False" />
+                <line number="30" hits="3" branch="False" />
+                <line number="31" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="34" hits="10" branch="False" />
+            <line number="35" hits="25" branch="False" />
+            <line number="36" hits="10" branch="False" />
+            <line number="28" hits="3" branch="False" />
+            <line number="29" hits="3" branch="False" />
+            <line number="30" hits="3" branch="False" />
+            <line number="31" hits="3" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Parser.DecryptKeyType/&lt;get_Values&gt;d__7" filename="Parser\DecryptKeyType.cs" line-rate="0,8" branch-rate="0" complexity="0">
+          <methods>
+            <method name="MoveNext" signature="()" line-rate="0,8" branch-rate="0">
+              <lines>
+                <line number="19" hits="10" branch="False" />
+                <line number="20" hits="10" branch="False" />
+                <line number="21" hits="4" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="23" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="19" hits="10" branch="False" />
+            <line number="20" hits="10" branch="False" />
+            <line number="21" hits="4" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="23" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Parser.EncryptedEntityParser" filename="Parser\EncryptedEntityParser.cs" line-rate="0,784" branch-rate="0,75" complexity="0">
+          <methods>
+            <method name="get_BsnkType" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="16" hits="31" branch="False" />
+              </lines>
+            </method>
+            <method name="get_SchemeVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="17" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_SchemeKeyVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="18" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Recipient" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="19" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_RecipientKeySetVersion" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="20" hits="6" branch="False" />
+              </lines>
+            </method>
+            <method name="get_Points" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="21" hits="34" branch="False" />
+              </lines>
+            </method>
+            <method name="Decode" signature="(PolymorphicPseudonymisation.Key.EncryptedVerifiers)" line-rate="0,478" branch-rate="0,562">
+              <lines>
+                <line number="29" hits="7" branch="False" />
+                <line number="31" hits="7" branch="False" />
+                <line number="32" hits="7" branch="False" />
+                <line number="33" hits="7" branch="True" condition-coverage="62,5% (5/8)">
+                  <conditions>
+                    <condition number="43" type="jump" coverage="50%" />
+                    <condition number="56" type="jump" coverage="50%" />
+                    <condition number="69" type="jump" coverage="100%" />
+                    <condition number="82" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="36" hits="0" branch="False" />
+                <line number="37" hits="0" branch="False" />
+                <line number="39" hits="0" branch="False" />
+                <line number="40" hits="0" branch="False" />
+                <line number="42" hits="5" branch="True" condition-coverage="50% (2/4)">
+                  <conditions>
+                    <condition number="128" type="jump" coverage="50%" />
+                    <condition number="144" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="43" hits="0" branch="False" />
+                <line number="44" hits="0" branch="False" />
+                <line number="47" hits="5" branch="False" />
+                <line number="48" hits="1" branch="False" />
+                <line number="50" hits="2" branch="True" condition-coverage="50% (2/4)">
+                  <conditions>
+                    <condition number="175" type="jump" coverage="50%" />
+                    <condition number="191" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="51" hits="0" branch="False" />
+                <line number="52" hits="0" branch="False" />
+                <line number="55" hits="2" branch="False" />
+                <line number="56" hits="1" branch="False" />
+                <line number="58" hits="0" branch="False" />
+                <line number="61" hits="0" branch="False" />
+                <line number="62" hits="0" branch="False" />
+                <line number="63" hits="0" branch="False" />
+                <line number="65" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="DecodeSigned" signature="(System.Boolean,PolymorphicPseudonymisation.Key.EncryptedVerifier)" line-rate="0,88" branch-rate="1">
+              <lines>
+                <line number="68" hits="7" branch="False" />
+                <line number="70" hits="7" branch="False" />
+                <line number="71" hits="7" branch="False" />
+                <line number="72" hits="7" branch="False" />
+                <line number="73" hits="7" branch="False" />
+                <line number="75" hits="7" branch="False" />
+                <line number="76" hits="7" branch="True" condition-coverage="100% (4/4)">
+                  <conditions>
+                    <condition number="74" type="jump" coverage="100%" />
+                    <condition number="87" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="79" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="96" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="80" hits="1" branch="False" />
+                <line number="81" hits="1" branch="False" />
+                <line number="84" hits="3" branch="False" />
+                <line number="85" hits="3" branch="False" />
+                <line number="87" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="129" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="88" hits="1" branch="False" />
+                <line number="89" hits="1" branch="False" />
+                <line number="92" hits="1" branch="False" />
+                <line number="93" hits="1" branch="False" />
+                <line number="95" hits="1" branch="False" />
+                <line number="98" hits="4" branch="False" />
+                <line number="99" hits="3" branch="False" />
+                <line number="101" hits="2" branch="False" />
+                <line number="102" hits="0" branch="False" />
+                <line number="103" hits="0" branch="False" />
+                <line number="104" hits="0" branch="False" />
+                <line number="106" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="DecodePayload" signature="(PolymorphicPseudonymisation.Parser.Asn1Parser,System.Boolean)" line-rate="0,781" branch-rate="0,833">
+              <lines>
+                <line number="109" hits="4" branch="False" />
+                <line number="110" hits="4" branch="False" />
+                <line number="111" hits="4" branch="False" />
+                <line number="112" hits="4" branch="False" />
+                <line number="113" hits="4" branch="False" />
+                <line number="114" hits="4" branch="False" />
+                <line number="116" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="98" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="117" hits="1" branch="False" />
+                <line number="118" hits="1" branch="False" />
+                <line number="119" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="121" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="120" hits="0" branch="False" />
+                <line number="121" hits="0" branch="False" />
+                <line number="122" hits="0" branch="False" />
+                <line number="123" hits="0" branch="False" />
+                <line number="125" hits="1" branch="False" />
+                <line number="126" hits="1" branch="False" />
+                <line number="127" hits="1" branch="False" />
+                <line number="128" hits="1" branch="False" />
+                <line number="130" hits="4" branch="False" />
+                <line number="132" hits="4" branch="False" />
+                <line number="133" hits="32" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="264" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="134" hits="12" branch="False" />
+                <line number="135" hits="12" branch="False" />
+                <line number="136" hits="12" branch="False" />
+                <line number="138" hits="12" branch="False" />
+                <line number="139" hits="12" branch="False" />
+                <line number="140" hits="12" branch="False" />
+                <line number="141" hits="0" branch="False" />
+                <line number="142" hits="0" branch="False" />
+                <line number="143" hits="0" branch="False" />
+                <line number="145" hits="12" branch="False" />
+                <line number="146" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name="DecodeSignature" signature="()" line-rate="1" branch-rate="1">
+              <lines>
+                <line number="149" hits="4" branch="False" />
+                <line number="150" hits="4" branch="False" />
+                <line number="151" hits="4" branch="False" />
+                <line number="152" hits="4" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="46" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="153" hits="1" branch="False" />
+                <line number="154" hits="1" branch="False" />
+                <line number="157" hits="3" branch="False" />
+                <line number="158" hits="3" branch="False" />
+                <line number="159" hits="3" branch="False" />
+                <line number="160" hits="3" branch="False" />
+                <line number="161" hits="3" branch="False" />
+                <line number="162" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Byte[])" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="23" hits="7" branch="False" />
+                <line number="24" hits="7" branch="False" />
+                <line number="25" hits="7" branch="False" />
+                <line number="26" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="16" hits="31" branch="False" />
+            <line number="17" hits="6" branch="False" />
+            <line number="18" hits="6" branch="False" />
+            <line number="19" hits="6" branch="False" />
+            <line number="20" hits="6" branch="False" />
+            <line number="21" hits="34" branch="False" />
+            <line number="29" hits="7" branch="False" />
+            <line number="31" hits="7" branch="False" />
+            <line number="32" hits="7" branch="False" />
+            <line number="33" hits="7" branch="True" condition-coverage="62,5% (5/8)">
+              <conditions>
+                <condition number="43" type="jump" coverage="50%" />
+                <condition number="56" type="jump" coverage="50%" />
+                <condition number="69" type="jump" coverage="100%" />
+                <condition number="82" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="36" hits="0" branch="False" />
+            <line number="37" hits="0" branch="False" />
+            <line number="39" hits="0" branch="False" />
+            <line number="40" hits="0" branch="False" />
+            <line number="42" hits="5" branch="True" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="128" type="jump" coverage="50%" />
+                <condition number="144" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="43" hits="0" branch="False" />
+            <line number="44" hits="0" branch="False" />
+            <line number="47" hits="5" branch="False" />
+            <line number="48" hits="1" branch="False" />
+            <line number="50" hits="2" branch="True" condition-coverage="50% (2/4)">
+              <conditions>
+                <condition number="175" type="jump" coverage="50%" />
+                <condition number="191" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="51" hits="0" branch="False" />
+            <line number="52" hits="0" branch="False" />
+            <line number="55" hits="2" branch="False" />
+            <line number="56" hits="1" branch="False" />
+            <line number="58" hits="0" branch="False" />
+            <line number="61" hits="0" branch="False" />
+            <line number="62" hits="0" branch="False" />
+            <line number="63" hits="0" branch="False" />
+            <line number="65" hits="2" branch="False" />
+            <line number="68" hits="7" branch="False" />
+            <line number="70" hits="7" branch="False" />
+            <line number="71" hits="7" branch="False" />
+            <line number="72" hits="7" branch="False" />
+            <line number="73" hits="7" branch="False" />
+            <line number="75" hits="7" branch="False" />
+            <line number="76" hits="7" branch="True" condition-coverage="100% (4/4)">
+              <conditions>
+                <condition number="74" type="jump" coverage="100%" />
+                <condition number="87" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="79" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="96" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="80" hits="1" branch="False" />
+            <line number="81" hits="1" branch="False" />
+            <line number="84" hits="3" branch="False" />
+            <line number="85" hits="3" branch="False" />
+            <line number="87" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="129" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="88" hits="1" branch="False" />
+            <line number="89" hits="1" branch="False" />
+            <line number="92" hits="1" branch="False" />
+            <line number="93" hits="1" branch="False" />
+            <line number="95" hits="1" branch="False" />
+            <line number="98" hits="4" branch="False" />
+            <line number="99" hits="3" branch="False" />
+            <line number="101" hits="2" branch="False" />
+            <line number="102" hits="0" branch="False" />
+            <line number="103" hits="0" branch="False" />
+            <line number="104" hits="0" branch="False" />
+            <line number="106" hits="2" branch="False" />
+            <line number="109" hits="4" branch="False" />
+            <line number="110" hits="4" branch="False" />
+            <line number="111" hits="4" branch="False" />
+            <line number="112" hits="4" branch="False" />
+            <line number="113" hits="4" branch="False" />
+            <line number="114" hits="4" branch="False" />
+            <line number="116" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="98" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="117" hits="1" branch="False" />
+            <line number="118" hits="1" branch="False" />
+            <line number="119" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="121" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="120" hits="0" branch="False" />
+            <line number="121" hits="0" branch="False" />
+            <line number="122" hits="0" branch="False" />
+            <line number="123" hits="0" branch="False" />
+            <line number="125" hits="1" branch="False" />
+            <line number="126" hits="1" branch="False" />
+            <line number="127" hits="1" branch="False" />
+            <line number="128" hits="1" branch="False" />
+            <line number="130" hits="4" branch="False" />
+            <line number="132" hits="4" branch="False" />
+            <line number="133" hits="32" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="264" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="134" hits="12" branch="False" />
+            <line number="135" hits="12" branch="False" />
+            <line number="136" hits="12" branch="False" />
+            <line number="138" hits="12" branch="False" />
+            <line number="139" hits="12" branch="False" />
+            <line number="140" hits="12" branch="False" />
+            <line number="141" hits="0" branch="False" />
+            <line number="142" hits="0" branch="False" />
+            <line number="143" hits="0" branch="False" />
+            <line number="145" hits="12" branch="False" />
+            <line number="146" hits="4" branch="False" />
+            <line number="149" hits="4" branch="False" />
+            <line number="150" hits="4" branch="False" />
+            <line number="151" hits="4" branch="False" />
+            <line number="152" hits="4" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="46" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="153" hits="1" branch="False" />
+            <line number="154" hits="1" branch="False" />
+            <line number="157" hits="3" branch="False" />
+            <line number="158" hits="3" branch="False" />
+            <line number="159" hits="3" branch="False" />
+            <line number="160" hits="3" branch="False" />
+            <line number="161" hits="3" branch="False" />
+            <line number="162" hits="3" branch="False" />
+            <line number="23" hits="7" branch="False" />
+            <line number="24" hits="7" branch="False" />
+            <line number="25" hits="7" branch="False" />
+            <line number="26" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Key.DecryptKey" filename="Key\DecryptKey.cs" line-rate="0,871" branch-rate="0,75" complexity="0">
+          <methods>
+            <method name="FromPem" signature="(System.String)" line-rate="0,625" branch-rate="0,5">
+              <lines>
+                <line number="13" hits="10" branch="False" />
+                <line number="14" hits="10" branch="False" />
+                <line number="15" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="22" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="16" hits="0" branch="False" />
+                <line number="17" hits="0" branch="False" />
+                <line number="18" hits="0" branch="False" />
+                <line number="21" hits="10" branch="False" />
+                <line number="22" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="GetVerifier" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="38" hits="7" branch="False" />
+                <line number="39" hits="7" branch="False" />
+                <line number="40" hits="7" branch="False" />
+                <line number="41" hits="7" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PrivateKey" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="43" hits="3" branch="False" />
+              </lines>
+            </method>
+            <method name="FromPem" signature="(System.String)" line-rate="0,889" branch-rate="0,833">
+              <lines>
+                <line number="48" hits="10" branch="False" />
+                <line number="49" hits="10" branch="False" />
+                <line number="50" hits="10" branch="False" />
+                <line number="51" hits="10" branch="True" condition-coverage="83,3% (5/6)">
+                  <conditions>
+                    <condition number="38" type="jump" coverage="100%" />
+                    <condition number="51" type="jump" coverage="100%" />
+                    <condition number="64" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="54" hits="6" branch="False" />
+                <line number="56" hits="3" branch="False" />
+                <line number="58" hits="1" branch="False" />
+                <line number="60" hits="0" branch="False" />
+                <line number="62" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.DecryptKeyParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="24" hits="10" branch="False" />
+                <line number="25" hits="10" branch="False" />
+                <line number="26" hits="10" branch="False" />
+                <line number="27" hits="10" branch="False" />
+                <line number="28" hits="10" branch="False" />
+                <line number="29" hits="10" branch="False" />
+                <line number="30" hits="10" branch="False" />
+                <line number="31" hits="10" branch="False" />
+                <line number="32" hits="10" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="10" branch="False" />
+            <line number="14" hits="10" branch="False" />
+            <line number="15" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="22" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="16" hits="0" branch="False" />
+            <line number="17" hits="0" branch="False" />
+            <line number="18" hits="0" branch="False" />
+            <line number="21" hits="10" branch="False" />
+            <line number="22" hits="10" branch="False" />
+            <line number="38" hits="7" branch="False" />
+            <line number="39" hits="7" branch="False" />
+            <line number="40" hits="7" branch="False" />
+            <line number="41" hits="7" branch="False" />
+            <line number="43" hits="3" branch="False" />
+            <line number="48" hits="10" branch="False" />
+            <line number="49" hits="10" branch="False" />
+            <line number="50" hits="10" branch="False" />
+            <line number="51" hits="10" branch="True" condition-coverage="83,3% (5/6)">
+              <conditions>
+                <condition number="38" type="jump" coverage="100%" />
+                <condition number="51" type="jump" coverage="100%" />
+                <condition number="64" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="54" hits="6" branch="False" />
+            <line number="56" hits="3" branch="False" />
+            <line number="58" hits="1" branch="False" />
+            <line number="60" hits="0" branch="False" />
+            <line number="62" hits="10" branch="False" />
+            <line number="24" hits="10" branch="False" />
+            <line number="25" hits="10" branch="False" />
+            <line number="26" hits="10" branch="False" />
+            <line number="27" hits="10" branch="False" />
+            <line number="28" hits="10" branch="False" />
+            <line number="29" hits="10" branch="False" />
+            <line number="30" hits="10" branch="False" />
+            <line number="31" hits="10" branch="False" />
+            <line number="32" hits="10" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Key.EncryptedVerifier" filename="Key\EncryptedVerifier.cs" line-rate="0,235" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Verify" signature="(System.Byte[],PolymorphicPseudonymisation.Crypto.Signature)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="22" hits="3" branch="False" />
+                <line number="23" hits="3" branch="False" />
+                <line number="24" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="Equals" signature="(System.Object)" line-rate="0" branch-rate="0">
+              <lines>
+                <line number="27" hits="0" branch="False" />
+                <line number="28" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="7" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="29" hits="0" branch="False" />
+                <line number="30" hits="0" branch="False" />
+                <line number="33" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="20" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="34" hits="0" branch="False" />
+                <line number="35" hits="0" branch="False" />
+                <line number="37" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="43" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="38" hits="0" branch="False" />
+                <line number="39" hits="0" branch="False" />
+                <line number="42" hits="0" branch="False" />
+                <line number="44" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="74" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="45" hits="0" branch="False" />
+                <line number="46" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="GetHashCode" signature="()" line-rate="0" branch-rate="0">
+              <lines>
+                <line number="49" hits="0" branch="False" />
+                <line number="50" hits="0" branch="False" />
+                <line number="51" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name="ComputeHashFrom" signature="(System.Object[])" line-rate="0" branch-rate="0">
+              <lines>
+                <line number="54" hits="0" branch="False" />
+                <line number="55" hits="0" branch="False" />
+                <line number="56" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="52" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="57" hits="0" branch="False" />
+                <line number="58" hits="0" branch="False" />
+                <line number="59" hits="0" branch="True" condition-coverage="0% (0/2)">
+                  <conditions>
+                    <condition number="15" type="jump" coverage="0%" />
+                  </conditions>
+                </line>
+                <line number="60" hits="0" branch="False" />
+                <line number="61" hits="0" branch="False" />
+                <line number="62" hits="0" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Org.BouncyCastle.Math.EC.ECPoint,Org.BouncyCastle.Math.EC.ECPoint)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="15" hits="7" branch="False" />
+                <line number="16" hits="7" branch="False" />
+                <line number="17" hits="7" branch="False" />
+                <line number="18" hits="7" branch="False" />
+                <line number="19" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="22" hits="3" branch="False" />
+            <line number="23" hits="3" branch="False" />
+            <line number="24" hits="2" branch="False" />
+            <line number="27" hits="0" branch="False" />
+            <line number="28" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="7" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="29" hits="0" branch="False" />
+            <line number="30" hits="0" branch="False" />
+            <line number="33" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="20" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="34" hits="0" branch="False" />
+            <line number="35" hits="0" branch="False" />
+            <line number="37" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="43" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="38" hits="0" branch="False" />
+            <line number="39" hits="0" branch="False" />
+            <line number="42" hits="0" branch="False" />
+            <line number="44" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="74" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="45" hits="0" branch="False" />
+            <line number="46" hits="0" branch="False" />
+            <line number="49" hits="0" branch="False" />
+            <line number="50" hits="0" branch="False" />
+            <line number="51" hits="0" branch="False" />
+            <line number="54" hits="0" branch="False" />
+            <line number="55" hits="0" branch="False" />
+            <line number="56" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="52" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="57" hits="0" branch="False" />
+            <line number="58" hits="0" branch="False" />
+            <line number="59" hits="0" branch="True" condition-coverage="0% (0/2)">
+              <conditions>
+                <condition number="15" type="jump" coverage="0%" />
+              </conditions>
+            </line>
+            <line number="60" hits="0" branch="False" />
+            <line number="61" hits="0" branch="False" />
+            <line number="62" hits="0" branch="False" />
+            <line number="15" hits="7" branch="False" />
+            <line number="16" hits="7" branch="False" />
+            <line number="17" hits="7" branch="False" />
+            <line number="18" hits="7" branch="False" />
+            <line number="19" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Key.EncryptedVerifiers" filename="Key\EncryptedVerifiers.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="get_IdentityVerifier" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="14" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name="get_PseudonymVerifier" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="16" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Key.EncryptedVerifier,PolymorphicPseudonymisation.Key.EncryptedVerifier)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="8" hits="7" branch="False" />
+                <line number="9" hits="7" branch="False" />
+                <line number="10" hits="7" branch="False" />
+                <line number="11" hits="7" branch="False" />
+                <line number="12" hits="7" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="14" hits="10" branch="False" />
+            <line number="16" hits="4" branch="False" />
+            <line number="8" hits="7" branch="False" />
+            <line number="9" hits="7" branch="False" />
+            <line number="10" hits="7" branch="False" />
+            <line number="11" hits="7" branch="False" />
+            <line number="12" hits="7" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Key.IdentityDecryptKey" filename="Key\IdentityDecryptKey.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="ToVerifiers" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="15" hits="5" branch="False" />
+                <line number="16" hits="5" branch="False" />
+                <line number="17" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.DecryptKeyParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="6" branch="False" />
+                <line number="8" hits="6" branch="False" />
+                <line number="9" hits="6" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="5" branch="False" />
+            <line number="16" hits="5" branch="False" />
+            <line number="17" hits="5" branch="False" />
+            <line number="7" hits="6" branch="False" />
+            <line number="8" hits="6" branch="False" />
+            <line number="9" hits="6" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Key.PseudonymClosingKey" filename="Key\PseudonymClosingKey.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.DecryptKeyParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="1" branch="False" />
+                <line number="8" hits="1" branch="False" />
+                <line number="9" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="1" branch="False" />
+            <line number="8" hits="1" branch="False" />
+            <line number="9" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Key.PseudonymDecryptKey" filename="Key\PseudonymDecryptKey.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="ToVerifiers" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="15" hits="2" branch="False" />
+                <line number="16" hits="2" branch="False" />
+                <line number="17" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.DecryptKeyParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="3" branch="False" />
+                <line number="8" hits="3" branch="False" />
+                <line number="9" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="15" hits="2" branch="False" />
+            <line number="16" hits="2" branch="False" />
+            <line number="17" hits="2" branch="False" />
+            <line number="7" hits="3" branch="False" />
+            <line number="8" hits="3" branch="False" />
+            <line number="9" hits="3" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Exceptions.CryptoException" filename="Exceptions\CryptoException.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="5" hits="1" branch="False" />
+                <line number="6" hits="1" branch="False" />
+                <line number="7" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="1" branch="False" />
+            <line number="6" hits="1" branch="False" />
+            <line number="7" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Exceptions.DecryptOptionsException" filename="Exceptions\DecryptOptionsException.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="5" hits="5" branch="False" />
+                <line number="6" hits="5" branch="False" />
+                <line number="7" hits="5" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="5" hits="5" branch="False" />
+            <line number="6" hits="5" branch="False" />
+            <line number="7" hits="5" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Exceptions.ParsingException" filename="Exceptions\ParsingException.cs" line-rate="0,5" branch-rate="0" complexity="0">
+          <methods>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="4" branch="False" />
+                <line number="8" hits="4" branch="False" />
+                <line number="9" hits="4" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,System.Exception)" line-rate="0" branch-rate="0">
+              <lines>
+                <line number="11" hits="0" branch="False" />
+                <line number="12" hits="0" branch="False" />
+                <line number="13" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="4" branch="False" />
+            <line number="8" hits="4" branch="False" />
+            <line number="9" hits="4" branch="False" />
+            <line number="11" hits="0" branch="False" />
+            <line number="12" hits="0" branch="False" />
+            <line number="13" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Exceptions.PolymorphicPseudonymisationException" filename="Exceptions\PolymorphicPseudonymisationException.cs" line-rate="0,429" branch-rate="0" complexity="0">
+          <methods>
+            <method name=".ctor" signature="(System.String)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="10" branch="False" />
+                <line number="8" hits="10" branch="False" />
+                <line number="9" hits="10" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.String,System.Exception)" line-rate="0" branch-rate="0">
+              <lines>
+                <line number="11" hits="0" branch="False" />
+                <line number="12" hits="0" branch="False" />
+                <line number="13" hits="0" branch="False" />
+                <line number="14" hits="0" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="10" branch="False" />
+            <line number="8" hits="10" branch="False" />
+            <line number="9" hits="10" branch="False" />
+            <line number="11" hits="0" branch="False" />
+            <line number="12" hits="0" branch="False" />
+            <line number="13" hits="0" branch="False" />
+            <line number="14" hits="0" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Entity.EncryptedEntity" filename="Entity\EncryptedEntity.cs" line-rate="0,833" branch-rate="0,7" complexity="0">
+          <methods>
+            <method name="FromBase64" signature="(System.String,PolymorphicPseudonymisation.Key.EncryptedVerifiers)" line-rate="0,625" branch-rate="0,5">
+              <lines>
+                <line number="11" hits="7" branch="False" />
+                <line number="12" hits="7" branch="False" />
+                <line number="13" hits="2" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="23" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="14" hits="0" branch="False" />
+                <line number="15" hits="0" branch="False" />
+                <line number="16" hits="0" branch="False" />
+                <line number="19" hits="2" branch="False" />
+                <line number="20" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="FromBase64" signature="(System.String,PolymorphicPseudonymisation.Key.EncryptedVerifiers)" line-rate="0,889" branch-rate="0,75">
+              <lines>
+                <line number="31" hits="7" branch="False" />
+                <line number="32" hits="7" branch="False" />
+                <line number="33" hits="7" branch="False" />
+                <line number="34" hits="7" branch="False" />
+                <line number="35" hits="2" branch="True" condition-coverage="75% (6/8)">
+                  <conditions>
+                    <condition number="46" type="jump" coverage="100%" />
+                    <condition number="59" type="jump" coverage="100%" />
+                    <condition number="72" type="jump" coverage="50%" />
+                    <condition number="85" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="39" hits="1" branch="False" />
+                <line number="42" hits="1" branch="False" />
+                <line number="44" hits="0" branch="False" />
+                <line number="46" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.EncryptedEntityParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="22" hits="2" branch="False" />
+                <line number="23" hits="2" branch="False" />
+                <line number="24" hits="2" branch="False" />
+                <line number="25" hits="2" branch="False" />
+                <line number="26" hits="2" branch="False" />
+                <line number="27" hits="2" branch="False" />
+                <line number="28" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="11" hits="7" branch="False" />
+            <line number="12" hits="7" branch="False" />
+            <line number="13" hits="2" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="23" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="14" hits="0" branch="False" />
+            <line number="15" hits="0" branch="False" />
+            <line number="16" hits="0" branch="False" />
+            <line number="19" hits="2" branch="False" />
+            <line number="20" hits="2" branch="False" />
+            <line number="31" hits="7" branch="False" />
+            <line number="32" hits="7" branch="False" />
+            <line number="33" hits="7" branch="False" />
+            <line number="34" hits="7" branch="False" />
+            <line number="35" hits="2" branch="True" condition-coverage="75% (6/8)">
+              <conditions>
+                <condition number="46" type="jump" coverage="100%" />
+                <condition number="59" type="jump" coverage="100%" />
+                <condition number="72" type="jump" coverage="50%" />
+                <condition number="85" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="39" hits="1" branch="False" />
+            <line number="42" hits="1" branch="False" />
+            <line number="44" hits="0" branch="False" />
+            <line number="46" hits="2" branch="False" />
+            <line number="22" hits="2" branch="False" />
+            <line number="23" hits="2" branch="False" />
+            <line number="24" hits="2" branch="False" />
+            <line number="25" hits="2" branch="False" />
+            <line number="26" hits="2" branch="False" />
+            <line number="27" hits="2" branch="False" />
+            <line number="28" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Entity.EncryptedIdentity" filename="Entity\EncryptedIdentity.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Decrypt" signature="(PolymorphicPseudonymisation.Key.IdentityDecryptKey)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="17" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="21" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.EncryptedEntityParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Entity.EncryptedPseudonym" filename="Entity\EncryptedPseudonym.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="Decrypt" signature="(PolymorphicPseudonymisation.Key.PseudonymDecryptKey,PolymorphicPseudonymisation.Key.PseudonymClosingKey)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="17" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="19" hits="1" branch="False" />
+                <line number="21" hits="1" branch="False" />
+                <line number="22" hits="1" branch="False" />
+                <line number="24" hits="1" branch="False" />
+                <line number="25" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(PolymorphicPseudonymisation.Parser.EncryptedEntityParser)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="19" hits="1" branch="False" />
+            <line number="21" hits="1" branch="False" />
+            <line number="22" hits="1" branch="False" />
+            <line number="24" hits="1" branch="False" />
+            <line number="25" hits="1" branch="False" />
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Entity.Entity" filename="Entity\Entity.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="ToString" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="8" hits="2" branch="False" />
+                <line number="9" hits="2" branch="False" />
+                <line number="10" hits="2" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="8" hits="2" branch="False" />
+            <line number="9" hits="2" branch="False" />
+            <line number="10" hits="2" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Entity.Identity" filename="Entity\Identity.cs" line-rate="0,818" branch-rate="0,625" complexity="0">
+          <methods>
+            <method name="get_Standard" signature="()" line-rate="1" branch-rate="0,5">
+              <lines>
+                <line number="30" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="8" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+              </lines>
+            </method>
+            <method name="GetZeroOffset" signature="(System.Collections.Generic.IReadOnlyList`1&lt;System.Byte&gt;)" line-rate="0,889" branch-rate="0,75">
+              <lines>
+                <line number="33" hits="1" branch="False" />
+                <line number="34" hits="4" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="41" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="35" hits="2" branch="False" />
+                <line number="36" hits="2" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="18" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="37" hits="1" branch="False" />
+                <line number="38" hits="1" branch="False" />
+                <line number="40" hits="1" branch="False" />
+                <line number="42" hits="0" branch="False" />
+                <line number="43" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Org.BouncyCastle.Math.EC.ECPoint)" line-rate="0,75" branch-rate="0,5">
+              <lines>
+                <line number="14" hits="1" branch="False" />
+                <line number="15" hits="1" branch="False" />
+                <line number="16" hits="1" branch="False" />
+                <line number="17" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="20" hits="1" branch="False" />
+                <line number="21" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="63" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+                <line number="24" hits="0" branch="False" />
+                <line number="27" hits="1" branch="False" />
+                <line number="28" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="30" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="8" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="33" hits="1" branch="False" />
+            <line number="34" hits="4" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="41" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="35" hits="2" branch="False" />
+            <line number="36" hits="2" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="18" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="37" hits="1" branch="False" />
+            <line number="38" hits="1" branch="False" />
+            <line number="40" hits="1" branch="False" />
+            <line number="42" hits="0" branch="False" />
+            <line number="43" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+            <line number="15" hits="1" branch="False" />
+            <line number="16" hits="1" branch="False" />
+            <line number="17" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="20" hits="1" branch="False" />
+            <line number="21" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="63" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+            <line number="24" hits="0" branch="False" />
+            <line number="27" hits="1" branch="False" />
+            <line number="28" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Entity.Pseudonym" filename="Entity\Pseudonym.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="get_Standard" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="17" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(System.Int32,Org.BouncyCastle.Math.EC.ECPoint)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="11" hits="1" branch="False" />
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="False" />
+                <line number="14" hits="1" branch="False" />
+                <line number="15" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="17" hits="1" branch="False" />
+            <line number="11" hits="1" branch="False" />
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="False" />
+            <line number="14" hits="1" branch="False" />
+            <line number="15" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Crypto.BrainpoolP320R1" filename="Crypto\BrainpoolP320R1.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="13" hits="1" branch="False" />
+                <line number="18" hits="1" branch="False" />
+                <line number="23" hits="1" branch="False" />
+                <line number="28" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="13" hits="1" branch="False" />
+            <line number="18" hits="1" branch="False" />
+            <line number="23" hits="1" branch="False" />
+            <line number="28" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Crypto.Oaep" filename="Crypto\Oaep.cs" line-rate="0,756" branch-rate="0,643" complexity="0">
+          <methods>
+            <method name="Decode" signature="(System.Byte[],System.Int32,System.Int32,System.Int32)" line-rate="0,647" branch-rate="0,5">
+              <lines>
+                <line number="12" hits="1" branch="False" />
+                <line number="13" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="8" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="14" hits="0" branch="False" />
+                <line number="15" hits="0" branch="False" />
+                <line number="17" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="40" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="18" hits="0" branch="False" />
+                <line number="19" hits="0" branch="False" />
+                <line number="21" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="78" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+                <line number="26" hits="1" branch="False" />
+                <line number="27" hits="1" branch="False" />
+                <line number="29" hits="1" branch="False" />
+                <line number="30" hits="1" branch="False" />
+                <line number="32" hits="1" branch="False" />
+                <line number="34" hits="1" branch="False" />
+                <line number="35" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="Verify" signature="(System.Collections.Generic.IReadOnlyList`1&lt;System.Byte&gt;,System.Int32)" line-rate="0,636" branch-rate="0,667">
+              <lines>
+                <line number="38" hits="1" branch="False" />
+                <line number="39" hits="1" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="16" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="40" hits="0" branch="False" />
+                <line number="41" hits="0" branch="False" />
+                <line number="44" hits="22" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="81" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="45" hits="10" branch="False" />
+                <line number="46" hits="10" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="56" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="47" hits="0" branch="False" />
+                <line number="48" hits="0" branch="False" />
+                <line number="50" hits="10" branch="False" />
+                <line number="51" hits="1" branch="False" />
+              </lines>
+            </method>
+            <method name="Xor" signature="(System.Collections.Generic.IReadOnlyList`1&lt;System.Byte&gt;,System.Int32,System.Collections.Generic.IList`1&lt;System.Byte&gt;,System.Int32)" line-rate="1" branch-rate="1">
+              <lines>
+                <line number="57" hits="2" branch="False" />
+                <line number="58" hits="82" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="47" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="59" hits="39" branch="False" />
+                <line number="60" hits="39" branch="False" />
+                <line number="61" hits="39" branch="False" />
+                <line number="62" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name="Mgf1" signature="(System.Byte[],System.Int32,System.Int32)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="68" hits="2" branch="False" />
+                <line number="69" hits="2" branch="False" />
+                <line number="71" hits="2" branch="False" />
+                <line number="72" hits="2" branch="False" />
+                <line number="74" hits="2" branch="False" />
+                <line number="75" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="9" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="12" hits="1" branch="False" />
+            <line number="13" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="8" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="14" hits="0" branch="False" />
+            <line number="15" hits="0" branch="False" />
+            <line number="17" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="40" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="18" hits="0" branch="False" />
+            <line number="19" hits="0" branch="False" />
+            <line number="21" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="78" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+            <line number="26" hits="1" branch="False" />
+            <line number="27" hits="1" branch="False" />
+            <line number="29" hits="1" branch="False" />
+            <line number="30" hits="1" branch="False" />
+            <line number="32" hits="1" branch="False" />
+            <line number="34" hits="1" branch="False" />
+            <line number="35" hits="1" branch="False" />
+            <line number="38" hits="1" branch="False" />
+            <line number="39" hits="1" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="16" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="40" hits="0" branch="False" />
+            <line number="41" hits="0" branch="False" />
+            <line number="44" hits="22" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="81" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="45" hits="10" branch="False" />
+            <line number="46" hits="10" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="56" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="47" hits="0" branch="False" />
+            <line number="48" hits="0" branch="False" />
+            <line number="50" hits="10" branch="False" />
+            <line number="51" hits="1" branch="False" />
+            <line number="57" hits="2" branch="False" />
+            <line number="58" hits="82" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="47" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="59" hits="39" branch="False" />
+            <line number="60" hits="39" branch="False" />
+            <line number="61" hits="39" branch="False" />
+            <line number="62" hits="2" branch="False" />
+            <line number="68" hits="2" branch="False" />
+            <line number="69" hits="2" branch="False" />
+            <line number="71" hits="2" branch="False" />
+            <line number="72" hits="2" branch="False" />
+            <line number="74" hits="2" branch="False" />
+            <line number="75" hits="2" branch="False" />
+            <line number="9" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Crypto.Sha384" filename="Crypto\Sha384.cs" line-rate="1" branch-rate="0" complexity="0">
+          <methods>
+            <method name="get_Instance" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="7" hits="5" branch="False" />
+              </lines>
+            </method>
+            <method name=".cctor" signature="()" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="9" hits="1" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="7" hits="5" branch="False" />
+            <line number="9" hits="1" branch="False" />
+          </lines>
+        </class>
+        <class name="PolymorphicPseudonymisation.Crypto.Signature" filename="Crypto\Signature.cs" line-rate="0,826" branch-rate="0,6" complexity="0">
+          <methods>
+            <method name="Verify" signature="(Org.BouncyCastle.Math.EC.ECPoint,Org.BouncyCastle.Math.EC.ECPoint,System.Byte[])" line-rate="0,778" branch-rate="0,6">
+              <lines>
+                <line number="20" hits="3" branch="False" />
+                <line number="21" hits="3" branch="True" condition-coverage="50% (3/6)">
+                  <conditions>
+                    <condition number="17" type="jump" coverage="50%" />
+                    <condition number="36" type="jump" coverage="50%" />
+                    <condition number="67" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="22" hits="0" branch="False" />
+                <line number="23" hits="0" branch="False" />
+                <line number="26" hits="3" branch="False" />
+                <line number="27" hits="3" branch="True" condition-coverage="50% (1/2)">
+                  <conditions>
+                    <condition number="126" type="jump" coverage="50%" />
+                  </conditions>
+                </line>
+                <line number="28" hits="0" branch="False" />
+                <line number="29" hits="0" branch="False" />
+                <line number="32" hits="3" branch="False" />
+                <line number="33" hits="3" branch="False" />
+                <line number="34" hits="3" branch="False" />
+                <line number="35" hits="3" branch="False" />
+                <line number="38" hits="3" branch="False" />
+                <line number="39" hits="3" branch="False" />
+                <line number="40" hits="3" branch="True" condition-coverage="100% (2/2)">
+                  <conditions>
+                    <condition number="228" type="jump" coverage="100%" />
+                  </conditions>
+                </line>
+                <line number="41" hits="1" branch="False" />
+                <line number="42" hits="1" branch="False" />
+                <line number="44" hits="2" branch="False" />
+              </lines>
+            </method>
+            <method name=".ctor" signature="(Org.BouncyCastle.Math.BigInteger,Org.BouncyCastle.Math.BigInteger)" line-rate="1" branch-rate="0">
+              <lines>
+                <line number="13" hits="3" branch="False" />
+                <line number="14" hits="3" branch="False" />
+                <line number="15" hits="3" branch="False" />
+                <line number="16" hits="3" branch="False" />
+                <line number="17" hits="3" branch="False" />
+              </lines>
+            </method>
+          </methods>
+          <lines>
+            <line number="20" hits="3" branch="False" />
+            <line number="21" hits="3" branch="True" condition-coverage="50% (3/6)">
+              <conditions>
+                <condition number="17" type="jump" coverage="50%" />
+                <condition number="36" type="jump" coverage="50%" />
+                <condition number="67" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="22" hits="0" branch="False" />
+            <line number="23" hits="0" branch="False" />
+            <line number="26" hits="3" branch="False" />
+            <line number="27" hits="3" branch="True" condition-coverage="50% (1/2)">
+              <conditions>
+                <condition number="126" type="jump" coverage="50%" />
+              </conditions>
+            </line>
+            <line number="28" hits="0" branch="False" />
+            <line number="29" hits="0" branch="False" />
+            <line number="32" hits="3" branch="False" />
+            <line number="33" hits="3" branch="False" />
+            <line number="34" hits="3" branch="False" />
+            <line number="35" hits="3" branch="False" />
+            <line number="38" hits="3" branch="False" />
+            <line number="39" hits="3" branch="False" />
+            <line number="40" hits="3" branch="True" condition-coverage="100% (2/2)">
+              <conditions>
+                <condition number="228" type="jump" coverage="100%" />
+              </conditions>
+            </line>
+            <line number="41" hits="1" branch="False" />
+            <line number="42" hits="1" branch="False" />
+            <line number="44" hits="2" branch="False" />
+            <line number="13" hits="3" branch="False" />
+            <line number="14" hits="3" branch="False" />
+            <line number="15" hits="3" branch="False" />
+            <line number="16" hits="3" branch="False" />
+            <line number="17" hits="3" branch="False" />
+          </lines>
+        </class>
+      </classes>
+    </package>
+  </packages>
+</coverage>
