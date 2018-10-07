@@ -1,5 +1,6 @@
 ﻿​
 [![Build Status](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_apis/build/status/PolymorphicPseudonymisation)](https://martijnkooij.visualstudio.com/Polymorphic%20Pseudonymisation/_build/latest?definitionId=9)
+[![NuGet](https://img.shields.io/nuget/v/PolymorphicPseudonymisation.svg)](https://www.nuget.org/packages/PolymorphicPseudonymisation/)
 
 ## Polymorphic Pseudonymisation in C#
 .Net Standard C# implementation of Polymorphic Pseudonymisation Decryption
