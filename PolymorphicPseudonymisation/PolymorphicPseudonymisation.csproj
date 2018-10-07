@@ -11,7 +11,7 @@
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>pp polymorphic pseudonymisation polymorfische pseudonimisatie ppdecrypt bsnk</PackageTags>
     <Copyright>2018 Martijn Kooij</Copyright>
-    <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageReleaseNotes>Initial release</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
