@@ -48,7 +48,7 @@ namespace PolymorphicPseudonymisation.Parser
             }
         }
 
-        public void DecodeHeaders(List<PemHeader> headers)
+        private void DecodeHeaders(IEnumerable<PemHeader> headers)
         {
             var mandatory = new List<string>
             {

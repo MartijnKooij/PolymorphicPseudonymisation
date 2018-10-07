@@ -36,8 +36,8 @@ namespace PolymorphicPseudonymisation
             }
         }
 
-        protected int SchemeVersion { get; set; }
-        protected int SchemeKeyVersion { get; set; }
-        protected string Recipient { get; set; }
+        protected int SchemeVersion { private get; set; }
+        protected int SchemeKeyVersion { private get; set; }
+        protected string Recipient { private get; set; }
     }
 }

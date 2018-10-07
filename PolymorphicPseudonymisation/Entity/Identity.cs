@@ -27,7 +27,7 @@ namespace PolymorphicPseudonymisation.Entity
             identifier = Encoding.ASCII.GetString(decoded, 3, decoded[2]);
         }
 
-        public override string Standard => type == 'B' ? identifier : type + identifier;
+        protected override string Standard => type == 'B' ? identifier : type + identifier;
 
         private static int GetZeroOffset(IReadOnlyList<byte> encoded)
         {

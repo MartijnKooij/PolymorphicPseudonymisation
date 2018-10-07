@@ -29,7 +29,7 @@ namespace PolymorphicPseudonymisation.Entity
 
         private static EncryptedEntity FromBase64(string base64, EncryptedVerifiers verifiers)
         {
-            byte[] encoded = Convert.FromBase64String(base64);
+            var encoded = Convert.FromBase64String(base64);
             var parser = new EncryptedEntityParser(encoded);
             parser.Decode(verifiers);
             switch (parser.BsnkType.ObjectIdentifier)

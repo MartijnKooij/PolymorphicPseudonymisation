@@ -2,7 +2,7 @@
 {
     public abstract class Entity
     {
-        public abstract string Standard { get; }
+        protected abstract string Standard { get; }
 
         public override string ToString()
         {

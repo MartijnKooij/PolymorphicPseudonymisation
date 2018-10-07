@@ -9,11 +9,11 @@ namespace PolymorphicPseudonymisation.Parser
         public const string PseudonymDecryptionName = "EP Decryption";
         public const string PseudonymClosingName = "EP Closing";
 
-        public static readonly DecryptKeyType IdentityDecryption = new DecryptKeyType(IdentityDecryptionName);
-        public static readonly DecryptKeyType PseudonymDecryption = new DecryptKeyType(PseudonymDecryptionName);
-        public static readonly DecryptKeyType PseudonymClosing = new DecryptKeyType(PseudonymClosingName);
+        private static readonly DecryptKeyType IdentityDecryption = new DecryptKeyType(IdentityDecryptionName);
+        private static readonly DecryptKeyType PseudonymDecryption = new DecryptKeyType(PseudonymDecryptionName);
+        private static readonly DecryptKeyType PseudonymClosing = new DecryptKeyType(PseudonymClosingName);
 
-        public static IEnumerable<DecryptKeyType> Values
+        private static IEnumerable<DecryptKeyType> Values
         {
             get
             {
@@ -25,7 +25,7 @@ namespace PolymorphicPseudonymisation.Parser
 
         public readonly string Name;
 
-        public DecryptKeyType(string name)
+        private DecryptKeyType(string name)
         {
             Name = name;
         }

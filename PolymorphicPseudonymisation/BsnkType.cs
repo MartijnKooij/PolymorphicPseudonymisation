@@ -10,12 +10,12 @@ namespace PolymorphicPseudonymisation
         public const string SignedEncryptedIdentityName = "2.16.528.1.1003.10.1.2.3";
         public const string SignedEncryptedPseudonymName = "2.16.528.1.1003.10.1.2.4";
 
-        public static readonly BsnkType EncryptedIdentity = new BsnkType(EncryptedIdentityName);
-        public static readonly BsnkType EncryptedPseudonym = new BsnkType(EncryptedPseudonymName);
-        public static readonly BsnkType SignedEncryptedIdentity = new BsnkType(SignedEncryptedIdentityName);
-        public static readonly BsnkType SignedEncryptedPseudonym = new BsnkType(SignedEncryptedPseudonymName);
+        private static readonly BsnkType EncryptedIdentity = new BsnkType(EncryptedIdentityName);
+        private static readonly BsnkType EncryptedPseudonym = new BsnkType(EncryptedPseudonymName);
+        private static readonly BsnkType SignedEncryptedIdentity = new BsnkType(SignedEncryptedIdentityName);
+        private static readonly BsnkType SignedEncryptedPseudonym = new BsnkType(SignedEncryptedPseudonymName);
 
-        public static IEnumerable<BsnkType> Values
+        private static IEnumerable<BsnkType> Values
         {
             get
             {
@@ -27,9 +27,9 @@ namespace PolymorphicPseudonymisation
 
         }
 
-        public string ObjectIdentifier;
+        public readonly string ObjectIdentifier;
 
-        public BsnkType(string objectIdentifier)
+        private BsnkType(string objectIdentifier)
         {
             ObjectIdentifier = objectIdentifier;
         }
