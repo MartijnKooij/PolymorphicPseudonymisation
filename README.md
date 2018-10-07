@@ -7,10 +7,10 @@
 # Table of Contents
 1. [About the project](#about-the-project)
 2. [Installation](#installation)
-   1. [Step 1: Installing the project](#step-1-installing-the-project)
-   2. [Step 2: Converting to PEM](#step-2-converting-to-pem)
-      1. [Commands to convert the p7 and p8 files to PEM](#commands-to-convert-the-p7-and-p8-files-to-pem)
-   3. [Step 3: Registering the service](#step-3-registering-the-service)
+   * [Step 1: Installing the project](#step-1-installing-the-project)
+   * [Step 2: Converting to PEM](#step-2-converting-to-pem)
+      * [Commands to convert the p7 and p8 files to PEM](#commands-to-convert-the-p7-and-p8-files-to-pem)
+   * [Step 3: Registering the service](#step-3-registering-the-service)
 3. [Usage](#usage)
 4. [Contribute](#contribute)
 5. [License](#license)
@@ -58,7 +58,7 @@ services.AddDecryptService(options =>
         options.PseudoKeyPem = File.ReadAllText("path/to/pd4.pem");
         options.PseudoClosingKeyPem = File.ReadAllText("path/to/pc.pem");
         options.PseudonymPoint = "A9GtKDUn++nl2NWtN4F/2id1gmBhxn4I6Qr9BfeMN+fjNuXGvE79qHc=";
-    }
+    });
 ```
 
 If you are not using the dotnet core dependency injection or perhaps not even a web application at all you can create an instance of the `DecryptService` itself.
