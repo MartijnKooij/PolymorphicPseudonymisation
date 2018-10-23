@@ -28,10 +28,9 @@ For more information on the El-Ghamal crypto system: http://caislab.kaist.ac.kr/
 For more information on Polymorphic pseudonymisation: http://www.cs.ru.nl/E.Verheul/papers/PP2/PEKScheme.pdf
 
 ## Installation
-*This part is still work in progress as I still need to add NuGet installation support*
 
 #### Step 1: Installing the project
-For now you need to either clone the repository and reference the project or build it locally and reference the output dll. I am working on a NuGet package for this
+Install the package using the NuGet package manager by searching for *PolymorphicPseudonymisation* or with the .NET CLI by executing `dotnet add package PolymorphicPseudonymisation`
 
 #### Step 2: Converting to PEM
 From the BSNk registrar you will receive 3 sets of p7 and p8 files. 1 set for decrypting the identity, and 2 sets for decrypting the pseudonym.
