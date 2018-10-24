@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -42,17 +43,10 @@ namespace PolymorphicPseudonymisation.Parser
         {
             try
             {
-                var pemReader = new PemReader(new StringReader(pemContents));
-                var pem = pemReader.ReadPemObject();
-                if (!"EC PRIVATE KEY".Equals(pem.Type))
-                {
-                    throw new ParsingException($"Expected EC PRIVATE KEY, got {pem.Type}");
-                }
+                var pemObject = ReadPemObject();
 
-                var headers = pem.Headers.OfType<PemHeader>().ToList();
-
-                DecodeHeaders(headers.ToList());
-                DecodeContent(pem.Content);
+                DecodeHeaders(pemObject.Headers);
+                DecodeContent(pemObject.Content);
             }
             catch (IOException e)
             {
@@ -70,15 +64,28 @@ namespace PolymorphicPseudonymisation.Parser
             throw new PolymorphicPseudonymisationException($"Unknown type {decryptKeyType}");
         }
 
-
-        private void DecodeHeaders(IList<PemHeader> headers)
+        private PemObject ReadPemObject()
         {
+            var pemReader = new PemReader(new StringReader(pemContents));
+            var pem = pemReader.ReadPemObject();
+            if (!"EC PRIVATE KEY".Equals(pem.Type))
+            {
+                throw new ParsingException($"Expected EC PRIVATE KEY, got {pem.Type}");
+            }
+
+            return pem;
+        }
+
+        private void DecodeHeaders(IEnumerable headers)
+        {
+            var pemHeaders = headers.OfType<PemHeader>().ToList();
+
             //All these headers are required, so they will throw if not found
-            schemeVersion = TryParseVersion("SchemeVersion", headers.First(x => x.Name == "SchemeVersion").Value);
-            schemeKeyVersion = TryParseVersion("SchemeKeyVersion", headers.First(x => x.Name == "SchemeKeyVersion").Value);
-            decryptKeyType = headers.First(x => x.Name == "Type").Value;
-            recipient = headers.First(x => x.Name == "Recipient").Value;
-            recipientKeySetVersion = TryParseVersion("RecipientKeySetVersion", headers.First(x => x.Name == "RecipientKeySetVersion").Value);
+            schemeVersion = TryParseVersion("SchemeVersion", pemHeaders.First(x => x.Name == "SchemeVersion").Value);
+            schemeKeyVersion = TryParseVersion("SchemeKeyVersion", pemHeaders.First(x => x.Name == "SchemeKeyVersion").Value);
+            decryptKeyType = pemHeaders.First(x => x.Name == "Type").Value;
+            recipient = pemHeaders.First(x => x.Name == "Recipient").Value;
+            recipientKeySetVersion = TryParseVersion("RecipientKeySetVersion", pemHeaders.First(x => x.Name == "RecipientKeySetVersion").Value);
 
         }
 
