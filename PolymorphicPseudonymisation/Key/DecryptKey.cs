@@ -9,6 +9,9 @@ namespace PolymorphicPseudonymisation.Key
 {
     public abstract class DecryptKey : Identifiable
     {
+        public BigInteger PrivateKey { get; set; }
+        public ECPoint PublicKey { get; set; }
+
         public static T FromPem<T>(string pem) where T : DecryptKey
         {
             var key = FromPem(pem);
@@ -21,44 +24,21 @@ namespace PolymorphicPseudonymisation.Key
             return (T) key;
         }
 
-        protected DecryptKey(DecryptKeyParser parser)
-        {
-            SchemeVersion = parser.GetSchemeVersion();
-            SchemeKeyVersion = parser.GetSchemeKeyVersion();
-            Recipient = parser.GetRecipient();
-            RecipientKeySetVersion = parser.GetRecipientKeySetVersion();
-            PrivateKey = parser.GetPrivateKey();
-            publicKey = parser.GetPublicKey();
-        }
-
         /// <summary>
         /// Convert decrypt key to encrypted verifier for this key
         /// </summary>
         protected EncryptedVerifier GetVerifier(string verificationPoint)
         {
             var point = BrainpoolP320R1.Curve.DecodePoint(Convert.FromBase64String(verificationPoint));
-            return new EncryptedVerifier(publicKey, point);
+            return new EncryptedVerifier(PublicKey, point);
         }
-
-        public BigInteger PrivateKey { get; }
-
-        private readonly ECPoint publicKey;
 
         private static DecryptKey FromPem(string pem)
         {
             var parser = new DecryptKeyParser(pem);
             parser.Decode();
-            switch (parser.GetDecryptKeyType().Name)
-            {
-                case DecryptKeyType.IdentityDecryptionName:
-                    return new IdentityDecryptKey(parser);
-                case DecryptKeyType.PseudonymDecryptionName:
-                    return new PseudonymDecryptKey(parser);
-                case DecryptKeyType.PseudonymClosingName:
-                    return new PseudonymClosingKey(parser);
-                default:
-                    throw new PolymorphicPseudonymisationException($"Unknown type {parser.GetDecryptKeyType().Name}");
-            }
+
+            return parser.GetContent();
         }
     }
 }

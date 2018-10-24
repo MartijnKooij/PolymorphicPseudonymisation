@@ -8,15 +8,19 @@ using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities.IO.Pem;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Parser
 {
     public class DecryptKeyParser
     {
+        private readonly Dictionary<string, Func<DecryptKey>> validDecryptTypes;
+
         private readonly string contents;
+
         private int schemeVersion;
         private int schemeKeyVersion;
-        private DecryptKeyType type;
+        private string decryptKeyType;
         private string recipient;
         private int recipientKeySetVersion;
         private BigInteger privateKey;
@@ -25,6 +29,13 @@ namespace PolymorphicPseudonymisation.Parser
         public DecryptKeyParser(string contents)
         {
             this.contents = contents;
+
+            validDecryptTypes = new Dictionary<string, Func<DecryptKey>>
+            {
+                {"EI Decryption", Create<IdentityDecryptKey>},
+                {"EP Decryption", Create<PseudonymDecryptKey>},
+                {"EP Closing", Create<PseudonymClosingKey>}
+            };
         }
 
         public void Decode()
@@ -39,6 +50,7 @@ namespace PolymorphicPseudonymisation.Parser
                 }
 
                 var headers = pem.Headers.OfType<PemHeader>().ToList();
+
                 DecodeHeaders(headers);
                 DecodeContent(pem.Content);
             }
@@ -47,6 +59,17 @@ namespace PolymorphicPseudonymisation.Parser
                 throw new ParsingException("Could not read PEM", e);
             }
         }
+
+        public DecryptKey GetContent()
+        {
+            if (validDecryptTypes.ContainsKey(decryptKeyType))
+            {
+                return validDecryptTypes[decryptKeyType].Invoke();
+            }
+
+            throw new PolymorphicPseudonymisationException($"Unknown type {decryptKeyType}");
+        }
+
 
         private void DecodeHeaders(IEnumerable<PemHeader> headers)
         {
@@ -75,7 +98,7 @@ namespace PolymorphicPseudonymisation.Parser
                         schemeKeyVersion = ParseVersion(name, value);
                         break;
                     case "Type":
-                        type = ParseType(value);
+                        decryptKeyType = value;
                         break;
                     case "Recipient":
                         recipient = value;
@@ -156,51 +179,17 @@ namespace PolymorphicPseudonymisation.Parser
             return result;
         }
 
-        private static DecryptKeyType ParseType(string value)
+        private T Create<T>() where T : DecryptKey, new()
         {
-            try
+            return new T
             {
-                return DecryptKeyType.ToType(value);
-            }
-            catch (ArgumentException e)
-            {
-                throw new ParsingException($"Unknown type {value}", e);
-            }
-        }
-
-        public int GetSchemeVersion()
-        {
-            return schemeVersion;
-        }
-
-        public int GetSchemeKeyVersion()
-        {
-            return schemeKeyVersion;
-        }
-
-        public DecryptKeyType GetDecryptKeyType()
-        {
-            return type;
-        }
-
-        public string GetRecipient()
-        {
-            return recipient;
-        }
-
-        public int GetRecipientKeySetVersion()
-        {
-            return recipientKeySetVersion;
-        }
-
-        public BigInteger GetPrivateKey()
-        {
-            return privateKey;
-        }
-
-        public ECPoint GetPublicKey()
-        {
-            return publicKey;
+                SchemeVersion = schemeVersion,
+                SchemeKeyVersion = schemeKeyVersion,
+                Recipient = recipient,
+                RecipientKeySetVersion = recipientKeySetVersion,
+                PrivateKey = privateKey,
+                PublicKey = publicKey,
+            };
         }
     }
 }

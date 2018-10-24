@@ -4,7 +4,7 @@ namespace PolymorphicPseudonymisation
 {
     public abstract class Identifiable
     {
-        public int RecipientKeySetVersion { get; protected set; }
+        public int RecipientKeySetVersion { get; set; }
 
         protected void Check(Identifiable other, bool includeKeySetVersion)
         {
@@ -36,8 +36,8 @@ namespace PolymorphicPseudonymisation
             }
         }
 
-        protected int SchemeVersion { private get; set; }
-        protected int SchemeKeyVersion { private get; set; }
-        protected string Recipient { private get; set; }
+        public int SchemeVersion { private get; set; }
+        public int SchemeKeyVersion { private get; set; }
+        public string Recipient { private get; set; }
     }
 }
