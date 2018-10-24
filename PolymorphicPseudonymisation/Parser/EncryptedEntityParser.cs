@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Entity;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 
@@ -11,34 +13,49 @@ namespace PolymorphicPseudonymisation.Parser
     public class EncryptedEntityParser
     {
         private const string EcSchnorrSha384Oid = "0.4.0.127.0.7.1.1.4.3.3";
+
+        internal const string EncryptedIdentityName = "2.16.528.1.1003.10.1.2.1";
+        internal const string EncryptedPseudonymName = "2.16.528.1.1003.10.1.2.2";
+        internal const string SignedEncryptedIdentityName = "2.16.528.1.1003.10.1.2.3";
+        internal const string SignedEncryptedPseudonymName = "2.16.528.1.1003.10.1.2.4";
+
+        private readonly Dictionary<string, Func<EncryptedEntity>> validBsnkTypes;
         private readonly Asn1Parser parser;
 
-        public BsnkType BsnkType { get; private set; }
-        public int SchemeVersion { get; private set; }
-        public int SchemeKeyVersion { get; private set; }
-        public string Recipient { get; private set; }
-        public int RecipientKeySetVersion { get; private set; }
-        public ECPoint[] Points { get; private set; }
+        private string bsnkType;
+        private int schemeVersion;
+        private int schemeKeyVersion;
+        private string recipient;
+        private int recipientKeySetVersion;
+        private ECPoint[] points;
 
         public EncryptedEntityParser(byte[] encoded)
         {
             parser = new Asn1Parser(encoded);
+
+            validBsnkTypes = new Dictionary<string, Func<EncryptedEntity>>
+            {
+                {EncryptedIdentityName, Create<EncryptedIdentity>},
+                {SignedEncryptedIdentityName, Create<EncryptedIdentity>},
+                {EncryptedPseudonymName, Create<EncryptedPseudonym>},
+                {SignedEncryptedPseudonymName, Create<EncryptedPseudonym>}
+            };
         }
 
         public void Decode(EncryptedVerifiers verifiers)
         {
             try
             {
-                BsnkType = parser.CheckHeader();
-                switch (BsnkType.ObjectIdentifier)
+                bsnkType = parser.GetBsnkType();
+                switch (bsnkType)
                 {
-                    case BsnkType.EncryptedIdentityName:
+                    case EncryptedIdentityName:
                         DecodePayload(parser, false);
                         return;
-                    case BsnkType.EncryptedPseudonymName:
+                    case EncryptedPseudonymName:
                         DecodePayload(parser, true);
                         return;
-                    case BsnkType.SignedEncryptedIdentityName:
+                    case SignedEncryptedIdentityName:
                         if (verifiers?.IdentityVerifier == null)
                         {
                             throw new ParsingException("No verifier for identity found");
@@ -46,7 +63,7 @@ namespace PolymorphicPseudonymisation.Parser
 
                         DecodeSigned(false, verifiers.IdentityVerifier);
                         return;
-                    case BsnkType.SignedEncryptedPseudonymName:
+                    case SignedEncryptedPseudonymName:
                         if (verifiers?.PseudonymVerifier == null)
                         {
                             throw new ParsingException("No verifier for pseudonym found");
@@ -55,7 +72,7 @@ namespace PolymorphicPseudonymisation.Parser
                         DecodeSigned(true, verifiers.PseudonymVerifier);
                         return;
                     default:
-                        throw new ParsingException($"Cannot handle type {BsnkType.ObjectIdentifier}");
+                        throw new ParsingException($"Cannot handle type {bsnkType}");
                 }
             }
             catch (IOException e)
@@ -63,6 +80,17 @@ namespace PolymorphicPseudonymisation.Parser
                 throw new ParsingException("Could not read ASN1", e);
             }
         }
+
+        public EncryptedEntity GetContent()
+        {
+            if (validBsnkTypes.ContainsKey(bsnkType))
+            {
+                return validBsnkTypes[bsnkType].Invoke();
+            }
+
+            throw new PolymorphicPseudonymisationException($"Unexpected type {bsnkType}");
+        }
+
 
         private void DecodeSigned(bool isPseudonym, EncryptedVerifier verifier)
         {
@@ -72,10 +100,10 @@ namespace PolymorphicPseudonymisation.Parser
                 var payloadParser = new Asn1Parser(payload);
                 payloadParser.ReadObject<DerSequenceParser>();
 
-                BsnkType = payloadParser.CheckHeader();
-                switch (BsnkType.ObjectIdentifier)
+                bsnkType = payloadParser.GetBsnkType();
+                switch (bsnkType)
                 {
-                    case BsnkType.EncryptedIdentityName:
+                    case EncryptedIdentityName:
                         if (isPseudonym)
                         {
                             throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
@@ -83,7 +111,7 @@ namespace PolymorphicPseudonymisation.Parser
 
                         DecodePayload(payloadParser, false);
                         break;
-                    case BsnkType.EncryptedPseudonymName:
+                    case EncryptedPseudonymName:
                         if (!isPseudonym)
                         {
                             throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
@@ -92,7 +120,7 @@ namespace PolymorphicPseudonymisation.Parser
                         DecodePayload(payloadParser, true);
                         break;
                     default:
-                        throw new ParsingException($"Cannot handle type {BsnkType}");
+                        throw new ParsingException($"Cannot handle type {bsnkType}");
                 }
 
                 var signature = DecodeSignature();
@@ -107,11 +135,11 @@ namespace PolymorphicPseudonymisation.Parser
 
         private void DecodePayload(Asn1Parser payloadParser, bool isPseudonym)
         {
-            SchemeVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
-            SchemeKeyVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
+            schemeVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
+            schemeKeyVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
             payloadParser.ReadObject<DerIA5String>(); //Creator, not used
-            Recipient = payloadParser.ReadObject<DerIA5String>().GetString();
-            RecipientKeySetVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
+            recipient = payloadParser.ReadObject<DerIA5String>().GetString();
+            recipientKeySetVersion = payloadParser.ReadObject<DerInteger>().Value.IntValue;
 
             if (isPseudonym)
             {
@@ -129,14 +157,14 @@ namespace PolymorphicPseudonymisation.Parser
 
             payloadParser.ReadObject<DerSequenceParser>();
 
-            Points = new ECPoint[3];
-            for (var i = 0; i < Points.Length; i++)
+            points = new ECPoint[3];
+            for (var i = 0; i < points.Length; i++)
             {
                 var octet =
                     (DerOctetString) payloadParser.ReadObject<DerOctetStringParser>().ToAsn1Object();
                 try
                 {
-                    Points[i] = BrainpoolP320R1.Curve.DecodePoint(octet.GetOctets());
+                    points[i] = BrainpoolP320R1.Curve.DecodePoint(octet.GetOctets());
                 }
                 catch (ArgumentException e)
                 {
@@ -160,5 +188,18 @@ namespace PolymorphicPseudonymisation.Parser
                 parser.ReadObject<DerInteger>().PositiveValue
             );
         }
+
+        private T Create<T>() where T : EncryptedEntity, new()
+        {
+            return new T
+            {
+                SchemeVersion = schemeVersion,
+                SchemeKeyVersion = schemeKeyVersion,
+                Recipient = recipient,
+                RecipientKeySetVersion = recipientKeySetVersion,
+                Points = points
+            };
+        }
+
     }
 }

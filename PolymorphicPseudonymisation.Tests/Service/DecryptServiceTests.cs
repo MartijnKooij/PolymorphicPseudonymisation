@@ -2,6 +2,7 @@ using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Parser;
 using PolymorphicPseudonymisation.Service;
 
 namespace PolymorphicPseudonymisation.Tests.Service
@@ -101,7 +102,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
             }
             catch (ParsingException e)
             {
-                Assert.AreEqual("Cannot handle type PolymorphicPseudonymisation.BsnkType", e.Message);
+                Assert.AreEqual($"Cannot handle type {EncryptedEntityParser.SignedEncryptedIdentityName}", e.Message);
             }
         }
 

@@ -39,18 +39,12 @@ namespace PolymorphicPseudonymisation.Parser
             return (T) obj;
         }
 
-        public BsnkType CheckHeader()
+        public string GetBsnkType()
         {
             ReadObject<DerSequenceParser>();
             var oid = ReadObject<DerObjectIdentifier>().Id;
-            try
-            {
-                return BsnkType.ToBsnk(oid);
-            }
-            catch (System.ArgumentException e)
-            {
-                throw new ParsingException("Unknown BsnkType", e);
-            }
+
+            return oid;
         }
     }
 }

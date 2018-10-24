@@ -16,7 +16,7 @@ namespace PolymorphicPseudonymisation.Parser
     {
         private readonly Dictionary<string, Func<DecryptKey>> validDecryptTypes;
 
-        private readonly string contents;
+        private readonly string pemContents;
 
         private int schemeVersion;
         private int schemeKeyVersion;
@@ -26,9 +26,9 @@ namespace PolymorphicPseudonymisation.Parser
         private BigInteger privateKey;
         private ECPoint publicKey;
 
-        public DecryptKeyParser(string contents)
+        public DecryptKeyParser(string pemContents)
         {
-            this.contents = contents;
+            this.pemContents = pemContents;
 
             validDecryptTypes = new Dictionary<string, Func<DecryptKey>>
             {
@@ -42,7 +42,7 @@ namespace PolymorphicPseudonymisation.Parser
         {
             try
             {
-                var pemReader = new PemReader(new StringReader(contents));
+                var pemReader = new PemReader(new StringReader(pemContents));
                 var pem = pemReader.ReadPemObject();
                 if (!"EC PRIVATE KEY".Equals(pem.Type))
                 {
@@ -51,7 +51,7 @@ namespace PolymorphicPseudonymisation.Parser
 
                 var headers = pem.Headers.OfType<PemHeader>().ToList();
 
-                DecodeHeaders(headers);
+                DecodeHeaders(headers.ToList());
                 DecodeContent(pem.Content);
             }
             catch (IOException e)
@@ -71,48 +71,15 @@ namespace PolymorphicPseudonymisation.Parser
         }
 
 
-        private void DecodeHeaders(IEnumerable<PemHeader> headers)
+        private void DecodeHeaders(IList<PemHeader> headers)
         {
-            var mandatory = new List<string>
-            {
-                "SchemeVersion",
-                "SchemeKeyVersion",
-                "Type",
-                "Recipient",
-                "RecipientKeySetVersion"
-            };
+            //All these headers are required, so they will throw if not found
+            schemeVersion = TryParseVersion("SchemeVersion", headers.First(x => x.Name == "SchemeVersion").Value);
+            schemeKeyVersion = TryParseVersion("SchemeKeyVersion", headers.First(x => x.Name == "SchemeKeyVersion").Value);
+            decryptKeyType = headers.First(x => x.Name == "Type").Value;
+            recipient = headers.First(x => x.Name == "Recipient").Value;
+            recipientKeySetVersion = TryParseVersion("RecipientKeySetVersion", headers.First(x => x.Name == "RecipientKeySetVersion").Value);
 
-
-            foreach (var header in headers)
-            {
-                var name = header.Name;
-                var value = header.Value;
-
-                mandatory.Remove(name);
-                switch (name)
-                {
-                    case "SchemeVersion":
-                        schemeVersion = ParseVersion(name, value);
-                        break;
-                    case "SchemeKeyVersion":
-                        schemeKeyVersion = ParseVersion(name, value);
-                        break;
-                    case "Type":
-                        decryptKeyType = value;
-                        break;
-                    case "Recipient":
-                        recipient = value;
-                        break;
-                    case "RecipientKeySetVersion":
-                        recipientKeySetVersion = ParseVersion(name, value);
-                        break;
-                }
-            }
-
-            if (mandatory.Any())
-            {
-                throw new ParsingException($"Missing headers: {mandatory}");
-            }
         }
 
         private void DecodeContent(byte[] encoded)
@@ -159,7 +126,7 @@ namespace PolymorphicPseudonymisation.Parser
             }
         }
 
-        private static int ParseVersion(string name, string value)
+        private static int TryParseVersion(string name, string value)
         {
             int result;
             try
