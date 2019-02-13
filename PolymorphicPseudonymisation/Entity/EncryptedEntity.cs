@@ -8,7 +8,7 @@ namespace PolymorphicPseudonymisation.Entity
 {
     public abstract class EncryptedEntity : Identifiable
     {
-        public ECPoint[] Points { get; set; }
+        public ECPoint[] Points { protected get; set; }
 
         public static T FromBase64<T>(string base64, EncryptedVerifiers verifiers) where T : EncryptedEntity
         {

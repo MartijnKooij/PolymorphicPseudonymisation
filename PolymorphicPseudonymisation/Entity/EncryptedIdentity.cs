@@ -9,7 +9,7 @@ namespace PolymorphicPseudonymisation.Entity
         {
             Check(decryptKey, true);
 
-            ECPoint point = Points[1].Subtract(Points[0].Multiply(decryptKey.PrivateKey)).Normalize();
+            var point = Points[1].Subtract(Points[0].Multiply(decryptKey.PrivateKey)).Normalize();
 
             return new Identity(point);
         }

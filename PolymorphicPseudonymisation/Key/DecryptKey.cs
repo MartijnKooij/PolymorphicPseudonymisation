@@ -10,7 +10,7 @@ namespace PolymorphicPseudonymisation.Key
     public abstract class DecryptKey : Identifiable
     {
         public BigInteger PrivateKey { get; set; }
-        public ECPoint PublicKey { get; set; }
+        public ECPoint PublicKey { private get; set; }
 
         public static T FromPem<T>(string pem) where T : DecryptKey
         {

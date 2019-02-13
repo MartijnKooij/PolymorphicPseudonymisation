@@ -2,7 +2,6 @@ using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PolymorphicPseudonymisation.Exceptions;
-using PolymorphicPseudonymisation.Parser;
 using PolymorphicPseudonymisation.Service;
 
 namespace PolymorphicPseudonymisation.Tests.Service
@@ -102,7 +101,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
             }
             catch (ParsingException e)
             {
-                Assert.AreEqual($"Cannot handle type {EncryptedEntityParser.SignedEncryptedIdentityName}", e.Message);
+                Assert.AreEqual("Cannot handle type 2.16.528.1.1003.10.1.2.3", e.Message);
             }
         }
 
@@ -114,6 +113,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
             var actualPseudonym = decryptService.GetPseudonym(encryptedPseudonym);
 
             Assert.AreEqual(
+                // ReSharper disable line StringLiteralTypo
                 "0000004404CAC3926533F301A13500D2379D383AD8717D1585F4174473AC0A715FE4786BC0A41B1D872BABBBB8C917945E5006FBDF61BFFAEC478979C72163FAF56A645496C3038C6A1F13E0B623384DD031B16F30",
                 actualPseudonym);
         }
