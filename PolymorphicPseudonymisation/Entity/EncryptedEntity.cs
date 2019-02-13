@@ -10,9 +10,9 @@ namespace PolymorphicPseudonymisation.Entity
     {
         public ECPoint[] Points { protected get; set; }
 
-        public static T FromBase64<T>(string base64, EncryptedVerifiers verifiers) where T : EncryptedEntity
+        public static T FromBase64<T>(string base64, EncryptedVerifier verifier) where T : EncryptedEntity
         {
-            var key = FromBase64(base64, verifiers);
+            var key = FromBase64(base64, verifier);
             if (!(key is T))
             {
                 throw new PolymorphicPseudonymisationException(
@@ -22,11 +22,11 @@ namespace PolymorphicPseudonymisation.Entity
             return (T) key;
         }
 
-        private static EncryptedEntity FromBase64(string base64, EncryptedVerifiers verifiers)
+        private static EncryptedEntity FromBase64(string base64, EncryptedVerifier verifier)
         {
             var encoded = Convert.FromBase64String(base64);
             var parser = new EncryptedEntityParser(encoded);
-            parser.Decode(verifiers);
+            parser.Decode(verifier);
 
             return parser.GetContent();
         }

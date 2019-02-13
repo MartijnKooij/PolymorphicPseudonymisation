@@ -42,7 +42,7 @@ namespace PolymorphicPseudonymisation.Parser
             };
         }
 
-        public void Decode(EncryptedVerifiers verifiers)
+        public void Decode(EncryptedVerifier verifier)
         {
             try
             {
@@ -56,20 +56,20 @@ namespace PolymorphicPseudonymisation.Parser
                         DecodePayload(parser, true);
                         return;
                     case SignedEncryptedIdentityName:
-                        if (verifiers?.IdentityVerifier == null)
+                        if (verifier == null)
                         {
                             throw new ParsingException("No verifier for identity found");
                         }
 
-                        DecodeSigned(false, verifiers.IdentityVerifier);
+                        DecodeSigned(false, verifier);
                         return;
                     case SignedEncryptedPseudonymName:
-                        if (verifiers?.PseudonymVerifier == null)
+                        if (verifier == null)
                         {
                             throw new ParsingException("No verifier for pseudonym found");
                         }
 
-                        DecodeSigned(true, verifiers.PseudonymVerifier);
+                        DecodeSigned(true, verifier);
                         return;
                     default:
                         throw new ParsingException($"Cannot handle type {bsnkType}");

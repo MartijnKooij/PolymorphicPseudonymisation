@@ -1,11 +1,10 @@
-﻿using Org.BouncyCastle.Math.EC;
-using PolymorphicPseudonymisation.Key;
+﻿using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Entity
 {
     public class EncryptedIdentity : EncryptedEntity
     {
-        public Identity Decrypt(IdentityDecryptKey decryptKey)
+        public Identity Decrypt(DecryptKey decryptKey)
         {
             Check(decryptKey, true);
 

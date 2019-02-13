@@ -15,7 +15,7 @@ namespace PolymorphicPseudonymisation.Parser
 {
     public class DecryptKeyParser
     {
-        private readonly Dictionary<string, Func<DecryptKey>> validDecryptTypes;
+        private readonly List<string> validDecryptTypes;
 
         private readonly string pemContents;
 
@@ -31,11 +31,11 @@ namespace PolymorphicPseudonymisation.Parser
         {
             this.pemContents = pemContents;
 
-            validDecryptTypes = new Dictionary<string, Func<DecryptKey>>
+            validDecryptTypes = new List<string>
             {
-                {"EI Decryption", Create<IdentityDecryptKey>},
-                {"EP Decryption", Create<PseudonymDecryptKey>},
-                {"EP Closing", Create<PseudonymClosingKey>}
+                "EI Decryption",
+                "EP Decryption",
+                "EP Closing"
             };
         }
 
@@ -56,9 +56,9 @@ namespace PolymorphicPseudonymisation.Parser
 
         public DecryptKey GetContent()
         {
-            if (validDecryptTypes.ContainsKey(decryptKeyType))
+            if (validDecryptTypes.Contains(decryptKeyType))
             {
-                return validDecryptTypes[decryptKeyType].Invoke();
+                return CreateDecryptKey();
             }
 
             throw new PolymorphicPseudonymisationException($"Unknown type {decryptKeyType}");
@@ -153,9 +153,9 @@ namespace PolymorphicPseudonymisation.Parser
             return result;
         }
 
-        private T Create<T>() where T : DecryptKey, new()
+        private DecryptKey CreateDecryptKey()
         {
-            return new T
+            return new DecryptKey
             {
                 SchemeVersion = schemeVersion,
                 SchemeKeyVersion = schemeKeyVersion,

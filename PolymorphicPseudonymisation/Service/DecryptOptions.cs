@@ -55,33 +55,33 @@ namespace PolymorphicPseudonymisation.Service
             }
         }
 
-        internal EncryptedVerifiers GetIdentityVerifiers()
+        internal EncryptedVerifier GetIdentityVerifiers()
         {
             var identityDecryptKey = GetIdentityDecryptKey();
 
-            return identityDecryptKey.ToVerifiers(IdentityPoint);
+            return identityDecryptKey.ToVerifier(IdentityPoint);
         }
 
-        internal EncryptedVerifiers GetPseudonymVerifiers()
+        internal EncryptedVerifier GetPseudonymVerifiers()
         {
             var pseudonymDecryptKey = GetPseudonymDecryptKey();
 
-            return pseudonymDecryptKey.ToVerifiers(PseudonymPoint);
+            return pseudonymDecryptKey.ToVerifier(PseudonymPoint);
         }
 
-        internal IdentityDecryptKey GetIdentityDecryptKey()
+        internal DecryptKey GetIdentityDecryptKey()
         {
-            return DecryptKey.FromPem<IdentityDecryptKey>(IdentityPem);
+            return DecryptKey.FromPem(IdentityPem);
         }
 
-        internal PseudonymDecryptKey GetPseudonymDecryptKey()
+        internal DecryptKey GetPseudonymDecryptKey()
         {
-            return DecryptKey.FromPem<PseudonymDecryptKey>(PseudoKeyPem);
+            return DecryptKey.FromPem(PseudoKeyPem);
         }
 
-        internal PseudonymClosingKey GetPseudonymClosingKey()
+        internal DecryptKey GetPseudonymClosingKey()
         {
-            return DecryptKey.FromPem<PseudonymClosingKey>(PseudoClosingKeyPem);
+            return DecryptKey.FromPem(PseudoClosingKeyPem);
         }
     }
 }
