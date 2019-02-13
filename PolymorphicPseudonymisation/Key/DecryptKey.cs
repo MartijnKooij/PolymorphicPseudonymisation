@@ -10,6 +10,9 @@ namespace PolymorphicPseudonymisation.Key
     {
         public BigInteger PrivateKey { get; set; }
         public ECPoint PublicKey { private get; set; }
+        public string Type { private get; set; }
+
+        protected override bool ShouldCheckSetVersion => Type != "EP Closing";
 
         public static DecryptKey FromPem(string pem)
         {

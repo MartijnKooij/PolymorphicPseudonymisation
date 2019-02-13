@@ -157,12 +157,13 @@ namespace PolymorphicPseudonymisation.Parser
         {
             return new DecryptKey
             {
+                Type = decryptKeyType,
                 SchemeVersion = schemeVersion,
                 SchemeKeyVersion = schemeKeyVersion,
                 Recipient = recipient,
                 RecipientKeySetVersion = recipientKeySetVersion,
                 PrivateKey = privateKey,
-                PublicKey = publicKey,
+                PublicKey = publicKey
             };
         }
     }

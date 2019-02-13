@@ -6,8 +6,8 @@ namespace PolymorphicPseudonymisation.Entity
     {
         public Pseudonym Decrypt(DecryptKey decryptKey, DecryptKey closingKey)
         {
-            Check(decryptKey, true);
-            Check(closingKey, false);
+            Check(decryptKey);
+            Check(closingKey);
 
             var point = Points[1].Subtract(
                             Points[0].Multiply(decryptKey.PrivateKey)

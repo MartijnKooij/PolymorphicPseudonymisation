@@ -6,7 +6,7 @@ namespace PolymorphicPseudonymisation.Entity
     {
         public Identity Decrypt(DecryptKey decryptKey)
         {
-            Check(decryptKey, true);
+            Check(decryptKey);
 
             var point = Points[1].Subtract(Points[0].Multiply(decryptKey.PrivateKey)).Normalize();
 
