@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Org.BouncyCastle.Asn1;
+﻿using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Entity;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -161,7 +161,7 @@ namespace PolymorphicPseudonymisation.Parser
             for (var i = 0; i < points.Length; i++)
             {
                 var octet =
-                    (DerOctetString) payloadParser.ReadObject<DerOctetStringParser>().ToAsn1Object();
+                    (DerOctetString)payloadParser.ReadObject<DerOctetStringParser>().ToAsn1Object();
                 try
                 {
                     points[i] = BrainpoolP320R1.Curve.DecodePoint(octet.GetOctets());

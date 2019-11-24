@@ -1,8 +1,8 @@
-﻿using System;
-using Org.BouncyCastle.Math.EC;
+﻿using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 using PolymorphicPseudonymisation.Parser;
+using System;
 
 namespace PolymorphicPseudonymisation.Entity
 {
@@ -19,7 +19,7 @@ namespace PolymorphicPseudonymisation.Entity
                     $"Expected instance of {typeof(T).Name}, got {key.GetType().Name}");
             }
 
-            return (T) key;
+            return (T)key;
         }
 
         private static EncryptedEntity FromBase64(string base64, EncryptedVerifier verifier)

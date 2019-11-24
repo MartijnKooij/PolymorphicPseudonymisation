@@ -1,8 +1,8 @@
-﻿using System;
-using Org.BouncyCastle.Math;
+﻿using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Parser;
+using System;
 
 namespace PolymorphicPseudonymisation.Key
 {

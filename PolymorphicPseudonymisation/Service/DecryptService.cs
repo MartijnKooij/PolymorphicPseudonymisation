@@ -1,6 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using PolymorphicPseudonymisation.Entity;
+using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("PolymorphicPseudonymisation.Tests")]
 namespace PolymorphicPseudonymisation.Service

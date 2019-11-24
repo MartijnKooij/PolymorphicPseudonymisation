@@ -36,7 +36,7 @@ namespace PolymorphicPseudonymisation.Parser
                     $"ASN1 decode error, expected {typeof(T).Name}, got {obj.GetType().Name}");
             }
 
-            return (T) obj;
+            return (T)obj;
         }
 
         public string GetBsnkType()

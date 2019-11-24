@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Org.BouncyCastle.Asn1;
+﻿using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities.IO.Pem;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -100,7 +100,7 @@ namespace PolymorphicPseudonymisation.Parser
                 throw new ParsingException($"Expected version 1, got {version}");
             }
 
-            var octetString = (DerOctetString) parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
+            var octetString = (DerOctetString)parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
             privateKey = new BigInteger(1, octetString.GetOctets());
 
             parser.ReadObject<BerTaggedObjectParser>();

@@ -33,7 +33,7 @@ namespace PolymorphicPseudonymisation.Crypto
             var encodedXCoordinate = q.AffineXCoord.GetEncoded();
             md.TransformBlock(message, 0, message.Length, message, 0);
             md.TransformFinalBlock(encodedXCoordinate, 0, encodedXCoordinate.Length);
-           
+
             // Use only 320 MSB
             var hash = Arrays.CopyOfRange(md.Hash, 0, 40);
             var v = new BigInteger(1, hash);

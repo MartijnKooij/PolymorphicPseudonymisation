@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Text;
-using Org.BouncyCastle.Math.EC;
+﻿using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Exceptions;
+using System.Collections.Generic;
+using System.Text;
 
 namespace PolymorphicPseudonymisation.Entity
 {
