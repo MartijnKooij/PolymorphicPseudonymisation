@@ -11,8 +11,6 @@ namespace PolymorphicPseudonymisation.Parser
 {
     public static class Asn1Parser
     {
-        private const string EcSchnorrSha384Oid = "0.4.0.127.0.7.1.1.4.3.3";
-
         public static string GetBsnkType(byte[] encoded)
         {
             var parser = new Asn1StreamParser(encoded);
@@ -42,7 +40,8 @@ namespace PolymorphicPseudonymisation.Parser
 
             parser.ReadObject<DerSequenceParser>();
             parser.ReadObject<DerSequenceParser>();
-            parser.ReadObject<DerObjectIdentifier>();
+            var oid = parser.ReadObject<DerObjectIdentifier>().Id;
+            AssertBsnkTypeIsCorrect(oid, isPseudonym);
 
             entity.SchemeVersion = parser.ReadObject<DerInteger>().Value.IntValue;
             entity.SchemeKeyVersion = parser.ReadObject<DerInteger>().Value.IntValue;
@@ -84,6 +83,27 @@ namespace PolymorphicPseudonymisation.Parser
             return entity;
         }
 
+        private static void AssertBsnkTypeIsCorrect(string bsnkType, bool expectPseudonym)
+        {
+            switch (bsnkType)
+            {
+                case Constants.EncryptedIdentityName:
+                    if (expectPseudonym)
+                    {
+                        throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
+                    }
+                    break;
+                case Constants.EncryptedPseudonymName:
+                    if (!expectPseudonym)
+                    {
+                        throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
+                    }
+                    break;
+                default:
+                    throw new ParsingException($"Cannot handle type {bsnkType}");
+            }
+        }
+
         public static Signature GetSignature(byte[] encoded)
         {
             var parser = new Asn1StreamParser(encoded);
@@ -97,7 +117,7 @@ namespace PolymorphicPseudonymisation.Parser
             parser.ReadObject<DerSequenceParser>();
 
             var objectIdentifier = parser.ReadObject<DerObjectIdentifier>().Id;
-            if (EcSchnorrSha384Oid != objectIdentifier)
+            if (objectIdentifier != Constants.EcSchnorrSha384Oid)
             {
                 throw new ParsingException($"Expected EC Schnorr SHA-384 signature, got {objectIdentifier}");
             }

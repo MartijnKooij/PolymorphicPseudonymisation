@@ -12,10 +12,6 @@ namespace PolymorphicPseudonymisation.Parser
 {
     public static class EncryptedEntityParser
     {
-        private const string EncryptedIdentityName = "2.16.528.1.1003.10.1.2.1";
-        private const string EncryptedPseudonymName = "2.16.528.1.1003.10.1.2.2";
-        private const string SignedEncryptedIdentityName = "2.16.528.1.1003.10.1.2.3";
-        private const string SignedEncryptedPseudonymName = "2.16.528.1.1003.10.1.2.4";
 
         public static EncryptedEntity Decode(byte[] encoded, EncryptedVerifier verifier)
         {
@@ -27,15 +23,15 @@ namespace PolymorphicPseudonymisation.Parser
 
                 switch (bsnkType)
                 {
-                    case EncryptedIdentityName:
+                    case Constants.EncryptedIdentityName:
                         var encryptedIdentity = Asn1Parser.GetEncryptedEntity<EncryptedIdentity>(encoded, false);
 
                         return encryptedIdentity;
-                    case EncryptedPseudonymName:
+                    case Constants.EncryptedPseudonymName:
                         var encryptedPseudonym = Asn1Parser.GetEncryptedEntity<EncryptedPseudonym>(encoded, true);
 
                         return encryptedPseudonym;
-                    case SignedEncryptedIdentityName:
+                    case Constants.SignedEncryptedIdentityName:
                         if (verifier == null)
                         {
                             throw new ParsingException("No verifier for identity found");
@@ -48,7 +44,7 @@ namespace PolymorphicPseudonymisation.Parser
                         verifier.Verify(signedPayload, signature);
 
                         return signedEncryptedIdentity;
-                    case SignedEncryptedPseudonymName:
+                    case Constants.SignedEncryptedPseudonymName:
                         if (verifier == null)
                         {
                             throw new ParsingException("No verifier for pseudonym found");
