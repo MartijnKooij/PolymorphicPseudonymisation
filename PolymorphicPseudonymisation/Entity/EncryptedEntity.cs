@@ -6,9 +6,9 @@ using System;
 
 namespace PolymorphicPseudonymisation.Entity
 {
-    public abstract class EncryptedEntity : Identifiable
+    public class EncryptedEntity : Identifiable
     {
-        public ECPoint[] Points { protected get; set; }
+        public ECPoint[] Points { get; set; }
 
         public static T FromBase64<T>(string base64, EncryptedVerifier verifier) where T : EncryptedEntity
         {
@@ -25,10 +25,7 @@ namespace PolymorphicPseudonymisation.Entity
         private static EncryptedEntity FromBase64(string base64, EncryptedVerifier verifier)
         {
             var encoded = Convert.FromBase64String(base64);
-            var parser = new EncryptedEntityParser(encoded);
-            parser.Decode(verifier);
-
-            return parser.GetContent();
+            return EncryptedEntityParser.Decode(encoded, verifier);
         }
     }
 }

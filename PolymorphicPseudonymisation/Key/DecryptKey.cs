@@ -1,6 +1,4 @@
-﻿using Org.BouncyCastle.Math;
-using Org.BouncyCastle.Math.EC;
-using PolymorphicPseudonymisation.Crypto;
+﻿using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Parser;
 using System;
 
@@ -8,18 +6,16 @@ namespace PolymorphicPseudonymisation.Key
 {
     public class DecryptKey : Identifiable
     {
-        public BigInteger PrivateKey { get; set; }
-        public ECPoint PublicKey { private get; set; }
-        public string Type { private get; set; }
+        public KeyPair KeyPair { get; set; }
+        public string Type { get; set; }
 
         protected override bool ShouldCheckSetVersion => Type != "EP Closing";
 
         public static DecryptKey FromPem(string pem)
         {
-            var parser = new DecryptKeyParser(pem);
-            parser.Decode();
+            var parser = new DecryptKeyParser();
 
-            return parser.GetContent();
+            return parser.Decode(pem);
         }
 
         /// <summary>
@@ -29,7 +25,7 @@ namespace PolymorphicPseudonymisation.Key
         {
             var point = BrainpoolP320R1.Curve.DecodePoint(Convert.FromBase64String(verificationPoint));
 
-            return new EncryptedVerifier(PublicKey, point);
+            return new EncryptedVerifier(KeyPair.PublicKey, point);
         }
     }
 }

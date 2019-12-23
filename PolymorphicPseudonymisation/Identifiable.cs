@@ -5,9 +5,9 @@ namespace PolymorphicPseudonymisation
     public abstract class Identifiable
     {
         public int RecipientKeySetVersion { get; set; }
-        public int SchemeVersion { private get; set; }
-        public int SchemeKeyVersion { private get; set; }
-        public string Recipient { private get; set; }
+        public int SchemeVersion { get; set; }
+        public int SchemeKeyVersion { get; set; }
+        public string Recipient { get; set; }
         protected virtual bool ShouldCheckSetVersion { get; } = false;
 
         protected void Check(Identifiable other)
