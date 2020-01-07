@@ -20,5 +20,9 @@ namespace PolymorphicPseudonymisation.Exceptions
             : base(info, context)
         {
         }
+
+        public PolymorphicPseudonymisationException()
+        {
+        }
     }
 }

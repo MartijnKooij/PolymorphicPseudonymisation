@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Math.EC;
 using Org.BouncyCastle.Utilities;
 using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
@@ -18,6 +19,10 @@ namespace PolymorphicPseudonymisation.Crypto
 
         public void Verify(ECPoint publicKey, ECPoint g, byte[] message)
         {
+            Guard.AssertNotNull(publicKey, nameof(publicKey));
+            Guard.AssertNotNull(g, nameof(g));
+            Guard.AssertNotNull(message, nameof(message));
+
             if (r.BitCount > 320 || r.CompareTo(BigInteger.Zero) <= 0 || s.CompareTo(BrainpoolP320R1.Q) >= 0)
             {
                 throw new CryptoException("Invalid signature");

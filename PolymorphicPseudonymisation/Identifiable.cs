@@ -1,4 +1,7 @@
 ﻿using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Utilities;
+using System;
+using System.Diagnostics.Contracts;
 
 namespace PolymorphicPseudonymisation
 {
@@ -12,6 +15,8 @@ namespace PolymorphicPseudonymisation
 
         protected void Check(Identifiable other)
         {
+            Guard.AssertNotNull(other, nameof(other));
+
             if (SchemeVersion != other.SchemeVersion)
             {
                 throw new PolymorphicPseudonymisationException($"Scheme version {SchemeVersion} is not equal to {other.SchemeVersion}");
@@ -23,7 +28,7 @@ namespace PolymorphicPseudonymisation
                     $"Scheme key version {SchemeKeyVersion} is not equal to {other.SchemeKeyVersion}");
             }
 
-            if (!Recipient.Equals(other.Recipient))
+            if (!Recipient.Equals(other.Recipient, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new PolymorphicPseudonymisationException($"Recipient '{Recipient}' is not equal to '{other.Recipient}'");
             }

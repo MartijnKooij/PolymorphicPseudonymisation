@@ -16,16 +16,6 @@ namespace PolymorphicPseudonymisation.Service
         /// <param name="options"></param>
         public static void AddDecryptService(this IServiceCollection services, Action<DecryptOptions> options)
         {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            if (options == null)
-            {
-                throw new ArgumentNullException(nameof(options));
-            }
-
             services.Configure(options);
             services.PostConfigure<DecryptOptions>(decryptOptions => { decryptOptions.Validate(); });
             services.AddSingleton<IDecryptService, DecryptService>();

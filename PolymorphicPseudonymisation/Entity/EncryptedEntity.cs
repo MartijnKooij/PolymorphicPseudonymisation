@@ -27,5 +27,10 @@ namespace PolymorphicPseudonymisation.Entity
             var encoded = Convert.FromBase64String(base64);
             return EncryptedEntityParser.Decode(encoded, verifier);
         }
+
+        public EncryptedEntity()
+        {
+            Points = new ECPoint[3];
+        }
     }
 }

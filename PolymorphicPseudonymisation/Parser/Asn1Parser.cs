@@ -65,7 +65,6 @@ namespace PolymorphicPseudonymisation.Parser
 
             parser.ReadObject<DerSequenceParser>();
 
-            entity.Points = new ECPoint[3];
             for (var i = 0; i < entity.Points.Length; i++)
             {
                 var octet =
