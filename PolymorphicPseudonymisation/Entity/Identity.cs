@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PolymorphicPseudonymisation.Entity
 {
-    public class Identity : Entity
+    public class Identity : BaseEntity
     {
         private readonly char type;
         private readonly string identifier;

@@ -18,8 +18,8 @@ namespace PolymorphicPseudonymisation.Parser
             try
             {
                 var bsnkType = Asn1Parser.GetBsnkType(encoded);
-                byte[] signedPayload = null;
-                Signature signature = null;
+                byte[] signedPayload;
+                Signature signature;
 
                 switch (bsnkType)
                 {

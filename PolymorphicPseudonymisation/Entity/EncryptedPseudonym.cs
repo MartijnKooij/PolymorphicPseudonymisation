@@ -1,4 +1,5 @@
 ﻿using PolymorphicPseudonymisation.Key;
+using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Entity
 {
@@ -6,7 +7,9 @@ namespace PolymorphicPseudonymisation.Entity
     {
         public Pseudonym Decrypt(DecryptKey decryptKey, DecryptKey closingKey)
         {
+            Guard.AssertNotNull(decryptKey, nameof(decryptKey));
             Check(decryptKey);
+            Guard.AssertNotNull(closingKey, nameof(closingKey));
             Check(closingKey);
 
             var point = Points[1].Subtract(

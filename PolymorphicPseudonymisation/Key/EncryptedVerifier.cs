@@ -1,5 +1,6 @@
 ﻿using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
+using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Key
 {
@@ -20,6 +21,8 @@ namespace PolymorphicPseudonymisation.Key
 
         public void Verify(byte[] payload, Signature signature)
         {
+            Guard.AssertNotNull(signature, nameof(signature));
+
             signature.Verify(publicKey, verificationPoint, payload);
         }
     }

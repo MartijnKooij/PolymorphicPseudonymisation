@@ -4,6 +4,7 @@ using PolymorphicPseudonymisation.Key;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -46,11 +47,11 @@ namespace PolymorphicPseudonymisation.Parser
             }
         }
 
-        private PemObject ReadPemObject(string pemContents)
+        private static PemObject ReadPemObject(string pemContents)
         {
             var pemReader = new PemReader(new StringReader(pemContents));
             var pem = pemReader.ReadPemObject();
-            if (!"EC PRIVATE KEY".Equals(pem.Type))
+            if (!pem.Type.Equals("EC PRIVATE KEY", StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ParsingException($"Expected EC PRIVATE KEY, got {pem.Type}");
             }
@@ -58,7 +59,7 @@ namespace PolymorphicPseudonymisation.Parser
             return pem;
         }
 
-        private DecryptKey DecodeHeaders(IEnumerable headers)
+        private static DecryptKey DecodeHeaders(IEnumerable headers)
         {
             var pemHeaders = headers.OfType<PemHeader>().ToList();
 
@@ -79,7 +80,7 @@ namespace PolymorphicPseudonymisation.Parser
             int result;
             try
             {
-                result = int.Parse(value);
+                result = int.Parse(value, CultureInfo.InvariantCulture);
             }
             catch (FormatException e)
             {
