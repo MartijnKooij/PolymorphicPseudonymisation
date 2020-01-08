@@ -6,7 +6,7 @@
 name: 1.0.0$(rev:.r)
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
