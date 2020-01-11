@@ -47,5 +47,10 @@ namespace PolymorphicPseudonymisation.Crypto
                 throw new CryptoException("Invalid signature");
             }
         }
+
+        public override string ToString()
+        {
+            return $"{r.ToString()}, {s.ToString()}";
+        }
     }
 }

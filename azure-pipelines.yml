@@ -25,6 +25,7 @@ steps:
   displayName: 'publish test results'
 - task: PublishCodeCoverageResults@1
   inputs:
+    displayName: 'publish code coverage results' 
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '**/coverage.cobertura.xml'
 - script: dotnet pack --output '$(Build.ArtifactStagingDirectory)'
