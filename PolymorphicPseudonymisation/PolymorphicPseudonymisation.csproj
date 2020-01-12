@@ -10,11 +10,12 @@
     <RepositoryUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
     <PackageTags>pp polymorphic pseudonymisation polymorfische pseudonimisatie ppdecrypt bsnk</PackageTags>
-    <Copyright>2018 Martijn Kooij</Copyright>
+    <Copyright>2020 Martijn Kooij</Copyright>
     <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageReleaseNotes>Initial release</PackageReleaseNotes>
+    <PackageReleaseNotes>v2.0.0 Updated project to net standard 2.1 and net core 3.0.
+v1.0.0 Initial release.</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.0</Version>
+    <Version>2.0.0</Version>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
