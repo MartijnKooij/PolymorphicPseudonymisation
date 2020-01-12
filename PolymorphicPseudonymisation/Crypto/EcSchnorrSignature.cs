@@ -27,7 +27,7 @@ namespace PolymorphicPseudonymisation.Crypto
                 throw new CryptoException("Invalid signature");
             }
 
-            // Step 4: Generate message digest and and apply points on curve --- BSI 2012 verification:
+            // Step 4: Generate message digest and and apply points on curve --- BSI 2012 verification
             var md = Sha384.Instance;
             var encodedXCoordinate = q.AffineXCoord.GetEncoded();
             md.TransformBlock(message, 0, message.Length, message, 0);
