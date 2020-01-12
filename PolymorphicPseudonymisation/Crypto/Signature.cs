@@ -6,15 +6,25 @@ using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
-    public class Signature
+    public abstract class Signature
     {
         private readonly BigInteger r;
         private readonly BigInteger s;
 
-        public Signature(BigInteger r, BigInteger s)
+        protected Signature(BigInteger r, BigInteger s)
         {
             this.r = r;
             this.s = s;
+        }
+
+        public static Signature Create(string objectIdentifier, BigInteger r, BigInteger s)
+        {
+            return objectIdentifier switch
+            {
+                Constants.EcSchnorrSha384Oid => new EcSchnorrSignature(r, s),
+                Constants.EcSdsaSha384Oid => new EcSdsaSignature(r, s),
+                _ => throw new CryptoException("Invalid signature, signature algoritm not implemented"),
+            };
         }
 
         public void Verify(ECPoint publicKey, ECPoint g, byte[] message)

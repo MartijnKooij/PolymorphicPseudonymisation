@@ -62,7 +62,11 @@ namespace PolymorphicPseudonymisation.Tests.Parser
             var encodedData = Convert.FromBase64String(encryptedPseudonym);
 
             var signature = Asn1Parser.GetSignature(encodedData);
-            var expectedSignature = new Signature(new BigInteger("107553452174033572320097286497696886003190384098237946520654141077292915400099016842332970896155"), new BigInteger("650320884538172458495892042411932561278118502434808303605427167594392943078504317702364621375984"));
+            var expectedSignature = Signature.Create(
+                Constants.EcSchnorrSha384Oid,
+                new BigInteger("107553452174033572320097286497696886003190384098237946520654141077292915400099016842332970896155"),
+                new BigInteger("650320884538172458495892042411932561278118502434808303605427167594392943078504317702364621375984")
+                );
 
             Assert.AreEqual(expectedSignature.ToString(), signature.ToString());
         }

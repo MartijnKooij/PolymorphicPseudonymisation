@@ -115,6 +115,7 @@ namespace PolymorphicPseudonymisation.Parser
 
             parser.ReadObject<DerSequenceParser>();
 
+            // TODO: This will become the Schnorr id used to switch to the correct signature verifier schnorr/sdsa 
             var objectIdentifier = parser.ReadObject<DerObjectIdentifier>().Id;
             if (objectIdentifier != Constants.EcSchnorrSha384Oid)
             {
@@ -123,10 +124,9 @@ namespace PolymorphicPseudonymisation.Parser
 
             parser.ReadObject<DerSequenceParser>();
 
-            return new Signature(
+            return Signature.Create(objectIdentifier,
                 parser.ReadObject<DerInteger>().PositiveValue,
-                parser.ReadObject<DerInteger>().PositiveValue
-            );
+                parser.ReadObject<DerInteger>().PositiveValue);
         }
 
         internal static KeyPair GetKeyPair(byte[] encoded)
