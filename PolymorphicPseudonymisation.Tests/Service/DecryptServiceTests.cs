@@ -85,8 +85,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
             }
             catch (ParsingException e)
             {
-                Assert.IsTrue(e.Message.StartsWith("Expected EC Schnorr SHA-384 signature", StringComparison.InvariantCultureIgnoreCase),
-                    "Expected the parsing error to start with [Expected EC Schnorr SHA-384 signature]");
+                Assert.AreEqual(e.Message, "Invalid signature, signature algoritm not implemented");
             }
         }
 

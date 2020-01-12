@@ -23,7 +23,7 @@ namespace PolymorphicPseudonymisation.Crypto
             {
                 Constants.EcSchnorrSha384Oid => new EcSchnorrSignature(r, s),
                 Constants.EcSdsaSha384Oid => new EcSdsaSignature(r, s),
-                _ => throw new CryptoException("Invalid signature, signature algoritm not implemented"),
+                _ => throw new ParsingException("Invalid signature, signature algoritm not implemented"),
             };
         }
 
