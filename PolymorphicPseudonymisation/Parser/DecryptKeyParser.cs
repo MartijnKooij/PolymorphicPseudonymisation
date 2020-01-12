@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Org.BouncyCastle.Asn1;
-using Org.BouncyCastle.Math;
-using Org.BouncyCastle.Math.EC;
-using Org.BouncyCastle.Utilities.IO.Pem;
-using PolymorphicPseudonymisation.Crypto;
+﻿using Org.BouncyCastle.Utilities.IO.Pem;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -17,20 +14,8 @@ namespace PolymorphicPseudonymisation.Parser
     {
         private readonly List<string> validDecryptTypes;
 
-        private readonly string pemContents;
-
-        private int schemeVersion;
-        private int schemeKeyVersion;
-        private string decryptKeyType;
-        private string recipient;
-        private int recipientKeySetVersion;
-        private BigInteger privateKey;
-        private ECPoint publicKey;
-
-        public DecryptKeyParser(string pemContents)
+        public DecryptKeyParser()
         {
-            this.pemContents = pemContents;
-
             validDecryptTypes = new List<string>
             {
                 "EI Decryption",
@@ -39,14 +24,22 @@ namespace PolymorphicPseudonymisation.Parser
             };
         }
 
-        public void Decode()
+        public DecryptKey Decode(string pemContents)
         {
             try
             {
-                var pemObject = ReadPemObject();
+                var pemObject = ReadPemObject(pemContents);
 
-                DecodeHeaders(pemObject.Headers);
-                DecodeContent(pemObject.Content);
+                var decryptKey = DecodeHeaders(pemObject.Headers);
+
+                if (!validDecryptTypes.Contains(decryptKey.Type))
+                {
+                    throw new PolymorphicPseudonymisationException($"Unknown type {decryptKey.Type}");
+                }
+                decryptKey.KeyPair = Asn1Parser.GetKeyPair(pemObject.Content);
+
+                return decryptKey;
+
             }
             catch (IOException e)
             {
@@ -54,21 +47,11 @@ namespace PolymorphicPseudonymisation.Parser
             }
         }
 
-        public DecryptKey GetContent()
-        {
-            if (validDecryptTypes.Contains(decryptKeyType))
-            {
-                return CreateDecryptKey();
-            }
-
-            throw new PolymorphicPseudonymisationException($"Unknown type {decryptKeyType}");
-        }
-
-        private PemObject ReadPemObject()
+        private static PemObject ReadPemObject(string pemContents)
         {
             var pemReader = new PemReader(new StringReader(pemContents));
             var pem = pemReader.ReadPemObject();
-            if (!"EC PRIVATE KEY".Equals(pem.Type))
+            if (!pem.Type.Equals("EC PRIVATE KEY", StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new ParsingException($"Expected EC PRIVATE KEY, got {pem.Type}");
             }
@@ -76,61 +59,20 @@ namespace PolymorphicPseudonymisation.Parser
             return pem;
         }
 
-        private void DecodeHeaders(IEnumerable headers)
+        private static DecryptKey DecodeHeaders(IEnumerable headers)
         {
             var pemHeaders = headers.OfType<PemHeader>().ToList();
 
             //All these headers are required, so they will throw if not found
-            schemeVersion = TryParseVersion("SchemeVersion", pemHeaders.First(x => x.Name == "SchemeVersion").Value);
-            schemeKeyVersion = TryParseVersion("SchemeKeyVersion", pemHeaders.First(x => x.Name == "SchemeKeyVersion").Value);
-            decryptKeyType = pemHeaders.First(x => x.Name == "Type").Value;
-            recipient = pemHeaders.First(x => x.Name == "Recipient").Value;
-            recipientKeySetVersion = TryParseVersion("RecipientKeySetVersion", pemHeaders.First(x => x.Name == "RecipientKeySetVersion").Value);
-
-        }
-
-        private void DecodeContent(byte[] encoded)
-        {
-            var parser = new Asn1Parser(encoded);
-
-            parser.ReadObject<DerSequenceParser>();
-            var version = parser.ReadObject<DerInteger>().Value.IntValue;
-            if (1 != version)
+            return new DecryptKey
             {
-                throw new ParsingException($"Expected version 1, got {version}");
-            }
+                Type = pemHeaders.First(x => x.Name == "Type").Value,
+                SchemeVersion = TryParseVersion("SchemeVersion", pemHeaders.First(x => x.Name == "SchemeVersion").Value),
+                SchemeKeyVersion = TryParseVersion("SchemeKeyVersion", pemHeaders.First(x => x.Name == "SchemeKeyVersion").Value),
+                Recipient = pemHeaders.First(x => x.Name == "Recipient").Value,
+                RecipientKeySetVersion = TryParseVersion("RecipientKeySetVersion", pemHeaders.First(x => x.Name == "RecipientKeySetVersion").Value)
+            };
 
-            var octetString = (DerOctetString) parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
-            privateKey = new BigInteger(1, octetString.GetOctets());
-
-            parser.ReadObject<BerTaggedObjectParser>();
-            var oid = parser.ReadObject<DerObjectIdentifier>();
-            if (!BrainpoolP320R1.ObjectIdentifier.Equals(oid))
-            {
-                throw new ParsingException($"Expected BrainpoolP320r1 ({BrainpoolP320R1.ObjectIdentifier}), got {oid}");
-            }
-
-            var obj = parser.ReadObject();
-            if (obj == null)
-            {
-                return;
-            }
-
-            Asn1Parser.CheckObject<BerTaggedObjectParser>(obj);
-            try
-            {
-                publicKey = BrainpoolP320R1.Curve.DecodePoint(parser.ReadObject<DerBitString>().GetBytes()).Normalize();
-            }
-            catch (ArgumentException e)
-            {
-                throw new ParsingException("Could not decode point on curve", e);
-            }
-
-            BrainpoolP320R1.G.Multiply(privateKey).Normalize();
-            if (!BrainpoolP320R1.G.Multiply(privateKey).Equals(publicKey))
-            {
-                throw new ParsingException("Public key does not belong to private key");
-            }
         }
 
         private static int TryParseVersion(string name, string value)
@@ -138,7 +80,7 @@ namespace PolymorphicPseudonymisation.Parser
             int result;
             try
             {
-                result = int.Parse(value);
+                result = int.Parse(value, CultureInfo.InvariantCulture);
             }
             catch (FormatException e)
             {
@@ -151,20 +93,6 @@ namespace PolymorphicPseudonymisation.Parser
             }
 
             return result;
-        }
-
-        private DecryptKey CreateDecryptKey()
-        {
-            return new DecryptKey
-            {
-                Type = decryptKeyType,
-                SchemeVersion = schemeVersion,
-                SchemeKeyVersion = schemeKeyVersion,
-                Recipient = recipient,
-                RecipientKeySetVersion = recipientKeySetVersion,
-                PrivateKey = privateKey,
-                PublicKey = publicKey
-            };
         }
     }
 }

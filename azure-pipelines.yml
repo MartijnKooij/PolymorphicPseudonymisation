@@ -3,10 +3,10 @@
 # Add steps that run tests, create a NuGet package, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
 
-name: 1.0.0$(rev:.r)
+name: 2.0.0$(rev:.r)
 
 pool:
-  vmImage: 'Ubuntu 16.04'
+  vmImage: 'ubuntu-latest'
 
 variables:
   buildConfiguration: 'Release'
@@ -23,6 +23,11 @@ steps:
     testRunner: VSTest
     testResultsFiles: '**/*.trx'
   displayName: 'publish test results'
+- task: PublishCodeCoverageResults@1
+  inputs:
+    displayName: 'publish code coverage results' 
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: '**/coverage.cobertura.xml'
 - script: dotnet pack --output '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   displayName: 'publish artifacts'

@@ -1,6 +1,6 @@
 ﻿namespace PolymorphicPseudonymisation.Entity
 {
-    public abstract class Entity
+    public abstract class BaseEntity
     {
         protected abstract string Standard { get; }
 

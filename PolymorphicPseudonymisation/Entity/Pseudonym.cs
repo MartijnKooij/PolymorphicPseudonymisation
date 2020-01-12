@@ -3,7 +3,7 @@ using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Entity
 {
-    public class Pseudonym : Entity
+    public class Pseudonym : BaseEntity
     {
         private readonly int version;
         private readonly ECPoint point;

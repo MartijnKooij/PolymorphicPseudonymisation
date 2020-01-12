@@ -9,6 +9,8 @@ namespace PolymorphicPseudonymisation.Utilities
 
         public static string Encode(byte[] byteArray)
         {
+            Guard.AssertNotNull(byteArray, nameof(byteArray));
+
             var hexBuffer = new StringBuilder(byteArray.Length * 2);
             foreach (var byteValue in byteArray)
             {

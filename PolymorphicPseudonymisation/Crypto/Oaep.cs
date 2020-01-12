@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
-using Org.BouncyCastle.Utilities;
+﻿using Org.BouncyCastle.Utilities;
 using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Utilities;
+using System.Collections.Generic;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
@@ -10,6 +11,8 @@ namespace PolymorphicPseudonymisation.Crypto
 
         public static byte[] Decode(byte[] message, int pos, int length, int hashLength)
         {
+            Guard.AssertNotNull(message, nameof(message));
+
             if (length > 48)
             {
                 throw new CryptoException($"Length of message is too big ({length:D} > 48)");

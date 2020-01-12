@@ -1,6 +1,7 @@
-﻿using System.Runtime.CompilerServices;
-using Microsoft.Extensions.Options;
+﻿using Microsoft.Extensions.Options;
 using PolymorphicPseudonymisation.Entity;
+using PolymorphicPseudonymisation.Utilities;
+using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("PolymorphicPseudonymisation.Tests")]
 namespace PolymorphicPseudonymisation.Service
@@ -11,6 +12,8 @@ namespace PolymorphicPseudonymisation.Service
 
         public DecryptService(IOptions<DecryptOptions> options)
         {
+            Guard.AssertNotNull(options, nameof(options));
+
             this.options = options.Value;
         }
 

@@ -1,17 +1,22 @@
 ﻿using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Utilities;
+using System;
+using System.Diagnostics.Contracts;
 
 namespace PolymorphicPseudonymisation
 {
     public abstract class Identifiable
     {
         public int RecipientKeySetVersion { get; set; }
-        public int SchemeVersion { private get; set; }
-        public int SchemeKeyVersion { private get; set; }
-        public string Recipient { private get; set; }
+        public int SchemeVersion { get; set; }
+        public int SchemeKeyVersion { get; set; }
+        public string Recipient { get; set; }
         protected virtual bool ShouldCheckSetVersion { get; } = false;
 
         protected void Check(Identifiable other)
         {
+            Guard.AssertNotNull(other, nameof(other));
+
             if (SchemeVersion != other.SchemeVersion)
             {
                 throw new PolymorphicPseudonymisationException($"Scheme version {SchemeVersion} is not equal to {other.SchemeVersion}");
@@ -23,7 +28,7 @@ namespace PolymorphicPseudonymisation
                     $"Scheme key version {SchemeKeyVersion} is not equal to {other.SchemeKeyVersion}");
             }
 
-            if (!Recipient.Equals(other.Recipient))
+            if (!Recipient.Equals(other.Recipient, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new PolymorphicPseudonymisationException($"Recipient '{Recipient}' is not equal to '{other.Recipient}'");
             }

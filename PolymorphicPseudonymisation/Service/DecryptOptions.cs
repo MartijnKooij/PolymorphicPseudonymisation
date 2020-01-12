@@ -8,27 +8,27 @@ namespace PolymorphicPseudonymisation.Service
         /// <summary>
         /// Identity verification point
         /// </summary>
-        public string IdentityPoint { private get; set; }
+        public string IdentityPoint { get; set; }
 
         /// <summary>
         /// Pseudonym verification point
         /// </summary>
-        public string PseudonymPoint { private get; set; }
+        public string PseudonymPoint { get; set; }
 
         /// <summary>
         /// PEM EC PRIVATE KEY for the identity
         /// </summary>
-        public string IdentityPem { private get; set; }
+        public string IdentityPem { get; set; }
 
         /// <summary>
         /// PEM EC PRIVATE KEY for the pseudonym
         /// </summary>
-        public string PseudoKeyPem { private get; set; }
+        public string PseudoKeyPem { get; set; }
 
         /// <summary>
         /// PEM EC PRIVATE KEY for the pseudonym's closing key
         /// </summary>
-        public string PseudoClosingKeyPem { private get; set; }
+        public string PseudoClosingKeyPem { get; set; }
 
         internal void Validate()
         {
