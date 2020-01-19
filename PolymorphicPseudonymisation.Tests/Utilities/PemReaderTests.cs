@@ -3,6 +3,7 @@ using PolymorphicPseudonymisation.Utilities;
 using System;
 using System.Globalization;
 using System.IO;
+using System.Text;
 
 namespace PolymorphicPseudonymisation.Tests.Utilities
 {
@@ -38,11 +39,11 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
             for (var testCase = 0; testCase < inputs.Length; testCase+=1)
             {
                 var p7Data = File.ReadAllBytes(inputs[testCase]);
-                var expected = File.ReadAllText(expectedOutputs[testCase]);
+                var expected = File.ReadAllText(expectedOutputs[testCase], Encoding.ASCII);
 
                 var actual = PemReader.DecryptPem(p7Data, p8Data, certData);
 
-                Assert.AreEqual(expected.GetHashCode(StringComparison.OrdinalIgnoreCase), actual.GetHashCode(StringComparison.OrdinalIgnoreCase), $"Test case {testCase} failed");
+                Assert.AreEqual(expected, actual, $"Test case {testCase} failed");
 
             }
         }
