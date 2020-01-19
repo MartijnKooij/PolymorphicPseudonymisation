@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PolymorphicPseudonymisation.Utilities;
+using System.Globalization;
 using System.IO;
 
 namespace PolymorphicPseudonymisation.Tests.Utilities
@@ -40,7 +41,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
                 var actual = PemReader.DecryptPem(p7Data, p8Data, certData);
 
-                Assert.AreEqual(expected, actual);
+                Assert.AreEqual(expected, actual, false, CultureInfo.InvariantCulture, $"Test case {testCase} failed");
 
             }
         }
