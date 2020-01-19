@@ -42,7 +42,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
                 var actual = PemReader.DecryptPem(p7Data, p8Data, certData);
 
-                Assert.IsTrue(string.Equals(expected, actual, StringComparison.InvariantCulture), $"Test case {testCase} failed");
+                Assert.AreEqual(expected.GetHashCode(StringComparison.OrdinalIgnoreCase), actual.GetHashCode(StringComparison.OrdinalIgnoreCase), $"Test case {testCase} failed");
 
             }
         }
