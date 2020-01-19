@@ -41,7 +41,7 @@ namespace PolymorphicPseudonymisation.Tests.Utilities
 
                 var actual = PemReader.DecryptPem(p7Data, p8Data, certData);
 
-                Assert.AreEqual(expected, actual, false, CultureInfo.InvariantCulture, $"Test case {testCase} failed");
+                Assert.AreEqual(expected, actual, $"Test case {testCase} failed");
 
             }
         }
