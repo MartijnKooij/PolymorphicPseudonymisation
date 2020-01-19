@@ -19,7 +19,7 @@ namespace PolymorphicPseudonymisation.Utilities
             cms.Decrypt(new X509Certificate2Collection(certWithKey));
 
             var content = cms.ContentInfo.Content;
-            var pemData = Encoding.UTF8.GetString(content);
+            var pemData = Encoding.ASCII.GetString(content);
 
             return pemData;
         }
