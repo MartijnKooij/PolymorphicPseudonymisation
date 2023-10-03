@@ -5,9 +5,9 @@ using PolymorphicPseudonymisation.Utilities;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
-    public class EcSdsaSignature : Signature
+    public class ECSDSASignature : Signature
     {
-        public EcSdsaSignature(BigInteger r, BigInteger s) : base(r, s)
+        public ECSDSASignature(BigInteger r, BigInteger s) : base(r, s)
         {
         }
 

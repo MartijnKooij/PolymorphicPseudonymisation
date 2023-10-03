@@ -12,12 +12,21 @@
     <PackageTags>pp polymorphic pseudonymisation polymorfische pseudonimisatie ppdecrypt bsnk</PackageTags>
     <Copyright>2020 Martijn Kooij</Copyright>
     <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageReleaseNotes>v2.0.0 Updated project to net standard 2.1 and net core 3.0.
+    <PackageReleaseNotes>v2.1.0 Added support for "v2" ECSDSA signatures
+v2.0.0 Updated project to net standard 2.1 and net core 3.0.
 v1.0.0 Initial release.</PackageReleaseNotes>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>2.0.0</Version>
-    <Nullable>enable</Nullable>
+    <Version>2.1.0</Version>
+    <Nullable>disable</Nullable>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BouncyCastle.NetCore" Version="1.8.5" />

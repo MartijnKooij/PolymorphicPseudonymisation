@@ -14,20 +14,20 @@ namespace PolymorphicPseudonymisation.Parser
             return CheckObject<T>(obj);
         }
 
-        public static T CheckObject<T>(IAsn1Convertible convertableObject) where T : IAsn1Convertible
+        public static T CheckObject<T>(IAsn1Convertible convertibleObject) where T : IAsn1Convertible
         {
-            if (convertableObject == null)
+            if (convertibleObject == null)
             {
                 throw new ParsingException($"ASN1 decode error, expected {typeof(T).Name}, got null");
             }
 
-            if (typeof(T).Name != convertableObject.GetType().Name)
+            if (typeof(T).Name != convertibleObject.GetType().Name)
             {
                 throw new ParsingException(
-                    $"ASN1 decode error, expected {typeof(T).Name}, got {convertableObject.GetType().Name}");
+                    $"ASN1 decode error, expected {typeof(T).Name}, got {convertibleObject.GetType().Name}");
             }
 
-            return (T)convertableObject;
+            return (T)convertibleObject;
         }
     }
 }

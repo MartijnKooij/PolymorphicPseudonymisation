@@ -8,8 +8,8 @@ namespace PolymorphicPseudonymisation.Crypto
 {
     public abstract class Signature
     {
-        protected BigInteger R { get; set; }
-        protected BigInteger S { get; set; }
+        protected BigInteger R { get; }
+        protected BigInteger S { get; }
 
         protected Signature(BigInteger r, BigInteger s)
         {

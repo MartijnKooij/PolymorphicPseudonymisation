@@ -113,7 +113,7 @@ namespace PolymorphicPseudonymisation.Parser
 		{
 			var (r, s) = ReadSignatureData(encoded);
 
-			return new EcSdsaSignature(r, s);
+			return new ECSDSASignature(r, s);
 		}
 
 		private static (BigInteger r, BigInteger s) ReadSignatureData(byte[] encoded)
