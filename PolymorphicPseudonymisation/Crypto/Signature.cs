@@ -17,21 +17,11 @@ namespace PolymorphicPseudonymisation.Crypto
             S = s;
         }
 
-        public static Signature Create(string objectIdentifier, BigInteger r, BigInteger s)
-        {
-            return objectIdentifier switch
-            {
-                Constants.EcSchnorrSha384Oid => new EcSchnorrSignature(r, s),
-                Constants.EcSdsaSha384Oid => new EcSdsaSignature(r, s),
-                _ => throw new ParsingException("Invalid signature, signature algoritm not implemented"),
-            };
-        }
-
         public abstract void Verify(ECPoint publicKey, ECPoint g, byte[] message);
 
         public override string ToString()
         {
-            return $"{R.ToString()}, {S.ToString()}";
+            return $"{R}, {S}";
         }
 
         protected void AssertInputRequirements()

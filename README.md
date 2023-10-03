@@ -27,6 +27,10 @@ For more information on the El-Ghamal crypto system: http://caislab.kaist.ac.kr/
 
 For more information on Polymorphic pseudonymisation: http://www.cs.ru.nl/E.Verheul/papers/PP2/PEKScheme.pdf
 
+Update October 2023, this library should now also support the change to V2 where the cryptographic operations to encrypt the BSNk were switched from using Schnorr to using ECSDSA. This library should support both standards side by side. https://www.logius.nl/actueel/de-nieuwe-digitale-ondertekening-voor-bsnk-pp-vraagt-om-aanpassing-software
+
+**Disclaimer**: Please do note that as of 2018 I no longer work at a company where eIDAS is used so I no longer have access to test data. The unit tests in this project only apply to v1 Schnorr encryped data, ECSDSA has only been tested by the users of this project. If you have access to test data please reach out to me!
+
 ## Installation
 
 #### Step 1: Installing the project

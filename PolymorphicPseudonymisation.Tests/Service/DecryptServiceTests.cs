@@ -85,7 +85,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
             }
             catch (ParsingException e)
             {
-                Assert.AreEqual(e.Message, "Invalid signature, signature algoritm not implemented");
+                Assert.AreEqual(e.Message, "Invalid signature, signature algorithm not implemented");
             }
         }
 

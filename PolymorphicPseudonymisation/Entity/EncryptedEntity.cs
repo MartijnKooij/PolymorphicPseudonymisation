@@ -13,13 +13,13 @@ namespace PolymorphicPseudonymisation.Entity
         public static T FromBase64<T>(string base64, EncryptedVerifier verifier) where T : EncryptedEntity
         {
             var key = FromBase64(base64, verifier);
-            if (!(key is T))
+            if (!(key is T entity))
             {
                 throw new PolymorphicPseudonymisationException(
                     $"Expected instance of {typeof(T).Name}, got {key.GetType().Name}");
             }
 
-            return (T)key;
+            return entity;
         }
 
         private static EncryptedEntity FromBase64(string base64, EncryptedVerifier verifier)
@@ -28,7 +28,7 @@ namespace PolymorphicPseudonymisation.Entity
             return EncryptedEntityParser.Decode(encoded, verifier);
         }
 
-        public EncryptedEntity()
+        protected EncryptedEntity()
         {
             Points = new ECPoint[3];
         }
