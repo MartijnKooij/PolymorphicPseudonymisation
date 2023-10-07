@@ -1,6 +1,6 @@
-﻿using PolymorphicPseudonymisation.Crypto;
+﻿using System;
+using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Parser;
-using System;
 
 namespace PolymorphicPseudonymisation.Key
 {
@@ -19,7 +19,7 @@ namespace PolymorphicPseudonymisation.Key
         }
 
         /// <summary>
-        /// Convert decrypt key to encrypted verifier for this key
+        ///     Convert decrypt key to encrypted verifier for this key
         /// </summary>
         public EncryptedVerifier ToVerifier(string verificationPoint)
         {

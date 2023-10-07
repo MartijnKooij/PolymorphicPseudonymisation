@@ -1,21 +1,22 @@
-﻿using Org.BouncyCastle.Math;
-using Org.BouncyCastle.Math.EC;
+﻿using System.Security.Cryptography;
+using Org.BouncyCastle.Math;
 using Org.BouncyCastle.Utilities;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Utilities;
+using ECPoint = Org.BouncyCastle.Math.EC.ECPoint;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
     public abstract class Signature
     {
-        protected BigInteger R { get; }
-        protected BigInteger S { get; }
-
         protected Signature(BigInteger r, BigInteger s)
         {
             R = r;
             S = s;
         }
+
+        protected BigInteger R { get; }
+        protected BigInteger S { get; }
 
         public abstract void Verify(ECPoint publicKey, ECPoint g, byte[] message);
 
@@ -32,7 +33,7 @@ namespace PolymorphicPseudonymisation.Crypto
             }
         }
 
-        protected static BigInteger Get320MostSignificantBytes(System.Security.Cryptography.SHA384 md)
+        protected static BigInteger Get320MostSignificantBytes(SHA384 md)
         {
             Guard.AssertNotNull(md, nameof(md));
 
@@ -49,7 +50,5 @@ namespace PolymorphicPseudonymisation.Crypto
                 throw new CryptoException("Invalid signature");
             }
         }
-
-
     }
 }

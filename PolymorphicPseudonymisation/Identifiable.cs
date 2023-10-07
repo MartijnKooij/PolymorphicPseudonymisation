@@ -1,6 +1,6 @@
-﻿using PolymorphicPseudonymisation.Exceptions;
+﻿using System;
+using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Utilities;
-using System;
 
 namespace PolymorphicPseudonymisation
 {

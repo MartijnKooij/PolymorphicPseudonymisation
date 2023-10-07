@@ -1,13 +1,18 @@
-﻿using Org.BouncyCastle.Math.EC;
+﻿using System;
+using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 using PolymorphicPseudonymisation.Parser;
-using System;
 
 namespace PolymorphicPseudonymisation.Entity
 {
     public class EncryptedEntity : Identifiable
     {
+        protected EncryptedEntity()
+        {
+            Points = new ECPoint[3];
+        }
+
         public ECPoint[] Points { get; }
 
         public static T FromBase64<T>(string base64, EncryptedVerifier verifier) where T : EncryptedEntity
@@ -26,11 +31,6 @@ namespace PolymorphicPseudonymisation.Entity
         {
             var encoded = Convert.FromBase64String(base64);
             return EncryptedEntityParser.Decode(encoded, verifier);
-        }
-
-        protected EncryptedEntity()
-        {
-            Points = new ECPoint[3];
         }
     }
 }

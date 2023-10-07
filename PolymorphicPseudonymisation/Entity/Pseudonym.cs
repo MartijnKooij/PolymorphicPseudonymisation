@@ -5,8 +5,8 @@ namespace PolymorphicPseudonymisation.Entity
 {
     public class Pseudonym : BaseEntity
     {
-        private readonly int version;
         private readonly ECPoint point;
+        private readonly int version;
 
         internal Pseudonym(int version, ECPoint point)
         {

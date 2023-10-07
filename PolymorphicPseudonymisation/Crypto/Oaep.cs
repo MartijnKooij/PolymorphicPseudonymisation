@@ -1,7 +1,7 @@
-﻿using Org.BouncyCastle.Utilities;
+﻿using System.Collections.Generic;
+using Org.BouncyCastle.Utilities;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Utilities;
-using System.Collections.Generic;
 
 namespace PolymorphicPseudonymisation.Crypto
 {
@@ -17,10 +17,12 @@ namespace PolymorphicPseudonymisation.Crypto
             {
                 throw new CryptoException($"Length of message is too big ({length:D} > 48)");
             }
+
             if (hashLength > 48)
             {
                 throw new CryptoException($"Hash length is too big ({hashLength:D} > 48)");
             }
+
             if (length <= 2 * hashLength)
             {
                 throw new CryptoException($"Message is too short ({length:D} <= 2 * {hashLength:D})");
@@ -45,27 +47,22 @@ namespace PolymorphicPseudonymisation.Crypto
             }
 
             for (var i = 0; i < hashLength; i++)
-            {
                 if (Lhash[i] != db[i])
                 {
                     throw new CryptoException("OAEP decode error, hash is not equal");
                 }
-            }
         }
 
         /// <summary>
-        /// b = a XOR b
+        ///     b = a XOR b
         /// </summary>
         private static void Xor(IReadOnlyList<byte> src, int srcPos, IList<byte> dest, int length)
         {
-            for (var i = 0; i < length; i++)
-            {
-                dest[i] ^= src[srcPos + i];
-            }
+            for (var i = 0; i < length; i++) dest[i] ^= src[srcPos + i];
         }
 
         /// <summary>
-        /// Single block MGF1 with SHA-384 of input from pos to pos+length-1
+        ///     Single block MGF1 with SHA-384 of input from pos to pos+length-1
         /// </summary>
         private static byte[] Mgf1(byte[] input, int offset, int count)
         {

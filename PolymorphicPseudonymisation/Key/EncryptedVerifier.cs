@@ -5,8 +5,8 @@ using PolymorphicPseudonymisation.Utilities;
 namespace PolymorphicPseudonymisation.Key
 {
     /// <summary>
-    /// Verifier that can be used to check encrypted entities
-    /// It uses the public key of the decrypt key and a verification point that is published.
+    ///     Verifier that can be used to check encrypted entities
+    ///     It uses the public key of the decrypt key and a verification point that is published.
     /// </summary>
     public class EncryptedVerifier
     {
