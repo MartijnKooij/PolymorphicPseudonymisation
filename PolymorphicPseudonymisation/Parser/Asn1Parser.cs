@@ -6,164 +6,165 @@ using PolymorphicPseudonymisation.Entity;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
 
-namespace PolymorphicPseudonymisation.Parser;
-
-public static class Asn1Parser
+namespace PolymorphicPseudonymisation.Parser
 {
-    public static string GetBsnkType(byte[] encoded)
+    public static class Asn1Parser
     {
-        var parser = new Asn1StreamParser(encoded);
-
-        parser.ReadObject<DerSequenceParser>();
-        var oid = parser.ReadObject<DerObjectIdentifier>().Id;
-
-        return oid;
-    }
-
-    public static byte[] GetSignedPayload(byte[] encoded)
-    {
-        var parser = new Asn1StreamParser(encoded);
-
-        parser.ReadObject<DerSequenceParser>();
-        parser.ReadObject<DerObjectIdentifier>();
-
-        var payload = parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded();
-
-        return payload;
-    }
-
-    public static T GetEncryptedEntity<T>(byte[] encoded, bool isPseudonym) where T : EncryptedEntity, new()
-    {
-        var parser = new Asn1StreamParser(encoded);
-        var entity = new T();
-
-        parser.ReadObject<DerSequenceParser>();
-        parser.ReadObject<DerSequenceParser>();
-        var oid = parser.ReadObject<DerObjectIdentifier>().Id;
-        AssertBsnkTypeIsCorrect(oid, isPseudonym);
-
-        entity.SchemeVersion = parser.ReadObject<DerInteger>().Value.IntValue;
-        entity.SchemeKeyVersion = parser.ReadObject<DerInteger>().Value.IntValue;
-        parser.ReadObject<DerIA5String>(); //Creator, not used
-        entity.Recipient = parser.ReadObject<DerIA5String>().GetString();
-        entity.RecipientKeySetVersion = parser.ReadObject<DerInteger>().Value.IntValue;
-
-        if (isPseudonym)
+        public static string GetBsnkType(byte[] encoded)
         {
-            var obj = parser.ReadObject();
-            if (obj is DerIA5String derIa5String)
+            var parser = new Asn1StreamParser(encoded);
+
+            parser.ReadObject<DerSequenceParser>();
+            var oid = parser.ReadObject<DerObjectIdentifier>().Id;
+
+            return oid;
+        }
+
+        public static byte[] GetSignedPayload(byte[] encoded)
+        {
+            var parser = new Asn1StreamParser(encoded);
+
+            parser.ReadObject<DerSequenceParser>();
+            parser.ReadObject<DerObjectIdentifier>();
+
+            var payload = parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded();
+
+            return payload;
+        }
+
+        public static T GetEncryptedEntity<T>(byte[] encoded, bool isPseudonym) where T : EncryptedEntity, new()
+        {
+            var parser = new Asn1StreamParser(encoded);
+            var entity = new T();
+
+            parser.ReadObject<DerSequenceParser>();
+            parser.ReadObject<DerSequenceParser>();
+            var oid = parser.ReadObject<DerObjectIdentifier>().Id;
+            AssertBsnkTypeIsCorrect(oid, isPseudonym);
+
+            entity.SchemeVersion = parser.ReadObject<DerInteger>().Value.IntValue;
+            entity.SchemeKeyVersion = parser.ReadObject<DerInteger>().Value.IntValue;
+            parser.ReadObject<DerIA5String>(); //Creator, not used
+            entity.Recipient = parser.ReadObject<DerIA5String>().GetString();
+            entity.RecipientKeySetVersion = parser.ReadObject<DerInteger>().Value.IntValue;
+
+            if (isPseudonym)
             {
-                derIa5String.GetString();
-                parser.ReadObject<DerInteger>(); //Type, not used
+                var obj = parser.ReadObject();
+                if (obj is DerIA5String derIa5String)
+                {
+                    derIa5String.GetString();
+                    parser.ReadObject<DerInteger>(); //Type, not used
+                }
+                else
+                {
+                    Asn1StreamParserExtensions.CheckObject<DerInteger>(obj); //Type, not used
+                }
             }
-            else
+
+            parser.ReadObject<DerSequenceParser>();
+
+            for (var i = 0; i < entity.Points.Length; i++)
             {
-                Asn1StreamParserExtensions.CheckObject<DerInteger>(obj); //Type, not used
+                var octet =
+                    (DerOctetString)parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
+                try
+                {
+                    entity.Points[i] = BrainpoolP320R1.Curve.DecodePoint(octet.GetOctets());
+                }
+                catch (ArgumentException e)
+                {
+                    throw new ParsingException("Could not decode point on curve", e);
+                }
+            }
+
+            return entity;
+        }
+
+        private static void AssertBsnkTypeIsCorrect(string bsnkType, bool expectPseudonym)
+        {
+            switch (bsnkType)
+            {
+                case Constants.EncryptedIdentityName:
+                    if (expectPseudonym) throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
+                    break;
+                case Constants.EncryptedPseudonymName:
+                    if (!expectPseudonym) throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
+                    break;
+                default:
+                    throw new ParsingException($"Cannot handle type {bsnkType}");
             }
         }
 
-        parser.ReadObject<DerSequenceParser>();
-
-        for (var i = 0; i < entity.Points.Length; i++)
+        public static Signature GetSignature(byte[] encoded)
         {
-            var octet =
-                (DerOctetString)parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
+            var (r, s) = ReadSignatureData(encoded);
+
+            return new EcSchnorrSignature(r, s);
+        }
+
+        public static Signature GetSignatureV2(byte[] encoded)
+        {
+            var (r, s) = ReadSignatureData(encoded);
+
+            return new ECSDSASignature(r, s);
+        }
+
+        private static (BigInteger r, BigInteger s) ReadSignatureData(byte[] encoded)
+        {
+            var parser = new Asn1StreamParser(encoded);
+
+            //BSNk type
+            parser.ReadObject<DerSequenceParser>();
+            _ = parser.ReadObject<DerObjectIdentifier>().Id;
+            //Payload
+            parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded();
+
+            parser.ReadObject<DerSequenceParser>();
+
+            var signatureId = parser.ReadObject<DerObjectIdentifier>().Id;
+            if (signatureId != Constants.ECSignature) throw new ParsingException("Invalid signature, signature algorithm not implemented");
+
+            parser.ReadObject<DerSequenceParser>();
+
+            var r = parser.ReadObject<DerInteger>().PositiveValue;
+            var s = parser.ReadObject<DerInteger>().PositiveValue;
+            return (r, s);
+        }
+
+        internal static KeyPair GetKeyPair(byte[] encoded)
+        {
+            var parser = new Asn1StreamParser(encoded);
+            var keyPair = new KeyPair();
+
+            parser.ReadObject<DerSequenceParser>();
+            var version = parser.ReadObject<DerInteger>().Value.IntValue;
+            if (1 != version) throw new ParsingException($"Expected version 1, got {version}");
+
+            var octetString = (DerOctetString)parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
+            keyPair.PrivateKey = new BigInteger(1, octetString.GetOctets());
+
+            parser.ReadObject<BerTaggedObjectParser>();
+            var oid = parser.ReadObject<DerObjectIdentifier>();
+            if (!BrainpoolP320R1.ObjectIdentifier.Equals(oid)) throw new ParsingException($"Expected BrainpoolP320r1 ({BrainpoolP320R1.ObjectIdentifier}), got {oid}");
+
+            var obj = parser.ReadObject();
+            if (obj == null) return keyPair;
+
+            Asn1StreamParserExtensions.CheckObject<BerTaggedObjectParser>(obj);
             try
             {
-                entity.Points[i] = BrainpoolP320R1.Curve.DecodePoint(octet.GetOctets());
+                keyPair.PublicKey = BrainpoolP320R1.Curve.DecodePoint(parser.ReadObject<DerBitString>().GetBytes()).Normalize();
             }
             catch (ArgumentException e)
             {
                 throw new ParsingException("Could not decode point on curve", e);
             }
+
+            BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Normalize();
+            if (!BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Equals(keyPair.PublicKey)) throw new ParsingException("Public key does not belong to private key");
+
+            return keyPair;
         }
-
-        return entity;
-    }
-
-    private static void AssertBsnkTypeIsCorrect(string bsnkType, bool expectPseudonym)
-    {
-        switch (bsnkType)
-        {
-            case Constants.EncryptedIdentityName:
-                if (expectPseudonym) throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
-                break;
-            case Constants.EncryptedPseudonymName:
-                if (!expectPseudonym) throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
-                break;
-            default:
-                throw new ParsingException($"Cannot handle type {bsnkType}");
-        }
-    }
-
-    public static Signature GetSignature(byte[] encoded)
-    {
-        var (r, s) = ReadSignatureData(encoded);
-
-        return new EcSchnorrSignature(r, s);
-    }
-
-    public static Signature GetSignatureV2(byte[] encoded)
-    {
-        var (r, s) = ReadSignatureData(encoded);
-
-        return new ECSDSASignature(r, s);
-    }
-
-    private static (BigInteger r, BigInteger s) ReadSignatureData(byte[] encoded)
-    {
-        var parser = new Asn1StreamParser(encoded);
-
-        //BSNk type
-        parser.ReadObject<DerSequenceParser>();
-        _ = parser.ReadObject<DerObjectIdentifier>().Id;
-        //Payload
-        parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded();
-
-        parser.ReadObject<DerSequenceParser>();
-
-        var signatureId = parser.ReadObject<DerObjectIdentifier>().Id;
-        if (signatureId != Constants.ECSignature) throw new ParsingException("Invalid signature, signature algorithm not implemented");
-
-        parser.ReadObject<DerSequenceParser>();
-
-        var r = parser.ReadObject<DerInteger>().PositiveValue;
-        var s = parser.ReadObject<DerInteger>().PositiveValue;
-        return (r, s);
-    }
-
-    internal static KeyPair GetKeyPair(byte[] encoded)
-    {
-        var parser = new Asn1StreamParser(encoded);
-        var keyPair = new KeyPair();
-
-        parser.ReadObject<DerSequenceParser>();
-        var version = parser.ReadObject<DerInteger>().Value.IntValue;
-        if (1 != version) throw new ParsingException($"Expected version 1, got {version}");
-
-        var octetString = (DerOctetString)parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
-        keyPair.PrivateKey = new BigInteger(1, octetString.GetOctets());
-
-        parser.ReadObject<BerTaggedObjectParser>();
-        var oid = parser.ReadObject<DerObjectIdentifier>();
-        if (!BrainpoolP320R1.ObjectIdentifier.Equals(oid)) throw new ParsingException($"Expected BrainpoolP320r1 ({BrainpoolP320R1.ObjectIdentifier}), got {oid}");
-
-        var obj = parser.ReadObject();
-        if (obj == null) return keyPair;
-
-        Asn1StreamParserExtensions.CheckObject<BerTaggedObjectParser>(obj);
-        try
-        {
-            keyPair.PublicKey = BrainpoolP320R1.Curve.DecodePoint(parser.ReadObject<DerBitString>().GetBytes()).Normalize();
-        }
-        catch (ArgumentException e)
-        {
-            throw new ParsingException("Could not decode point on curve", e);
-        }
-
-        BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Normalize();
-        if (!BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Equals(keyPair.PublicKey)) throw new ParsingException("Public key does not belong to private key");
-
-        return keyPair;
     }
 }
