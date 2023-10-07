@@ -86,10 +86,18 @@ namespace PolymorphicPseudonymisation.Parser
             switch (bsnkType)
             {
                 case Constants.EncryptedIdentityName:
-                    if (expectPseudonym) throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
+                    if (expectPseudonym)
+                    {
+                        throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
+                    }
+
                     break;
                 case Constants.EncryptedPseudonymName:
-                    if (!expectPseudonym) throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
+                    if (!expectPseudonym)
+                    {
+                        throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
+                    }
+
                     break;
                 default:
                     throw new ParsingException($"Cannot handle type {bsnkType}");
@@ -123,7 +131,10 @@ namespace PolymorphicPseudonymisation.Parser
             parser.ReadObject<DerSequenceParser>();
 
             var signatureId = parser.ReadObject<DerObjectIdentifier>().Id;
-            if (signatureId != Constants.ECSignature) throw new ParsingException("Invalid signature, signature algorithm not implemented");
+            if (signatureId != Constants.ECSignature)
+            {
+                throw new ParsingException("Invalid signature, signature algorithm not implemented");
+            }
 
             parser.ReadObject<DerSequenceParser>();
 
@@ -139,17 +150,26 @@ namespace PolymorphicPseudonymisation.Parser
 
             parser.ReadObject<DerSequenceParser>();
             var version = parser.ReadObject<DerInteger>().Value.IntValue;
-            if (1 != version) throw new ParsingException($"Expected version 1, got {version}");
+            if (1 != version)
+            {
+                throw new ParsingException($"Expected version 1, got {version}");
+            }
 
             var octetString = (DerOctetString)parser.ReadObject<DerOctetStringParser>().ToAsn1Object();
             keyPair.PrivateKey = new BigInteger(1, octetString.GetOctets());
 
             parser.ReadObject<BerTaggedObjectParser>();
             var oid = parser.ReadObject<DerObjectIdentifier>();
-            if (!BrainpoolP320R1.ObjectIdentifier.Equals(oid)) throw new ParsingException($"Expected BrainpoolP320r1 ({BrainpoolP320R1.ObjectIdentifier}), got {oid}");
+            if (!BrainpoolP320R1.ObjectIdentifier.Equals(oid))
+            {
+                throw new ParsingException($"Expected BrainpoolP320r1 ({BrainpoolP320R1.ObjectIdentifier}), got {oid}");
+            }
 
             var obj = parser.ReadObject();
-            if (obj == null) return keyPair;
+            if (obj == null)
+            {
+                return keyPair;
+            }
 
             Asn1StreamParserExtensions.CheckObject<BerTaggedObjectParser>(obj);
             try
@@ -162,7 +182,10 @@ namespace PolymorphicPseudonymisation.Parser
             }
 
             BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Normalize();
-            if (!BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Equals(keyPair.PublicKey)) throw new ParsingException("Public key does not belong to private key");
+            if (!BrainpoolP320R1.G.Multiply(keyPair.PrivateKey).Equals(keyPair.PublicKey))
+            {
+                throw new ParsingException("Public key does not belong to private key");
+            }
 
             return keyPair;
         }
