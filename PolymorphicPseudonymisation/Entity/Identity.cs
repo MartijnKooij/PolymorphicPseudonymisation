@@ -1,15 +1,15 @@
-﻿using Org.BouncyCastle.Math.EC;
+﻿using System.Collections.Generic;
+using System.Text;
+using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Exceptions;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PolymorphicPseudonymisation.Entity
 {
     public class Identity : BaseEntity
     {
-        private readonly char type;
         private readonly string identifier;
+        private readonly char type;
 
         internal Identity(ECPoint point)
         {
@@ -32,12 +32,10 @@ namespace PolymorphicPseudonymisation.Entity
         private static int GetZeroOffset(IReadOnlyList<byte> encoded)
         {
             for (var i = 0; i < encoded.Count; i++)
-            {
                 if (encoded[i] != 0)
                 {
                     return i;
                 }
-            }
 
             throw new PolymorphicPseudonymisationException("Zero point");
         }

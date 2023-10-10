@@ -1,28 +1,23 @@
-﻿using Org.BouncyCastle.Utilities.IO.Pem;
-using PolymorphicPseudonymisation.Exceptions;
-using PolymorphicPseudonymisation.Key;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using Org.BouncyCastle.Utilities.IO.Pem;
+using PolymorphicPseudonymisation.Exceptions;
+using PolymorphicPseudonymisation.Key;
 
 namespace PolymorphicPseudonymisation.Parser
 {
     public class DecryptKeyParser
     {
-        private readonly List<string> validDecryptTypes;
-
-        public DecryptKeyParser()
+        private readonly List<string> validDecryptTypes = new()
         {
-            validDecryptTypes = new List<string>
-            {
-                "EI Decryption",
-                "EP Decryption",
-                "EP Closing"
-            };
-        }
+            "EI Decryption",
+            "EP Decryption",
+            "EP Closing"
+        };
 
         public DecryptKey Decode(string pemContents)
         {
@@ -36,10 +31,10 @@ namespace PolymorphicPseudonymisation.Parser
                 {
                     throw new PolymorphicPseudonymisationException($"Unknown type {decryptKey.Type}");
                 }
+
                 decryptKey.KeyPair = Asn1Parser.GetKeyPair(pemObject.Content);
 
                 return decryptKey;
-
             }
             catch (IOException e)
             {
@@ -72,7 +67,6 @@ namespace PolymorphicPseudonymisation.Parser
                 Recipient = pemHeaders.First(x => x.Name == "Recipient").Value,
                 RecipientKeySetVersion = TryParseVersion("RecipientKeySetVersion", pemHeaders.First(x => x.Name == "RecipientKeySetVersion").Value)
             };
-
         }
 
         private static int TryParseVersion(string name, string value)

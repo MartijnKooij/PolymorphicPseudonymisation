@@ -6,27 +6,27 @@ namespace PolymorphicPseudonymisation.Service
     public class DecryptOptions
     {
         /// <summary>
-        /// Identity verification point
+        ///     Identity verification point
         /// </summary>
         public string IdentityPoint { get; set; }
 
         /// <summary>
-        /// Pseudonym verification point
+        ///     Pseudonym verification point
         /// </summary>
         public string PseudonymPoint { get; set; }
 
         /// <summary>
-        /// PEM EC PRIVATE KEY for the identity
+        ///     PEM EC PRIVATE KEY for the identity
         /// </summary>
         public string IdentityPem { get; set; }
 
         /// <summary>
-        /// PEM EC PRIVATE KEY for the pseudonym
+        ///     PEM EC PRIVATE KEY for the pseudonym
         /// </summary>
         public string PseudoKeyPem { get; set; }
 
         /// <summary>
-        /// PEM EC PRIVATE KEY for the pseudonym's closing key
+        ///     PEM EC PRIVATE KEY for the pseudonym's closing key
         /// </summary>
         public string PseudoClosingKeyPem { get; set; }
 
@@ -36,6 +36,7 @@ namespace PolymorphicPseudonymisation.Service
             {
                 throw new DecryptOptionsException(nameof(IdentityPoint));
             }
+
             if (string.IsNullOrEmpty(PseudonymPoint))
             {
                 throw new DecryptOptionsException(nameof(PseudonymPoint));
@@ -45,10 +46,12 @@ namespace PolymorphicPseudonymisation.Service
             {
                 throw new DecryptOptionsException(nameof(IdentityPem));
             }
+
             if (string.IsNullOrEmpty(PseudoKeyPem))
             {
                 throw new DecryptOptionsException(nameof(PseudoKeyPem));
             }
+
             if (string.IsNullOrEmpty(PseudoClosingKeyPem))
             {
                 throw new DecryptOptionsException(nameof(PseudoClosingKeyPem));

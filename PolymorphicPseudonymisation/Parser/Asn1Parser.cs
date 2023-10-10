@@ -1,11 +1,10 @@
-﻿using Org.BouncyCastle.Asn1;
+﻿using System;
+using Org.BouncyCastle.Asn1;
 using Org.BouncyCastle.Math;
-using Org.BouncyCastle.Math.EC;
 using PolymorphicPseudonymisation.Crypto;
 using PolymorphicPseudonymisation.Entity;
 using PolymorphicPseudonymisation.Exceptions;
 using PolymorphicPseudonymisation.Key;
-using System;
 
 namespace PolymorphicPseudonymisation.Parser
 {
@@ -33,7 +32,7 @@ namespace PolymorphicPseudonymisation.Parser
             return payload;
         }
 
-        public static T GetEncryptedEntity<T>(byte[] encoded, bool isPseudonym) where T: EncryptedEntity, new()
+        public static T GetEncryptedEntity<T>(byte[] encoded, bool isPseudonym) where T : EncryptedEntity, new()
         {
             var parser = new Asn1StreamParser(encoded);
             var entity = new T();
@@ -91,12 +90,14 @@ namespace PolymorphicPseudonymisation.Parser
                     {
                         throw new ParsingException("Encrypted identity inside signed encrypted pseudonym");
                     }
+
                     break;
                 case Constants.EncryptedPseudonymName:
                     if (!expectPseudonym)
                     {
                         throw new ParsingException("Encrypted pseudonym inside signed encrypted identity");
                     }
+
                     break;
                 default:
                     throw new ParsingException($"Cannot handle type {bsnkType}");
@@ -105,28 +106,41 @@ namespace PolymorphicPseudonymisation.Parser
 
         public static Signature GetSignature(byte[] encoded)
         {
+            var (r, s) = ReadSignatureData(encoded);
+
+            return new EcSchnorrSignature(r, s);
+        }
+
+        public static Signature GetSignatureV2(byte[] encoded)
+        {
+            var (r, s) = ReadSignatureData(encoded);
+
+            return new ECSDSASignature(r, s);
+        }
+
+        private static (BigInteger r, BigInteger s) ReadSignatureData(byte[] encoded)
+        {
             var parser = new Asn1StreamParser(encoded);
 
             //BSNk type
             parser.ReadObject<DerSequenceParser>();
-            var _ = parser.ReadObject<DerObjectIdentifier>().Id;
+            _ = parser.ReadObject<DerObjectIdentifier>().Id;
             //Payload
             parser.ReadObject<DerSequenceParser>().ToAsn1Object().GetDerEncoded();
 
             parser.ReadObject<DerSequenceParser>();
 
-            var objectIdentifier = parser.ReadObject<DerObjectIdentifier>().Id;
-            if (objectIdentifier != Constants.EcSchnorrSha384Oid)
+            var signatureId = parser.ReadObject<DerObjectIdentifier>().Id;
+            if (signatureId != Constants.ECSignature)
             {
-                throw new ParsingException($"Expected EC Schnorr SHA-384 signature, got {objectIdentifier}");
+                throw new ParsingException("Invalid signature, signature algorithm not implemented");
             }
 
             parser.ReadObject<DerSequenceParser>();
 
-            return new Signature(
-                parser.ReadObject<DerInteger>().PositiveValue,
-                parser.ReadObject<DerInteger>().PositiveValue
-            );
+            var r = parser.ReadObject<DerInteger>().PositiveValue;
+            var s = parser.ReadObject<DerInteger>().PositiveValue;
+            return (r, s);
         }
 
         internal static KeyPair GetKeyPair(byte[] encoded)

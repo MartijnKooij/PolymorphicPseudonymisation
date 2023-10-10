@@ -13,10 +13,10 @@ namespace PolymorphicPseudonymisation.Entity
             Check(closingKey);
 
             var point = Points[1].Subtract(
-                            Points[0].Multiply(decryptKey.KeyPair.PrivateKey)
-                        )
-                        .Multiply(closingKey.KeyPair.PrivateKey)
-                        .Normalize();
+                    Points[0].Multiply(decryptKey.KeyPair.PrivateKey)
+                )
+                .Multiply(closingKey.KeyPair.PrivateKey)
+                .Normalize();
 
             return new Pseudonym(closingKey.RecipientKeySetVersion, point);
         }

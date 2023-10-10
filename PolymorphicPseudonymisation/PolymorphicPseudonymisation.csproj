@@ -1,39 +1,49 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
-    <Authors>Martijn Kooij</Authors>
-    <Product>Polymorphic Pseudonymisation</Product>
-    <Company>Martijn Kooij Software</Company>
-    <Description>Polymorphic Pseudonymisation is an encryption technology developed by Eric Verheul to ensure the privacy and security of users in an authentication system. This technology has been incorporated in the Dutch "EID" system. Polymorphic Pseudonymisation is based on the El-Ghamal encryption system and split proof evidence.</Description>
-    <PackageProjectUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</RepositoryUrl>
-    <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>pp polymorphic pseudonymisation polymorfische pseudonimisatie ppdecrypt bsnk</PackageTags>
-    <Copyright>2020 Martijn Kooij</Copyright>
-    <PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE.md</PackageLicenseUrl>
-    <PackageReleaseNotes>v2.0.0 Updated project to net standard 2.1 and net core 3.0.
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<Authors>Martijn Kooij</Authors>
+		<Product>Polymorphic Pseudonymisation</Product>
+		<Company>Martijn Kooij Software</Company>
+		<Description>Polymorphic Pseudonymisation is an encryption technology developed by Eric Verheul to ensure the privacy and security of users in an authentication system. This technology has been incorporated in the Dutch "EID" system. Polymorphic Pseudonymisation is based on the El-Ghamal encryption system and split proof evidence.</Description>
+		<PackageProjectUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation</RepositoryUrl>
+		<RepositoryType>GitHub</RepositoryType>
+		<PackageTags>pp polymorphic pseudonymisation polymorfische pseudonimisatie ppdecrypt bsnk</PackageTags>
+		<Copyright>2020 Martijn Kooij</Copyright>
+		<PackageLicenseUrl>https://github.com/MartijnKooij/PolymorphicPseudonymisation/blob/master/LICENSE.md</PackageLicenseUrl>
+		<PackageReleaseNotes>v2.1.0 Added support for "v2" ECSDSA signatures and back to netstandard2.0 for compatibility
+v2.0.0 Updated project to net standard 2.1 and net core 3.0.
 v1.0.0 Initial release.</PackageReleaseNotes>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>2.0.0</Version>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<Version>2.1.0</Version>
+		<Nullable>disable</Nullable>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<LangVersion>latest</LangVersion>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="BouncyCastle.NetCore" Version="1.8.5" />
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
-    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="4.7.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Options">
-      <HintPath>..\..\..\..\Users\post\.nuget\packages\microsoft.extensions.options\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="BouncyCastle.NetCore" Version="1.8.5" />
+		<PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="3.1.0" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="4.7.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Microsoft.Extensions.Options">
+			<HintPath>..\..\..\..\Users\post\.nuget\packages\microsoft.extensions.options\2.1.1\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
 </Project>

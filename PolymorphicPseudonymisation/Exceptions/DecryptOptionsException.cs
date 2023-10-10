@@ -3,7 +3,7 @@ using System.Runtime.Serialization;
 
 namespace PolymorphicPseudonymisation.Exceptions
 {
-    [System.Serializable]
+    [Serializable]
     public class DecryptOptionsException : PolymorphicPseudonymisationException
     {
         public DecryptOptionsException(string option) : base($"Invalid option provided for {option}")

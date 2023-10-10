@@ -1,4 +1,3 @@
-using System;
 using System.IO;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -85,8 +84,7 @@ namespace PolymorphicPseudonymisation.Tests.Service
             }
             catch (ParsingException e)
             {
-                Assert.IsTrue(e.Message.StartsWith("Expected EC Schnorr SHA-384 signature", StringComparison.InvariantCultureIgnoreCase),
-                    "Expected the parsing error to start with [Expected EC Schnorr SHA-384 signature]");
+                Assert.AreEqual(e.Message, "Invalid signature, signature algorithm not implemented");
             }
         }
 
