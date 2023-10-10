@@ -5,6 +5,12 @@
 
 name: 2.0.0$(rev:.r)
 
+trigger:
+  paths:
+    exclude:
+    - /*.yml
+    - /*.md
+
 pool:
   vmImage: 'ubuntu-latest'
 
